@@ -4,7 +4,7 @@
 #
 # Runs install.sh inside an Ubuntu container with NO TTY (piped) and
 # XUI_NONINTERACTIVE=1, then asserts:
-#   * /etc/x-ui/install-result.env exists (mode 600) with random, non-default creds
+#   * /etc/radpanel/install-result.env exists (mode 600) with random, non-default creds
 #   * the panel reports hasDefaultCredential: false (no admin/admin remains)
 #   * the panel HTTP server actually serves on the generated port/base path
 #   * with a [version] argument: the installed binary reports exactly that version
@@ -47,12 +47,12 @@ docker run --rm \
 
         echo "--- assertions ---"
         if [ -n "${XUI_SMOKE_VERSION:-}" ]; then
-            installed=$(/usr/local/x-ui/x-ui -v)
+            installed=$(/usr/local/radpanel/radpanel -v)
             [ "$installed" = "${XUI_SMOKE_VERSION#v}" ] \
                 || { echo "FAIL: installed version $installed, want ${XUI_SMOKE_VERSION#v}"; exit 1; }
         fi
 
-        RESULT=/etc/x-ui/install-result.env
+        RESULT=/etc/radpanel/install-result.env
         test -f "$RESULT" || { echo "FAIL: $RESULT missing"; exit 1; }
 
         perms=$(stat -c %a "$RESULT")
@@ -67,12 +67,12 @@ docker run --rm \
         [ -n "${XUI_PANEL_PORT:-}" ] || { echo "FAIL: port missing"; exit 1; }
 
         # No default admin in the DB.
-        /usr/local/x-ui/x-ui setting -show | grep -q "hasDefaultCredential: false" \
+        /usr/local/radpanel/radpanel setting -show | grep -q "hasDefaultCredential: false" \
             || { echo "FAIL: hasDefaultCredential is not false"; exit 1; }
 
         echo "--- verifying the panel serves HTTP ---"
-        cd /usr/local/x-ui
-        ./x-ui > /tmp/xui.log 2>&1 &
+        cd /usr/local/radpanel
+        ./radpanel > /tmp/xui.log 2>&1 &
         xpid=$!
         for _ in $(seq 1 15); do
             code=$(curl -s -o /dev/null -w "%{http_code}" \
@@ -88,8 +88,8 @@ docker run --rm \
         esac
 
         echo "--- verifying a second install preserves custom bin/ files ---"
-        echo "custom-sentinel" > /usr/local/x-ui/bin/geoip_custom.dat
-        geoip_sum_before=$(sha256sum /usr/local/x-ui/bin/geoip.dat | cut -d" " -f1)
+        echo "custom-sentinel" > /usr/local/radpanel/bin/geoip_custom.dat
+        geoip_sum_before=$(sha256sum /usr/local/radpanel/bin/geoip.dat | cut -d" " -f1)
 
         if [ -n "${XUI_SMOKE_VERSION:-}" ]; then
             cat /root/install.sh | bash -s -- "$XUI_SMOKE_VERSION"
@@ -97,11 +97,11 @@ docker run --rm \
             cat /root/install.sh | bash
         fi
 
-        test -f /usr/local/x-ui/bin/geoip_custom.dat \
+        test -f /usr/local/radpanel/bin/geoip_custom.dat \
             || { echo "FAIL: custom bin/ file did not survive a second install"; exit 1; }
-        [ "$(cat /usr/local/x-ui/bin/geoip_custom.dat)" = "custom-sentinel" ] \
+        [ "$(cat /usr/local/radpanel/bin/geoip_custom.dat)" = "custom-sentinel" ] \
             || { echo "FAIL: custom bin/ file content changed across a second install"; exit 1; }
-        geoip_sum_after=$(sha256sum /usr/local/x-ui/bin/geoip.dat | cut -d" " -f1)
+        geoip_sum_after=$(sha256sum /usr/local/radpanel/bin/geoip.dat | cut -d" " -f1)
         [ "$geoip_sum_after" = "$geoip_sum_before" ] \
             || { echo "FAIL: bundled geoip.dat changed across a same-version reinstall"; exit 1; }
 

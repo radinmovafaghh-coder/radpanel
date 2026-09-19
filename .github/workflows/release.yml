@@ -1,4 +1,4 @@
-name: Release 3X-UI
+name: Release RadPanel
 
 on:
   workflow_dispatch:
@@ -13,9 +13,9 @@ on:
       - "go.sum"
       - "**.sh"
       - "frontend/**"
-      - "x-ui.service.debian"
-      - "x-ui.service.arch"
-      - "x-ui.service.rhel"
+      - "radpanel.service.debian"
+      - "radpanel.service.arch"
+      - "radpanel.service.rhel"
       - ".github/workflows/release.yml"
   pull_request:
     paths:
@@ -24,9 +24,9 @@ on:
       - "go.sum"
       - "**.sh"
       - "frontend/**"
-      - "x-ui.service.debian"
-      - "x-ui.service.arch"
-      - "x-ui.service.rhel"
+      - "radpanel.service.debian"
+      - "radpanel.service.arch"
+      - "radpanel.service.rhel"
       - ".github/workflows/release.yml"
 
 jobs:
@@ -73,7 +73,7 @@ jobs:
           npm run build
         working-directory: frontend
 
-      - name: Build 3X-UI
+      - name: Build RadPanel
         run: |
           CURL_RETRY="--retry 5 --retry-all-errors --retry-delay 3"
           fetch() { wget -q --tries=5 --waitretry=10 --retry-on-http-error=429,500,502,503 "$@"; }
@@ -107,21 +107,21 @@ jobs:
           # stable releases stay unstamped so config.IsDevBuild() returns false.
           LDFLAGS="-w -s -linkmode external -extldflags '-static'"
           if [[ "$GITHUB_REF" != refs/tags/* ]]; then
-            LDFLAGS="$LDFLAGS -X github.com/mhsanaei/3x-ui/v3/internal/config.buildCommit=${GITHUB_SHA::8} -X github.com/mhsanaei/3x-ui/v3/internal/config.buildDate=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            LDFLAGS="$LDFLAGS -X github.com/radinmovafaghh-coder/radpanel/v3/internal/config.buildCommit=${GITHUB_SHA::8} -X github.com/radinmovafaghh-coder/radpanel/v3/internal/config.buildDate=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           fi
           go build -buildvcs=true -ldflags "$LDFLAGS" -o xui-release -v .
           file xui-release
           ldd xui-release || echo "Static binary confirmed"
 
-          mkdir x-ui
-          cp xui-release x-ui/
-          cp x-ui.service.debian x-ui/
-          cp x-ui.service.arch x-ui/
-          cp x-ui.service.rhel x-ui/
-          cp x-ui.sh x-ui/
-          mv x-ui/xui-release x-ui/x-ui
-          mkdir x-ui/bin
-          cd x-ui/bin
+          mkdir radpanel
+          cp xui-release radpanel/
+          cp radpanel.service.debian radpanel/
+          cp radpanel.service.arch radpanel/
+          cp radpanel.service.rhel radpanel/
+          cp radpanel.sh radpanel/
+          mv radpanel/xui-release radpanel/radpanel
+          mkdir radpanel/bin
+          cd radpanel/bin
 
           # Download dependencies
           Xray_URL="https://github.com/XTLS/Xray-core/releases/download/v26.9.9/"
@@ -206,16 +206,16 @@ jobs:
 
       - name: Package
         run: |
-          tar -zcvf x-ui-linux-${{ matrix.platform }}.tar.gz x-ui
-          sha256sum x-ui-linux-${{ matrix.platform }}.tar.gz > x-ui-linux-${{ matrix.platform }}.tar.gz.sha256
+          tar -zcvf radpanel-linux-${{ matrix.platform }}.tar.gz radpanel
+          sha256sum radpanel-linux-${{ matrix.platform }}.tar.gz > radpanel-linux-${{ matrix.platform }}.tar.gz.sha256
 
       - name: Upload files to Artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: x-ui-linux-${{ matrix.platform }}
+          name: radpanel-linux-${{ matrix.platform }}
           path: |
-            ./x-ui-linux-${{ matrix.platform }}.tar.gz
-            ./x-ui-linux-${{ matrix.platform }}.tar.gz.sha256
+            ./radpanel-linux-${{ matrix.platform }}.tar.gz
+            ./radpanel-linux-${{ matrix.platform }}.tar.gz.sha256
 
       - name: Upload files to GH release
         uses: svenstaro/upload-release-action@v2
@@ -223,7 +223,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
-          file: x-ui-linux-${{ matrix.platform }}.tar.gz*
+          file: radpanel-linux-${{ matrix.platform }}.tar.gz*
           file_glob: true
           overwrite: true
           prerelease: true
@@ -278,7 +278,7 @@ jobs:
             mingw-w64-x86_64-sqlite3
             mingw-w64-x86_64-pkg-config
 
-      - name: Build 3X-UI for Windows (CGO)
+      - name: Build RadPanel for Windows (CGO)
         shell: msys2 {0}
         run: |
           export PATH="/c/hostedtoolcache/windows/go/$(ls /c/hostedtoolcache/windows/go | sort -V | tail -n1)/x64/bin:$PATH"
@@ -295,7 +295,7 @@ jobs:
           # Stamp the commit into per-commit (dev channel) builds only.
           LDFLAGS="-w -s"
           if [[ "$GITHUB_REF" != refs/tags/* ]]; then
-            LDFLAGS="$LDFLAGS -X github.com/mhsanaei/3x-ui/v3/internal/config.buildCommit=${GITHUB_SHA:0:8} -X github.com/mhsanaei/3x-ui/v3/internal/config.buildDate=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            LDFLAGS="$LDFLAGS -X github.com/radinmovafaghh-coder/radpanel/v3/internal/config.buildCommit=${GITHUB_SHA:0:8} -X github.com/radinmovafaghh-coder/radpanel/v3/internal/config.buildDate=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           fi
           go build -buildvcs=true -ldflags "$LDFLAGS" -o xui-release.exe -v .
 
@@ -303,10 +303,10 @@ jobs:
         shell: pwsh
         run: |
           $retry = @{ MaximumRetryCount = 5; RetryIntervalSec = 10 }
-          mkdir x-ui
-          Copy-Item xui-release.exe x-ui\x-ui.exe
-          mkdir x-ui\bin
-          cd x-ui\bin
+          mkdir radpanel
+          Copy-Item xui-release.exe radpanel\radpanel.exe
+          mkdir radpanel\bin
+          cd radpanel\bin
 
           # Download Xray for Windows
           $Xray_URL = "https://github.com/XTLS/Xray-core/releases/download/v26.9.9/"
@@ -344,17 +344,17 @@ jobs:
       - name: Package to Zip
         shell: pwsh
         run: |
-          Compress-Archive -Path .\x-ui -DestinationPath "x-ui-windows-amd64.zip"
-          $hash = (Get-FileHash x-ui-windows-amd64.zip -Algorithm SHA256).Hash.ToLower()
-          [IO.File]::WriteAllText("$PWD\x-ui-windows-amd64.zip.sha256", "$hash  x-ui-windows-amd64.zip`n")
+          Compress-Archive -Path .\radpanel -DestinationPath "radpanel-windows-amd64.zip"
+          $hash = (Get-FileHash radpanel-windows-amd64.zip -Algorithm SHA256).Hash.ToLower()
+          [IO.File]::WriteAllText("$PWD\radpanel-windows-amd64.zip.sha256", "$hash  radpanel-windows-amd64.zip`n")
 
       - name: Upload files to Artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: x-ui-windows-amd64
+          name: radpanel-windows-amd64
           path: |
-            ./x-ui-windows-amd64.zip
-            ./x-ui-windows-amd64.zip.sha256
+            ./radpanel-windows-amd64.zip
+            ./radpanel-windows-amd64.zip.sha256
 
       - name: Upload files to GH release
         uses: svenstaro/upload-release-action@v2
@@ -362,7 +362,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
-          file: x-ui-windows-amd64.zip*
+          file: radpanel-windows-amd64.zip*
           file_glob: true
           overwrite: true
           prerelease: true

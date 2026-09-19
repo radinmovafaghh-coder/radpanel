@@ -11,7 +11,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
 )
 
 // TestRemoteDo_RejectsOversizeResponse: a node streaming a body larger than

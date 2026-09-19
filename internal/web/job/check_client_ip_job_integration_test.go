@@ -11,12 +11,12 @@ import (
 
 	"github.com/op/go-logging"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	xuilogger "github.com/mhsanaei/3x-ui/v3/internal/logger"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	xuilogger "github.com/radinmovafaghh-coder/radpanel/v3/internal/logger"
 )
 
-// 3x-ui logger must be initialised once before any code path that can
+// radpanel logger must be initialised once before any code path that can
 // log a warning. otherwise log.Warningf panics on a nil logger.
 var loggerInitOnce sync.Once
 
@@ -34,8 +34,8 @@ func setupIntegrationDB(t *testing.T) {
 	dbDir := t.TempDir()
 	logDir := t.TempDir()
 
-	t.Setenv("XUI_DB_FOLDER", dbDir)
-	t.Setenv("XUI_LOG_FOLDER", logDir)
+	t.Setenv("RADPANEL_DB_FOLDER", dbDir)
+	t.Setenv("RADPANEL_LOG_FOLDER", logDir)
 
 	// updateInboundClientIps calls log.SetOutput on the package global,
 	// which would leak to other tests in the same binary.
@@ -46,7 +46,7 @@ func setupIntegrationDB(t *testing.T) {
 		log.SetFlags(origLogFlags)
 	})
 
-	if err := database.InitDB(filepath.Join(dbDir, "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(dbDir, "radpanel.db")); err != nil {
 		t.Fatalf("database.InitDB failed: %v", err)
 	}
 	// LIFO cleanup order: this runs before t.TempDir's own cleanup.
@@ -349,7 +349,7 @@ func TestProcessObserved_StaleEmailIsSkippedAndOrphanDropped(t *testing.T) {
 // just for the path helper (which would pull a lot more deps into the
 // test binary). The env-derived log folder is deterministic.
 func readIpLimitLogPath() string {
-	folder := os.Getenv("XUI_LOG_FOLDER")
+	folder := os.Getenv("RADPANEL_LOG_FOLDER")
 	if folder == "" {
 		folder = filepath.Join(".", "log")
 	}

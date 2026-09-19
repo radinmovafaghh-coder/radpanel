@@ -1,9 +1,9 @@
 services:
-  3xui:
+  radpanel:
     build:
       context: .
       dockerfile: ./Dockerfile
-    container_name: 3xui_app
+    container_name: radpanel_app
     # hostname: yourhostname <- optional
     # Optional hard memory cap. When set, the panel derives its Go soft limit
     # (GOMEMLIMIT, ~90% of this cap) so it GCs before the OOM killer fires.
@@ -20,7 +20,7 @@ services:
       - NET_ADMIN
       - NET_RAW
     volumes:
-      - $PWD/db/:/etc/x-ui/
+      - $PWD/db/:/etc/radpanel/
       - $PWD/cert/:/root/cert/
       # Persists acme.sh state so certificate auto-renewal survives container
       # recreation (the entrypoint re-registers the renewal cron job from it).
@@ -52,7 +52,7 @@ services:
 
   postgres:
     image: postgres:16-alpine
-    container_name: 3xui_postgres
+    container_name: radpanel_postgres
     profiles: ["postgres"]
     environment:
       POSTGRES_USER: xui

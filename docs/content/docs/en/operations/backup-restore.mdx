@@ -1,6 +1,6 @@
 ---
 title: Backup & Restore
-description: Back up and restore your 3x-ui database and certificates, manually or via the Telegram bot.
+description: Back up and restore your radpanel database and certificates, manually or via the Telegram bot.
 icon: DatabaseBackup
 ---
 
@@ -9,7 +9,7 @@ database. Back it up regularly so you can recover or migrate.
 
 ## What to back up
 
-- **The database** — SQLite at `/etc/x-ui/x-ui.db` by default (or your
+- **The database** — SQLite at `/etc/radpanel/radpanel.db` by default (or your
   PostgreSQL database if you use that backend).
 - **Certificates** — anything under `/root/cert/` (or wherever you store TLS
   certs).
@@ -20,7 +20,7 @@ You can download a backup from the panel's overview, or copy the database file
 directly from the server:
 
 ```bash title="copy the SQLite database"
-cp /etc/x-ui/x-ui.db /root/x-ui-backup-$(date +%F).db
+cp /etc/radpanel/radpanel.db /root/radpanel-backup-$(date +%F).db
 ```
 
 To restore, stop the panel, put the database back in place, and start it again.
@@ -37,12 +37,12 @@ If you've configured the [Telegram bot](/docs/operations/telegram-bot) or [Disco
 
 ## SQLite dump / restore
 
-The `x-ui migrate-db` command converts the SQLite database to and from a plain
+The `radpanel migrate-db` command converts the SQLite database to and from a plain
 SQL text dump (handy for inspection or transferring between machines):
 
 ```bash
-x-ui migrate-db --dump /root/x-ui.sql       # SQLite -> SQL text
-x-ui migrate-db --restore /root/x-ui.sql     # SQL text -> SQLite
+radpanel migrate-db --dump /root/radpanel.sql       # SQLite -> SQL text
+radpanel migrate-db --restore /root/radpanel.sql     # SQL text -> SQLite
 ```
 
 To move to PostgreSQL instead, see [Database](/docs/reference/database).

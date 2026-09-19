@@ -8,10 +8,10 @@ import (
 
 	"github.com/op/go-logging"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/amneziawgnet"
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	xuilogger "github.com/mhsanaei/3x-ui/v3/internal/logger"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/amneziawgnet"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	xuilogger "github.com/radinmovafaghh-coder/radpanel/v3/internal/logger"
 )
 
 // the panel logger is a process-wide singleton. init it once per test
@@ -26,8 +26,8 @@ func setupConflictDB(t *testing.T) {
 	portConflictLoggerOnce.Do(func() { xuilogger.InitLogger(logging.ERROR) })
 
 	dbDir := t.TempDir()
-	t.Setenv("XUI_DB_FOLDER", dbDir)
-	if err := database.InitDB(filepath.Join(dbDir, "x-ui.db")); err != nil {
+	t.Setenv("RADPANEL_DB_FOLDER", dbDir)
+	if err := database.InitDB(filepath.Join(dbDir, "radpanel.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() {

@@ -1,6 +1,6 @@
 ---
 title: SSL Certificates
-description: Get and renew TLS certificates for the 3x-ui panel and inbounds — with the x-ui ACME menu (domain or bare IP), a Cloudflare DNS-01 wildcard, or manual Certbot.
+description: Get and renew TLS certificates for the radpanel panel and inbounds — with the radpanel ACME menu (domain or bare IP), a Cloudflare DNS-01 wildcard, or manual Certbot.
 icon: ShieldCheck
 ---
 
@@ -8,7 +8,7 @@ A TLS certificate lets you serve the **panel** over HTTPS (so your login and API
 traffic are encrypted) and terminate TLS on **inbounds** (VLESS-TLS, Trojan,
 Shadowsocks-TLS, and friends). There are three ways to obtain one:
 
-- **The `x-ui` menu** — built-in [ACME](https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment)
+- **The `radpanel` menu** — built-in [ACME](https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment)
   client. Easiest for a single domain or a bare IP.
 - **Cloudflare DNS-01** — also from the menu; needed for **wildcard** certs or
   when port 80 is blocked / the server sits behind Cloudflare's proxy.
@@ -22,9 +22,9 @@ Shadowsocks-TLS, and friends). There are three ways to obtain one:
   inbounds.
 </Callout>
 
-## The `x-ui` SSL menu (Let's Encrypt)
+## The `radpanel` SSL menu (Let's Encrypt)
 
-Run `x-ui` and choose **`20` — SSL Certificate Management**. It drives
+Run `radpanel` and choose **`20` — SSL Certificate Management**. It drives
 [acme.sh](https://github.com/acmesh-official/acme.sh) and offers:
 
 | Option                         | What it does                                                        |
@@ -58,7 +58,7 @@ use. Stop anything bound to it for the duration, and allow it through the
 <Step>
 ### Run the issuer
 
-`x-ui` → `20` → **Get SSL (Domain)**, then enter the domain. acme.sh requests
+`radpanel` → `20` → **Get SSL (Domain)**, then enter the domain. acme.sh requests
 the certificate and saves it under `/root/cert/<domain>/` as `fullchain.pem`
 (the certificate chain) and `privkey.pem` (the private key).
 </Step>
@@ -105,7 +105,7 @@ it. Copy the token — it's shown only once.
 <Step>
 ### Run the Cloudflare issuer
 
-`x-ui` → **`21` — Cloudflare SSL Certificate**. When asked, choose **`t`** for an
+`radpanel` → **`21` — Cloudflare SSL Certificate**. When asked, choose **`t`** for an
 API token (the default) or **`g`** for the Global API Key, then enter your
 domain (and, for the Global API Key, your account email and key). acme.sh creates
 the TXT record, validates, and cleans it up.

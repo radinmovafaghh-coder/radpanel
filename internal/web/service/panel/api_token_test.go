@@ -7,9 +7,9 @@ import (
 
 	"gorm.io/gorm"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/config"
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/config"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
 )
 
 var errInjectedTokenCreate = errors.New("injected token create failure")
@@ -35,7 +35,7 @@ func TestApiTokenCreatedAtSeconds(t *testing.T) {
 }
 
 func TestRecreateByNamePreservesTokenWhenReplacementFails(t *testing.T) {
-	t.Setenv("XUI_DB_FOLDER", t.TempDir())
+	t.Setenv("RADPANEL_DB_FOLDER", t.TempDir())
 	if err := database.InitDB(config.GetDBPath()); err != nil {
 		t.Fatalf("init db: %v", err)
 	}
@@ -72,7 +72,7 @@ func TestRecreateByNamePreservesTokenWhenReplacementFails(t *testing.T) {
 // Create caps the name at 64 characters; RecreateByName writes the same column
 // and now takes operator input from -tokenName, so it must cap it too.
 func TestRecreateByNameRejectsOverlongName(t *testing.T) {
-	t.Setenv("XUI_DB_FOLDER", t.TempDir())
+	t.Setenv("RADPANEL_DB_FOLDER", t.TempDir())
 	if err := database.InitDB(config.GetDBPath()); err != nil {
 		t.Fatalf("init db: %v", err)
 	}
@@ -94,7 +94,7 @@ func TestRecreateByNameRejectsOverlongName(t *testing.T) {
 }
 
 func TestRecreateByNameKeepsOneToken(t *testing.T) {
-	t.Setenv("XUI_DB_FOLDER", t.TempDir())
+	t.Setenv("RADPANEL_DB_FOLDER", t.TempDir())
 	if err := database.InitDB(config.GetDBPath()); err != nil {
 		t.Fatalf("init db: %v", err)
 	}

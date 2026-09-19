@@ -2,8 +2,8 @@
 package websocket
 
 import (
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/global"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/logger"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/global"
 )
 
 // GetHub returns the global WebSocket hub instance.

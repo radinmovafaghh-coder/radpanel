@@ -6,14 +6,14 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
 )
 
 // #6559: the Master panel must send a stable X-HWID when fetching external
 // subscriptions, otherwise an HWID-limited donor answers 404.
 func TestServerHwidStableAcrossCalls(t *testing.T) {
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(t.TempDir(), "radpanel.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })
@@ -39,7 +39,7 @@ func TestServerHwidStableAcrossCalls(t *testing.T) {
 
 // The fetch must carry the stable id so an HWID-limited donor lets it through.
 func TestFetchSendsStableHwid(t *testing.T) {
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(t.TempDir(), "radpanel.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })

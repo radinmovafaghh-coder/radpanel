@@ -27,11 +27,11 @@ COPY --from=frontend /src/internal/web/dist ./internal/web/dist
 
 ENV CGO_ENABLED=1
 ENV CGO_CFLAGS="-D_LARGEFILE64_SOURCE"
-RUN go build -ldflags "-w -s" -o build/x-ui main.go
+RUN go build -ldflags "-w -s" -o build/radpanel main.go
 RUN ./DockerInit.sh "$TARGETARCH"
 
 # ========================================================
-# Stage: Final Image of 3x-ui
+# Stage: Final Image of radpanel
 # ========================================================
 FROM alpine
 ENV TZ=Asia/Tehran
@@ -47,7 +47,7 @@ RUN apk add --no-cache --update \
 
 COPY --from=builder /app/build/ /app/
 COPY --from=builder /app/DockerEntrypoint.sh /app/
-COPY --from=builder /app/x-ui.sh /usr/bin/x-ui
+COPY --from=builder /app/radpanel.sh /usr/bin/radpanel
 COPY --from=builder /app/internal/web/translation /app/internal/web/translation
 
 
@@ -60,15 +60,15 @@ RUN rm -f /etc/fail2ban/jail.d/alpine-ssh.conf \
 
 RUN chmod +x \
   /app/DockerEntrypoint.sh \
-  /app/x-ui \
-  /usr/bin/x-ui
+  /app/radpanel \
+  /usr/bin/radpanel
 
 ENV XUI_IN_DOCKER="true"
-ENV XUI_MAIN_FOLDER="/app"
+ENV RADPANEL_MAIN_FOLDER="/app"
 ENV XUI_ENABLE_FAIL2BAN="true"
 ENV XUI_DB_TYPE=""
 ENV XUI_DB_DSN=""
 EXPOSE 2053
-VOLUME [ "/etc/x-ui" ]
-CMD [ "./x-ui" ]
+VOLUME [ "/etc/radpanel" ]
+CMD [ "./radpanel" ]
 ENTRYPOINT [ "/app/DockerEntrypoint.sh" ]

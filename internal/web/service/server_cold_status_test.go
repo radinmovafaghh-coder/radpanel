@@ -4,15 +4,15 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
 )
 
 // A panel restarts with an empty snapshot until the @2s ticker fires, and a
 // master probing that window reads the empty answer as an offline node.
 func TestCurrentStatusSamplesBeforeFirstTick(t *testing.T) {
 	dbDir := t.TempDir()
-	t.Setenv("XUI_DB_FOLDER", dbDir)
-	if err := database.InitDB(filepath.Join(dbDir, "x-ui.db")); err != nil {
+	t.Setenv("RADPANEL_DB_FOLDER", dbDir)
+	if err := database.InitDB(filepath.Join(dbDir, "radpanel.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })

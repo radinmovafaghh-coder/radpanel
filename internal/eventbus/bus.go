@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/logger"
 )
 
 // DefaultBufferSize is the number of events the bus can hold before Publish starts dropping.

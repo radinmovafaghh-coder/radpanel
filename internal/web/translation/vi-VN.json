@@ -152,7 +152,7 @@
       "xrayUpdates": "Cập nhật Xray",
       "xraySwitchClickDesk": "Hãy lựa chọn thận trọng, vì các phiên bản cũ có thể không tương thích với các cấu hình hiện tại.",
       "updatePanel": "Cập nhật Panel",
-      "panelUpdateDesc": "Điều này sẽ cập nhật 3X-UI lên bản phát hành mới nhất và khởi động lại dịch vụ panel.",
+      "panelUpdateDesc": "Điều này sẽ cập nhật RadPanel lên bản phát hành mới nhất và khởi động lại dịch vụ panel.",
       "currentPanelVersion": "Phiên bản panel hiện tại",
       "latestPanelVersion": "Phiên bản panel mới nhất",
       "panelUpToDate": "Panel đã được cập nhật",
@@ -216,10 +216,10 @@
       "xraySwitchVersionDialogDesc": "Hành động này sẽ thay đổi phiên bản Xray thành #version#.",
       "xraySwitchVersionPopover": "Xray đã được cập nhật thành công",
       "panelUpdateDialog": "Bạn có chắc muốn cập nhật panel không?",
-      "panelUpdateDialogDesc": "Điều này sẽ cập nhật 3X-UI lên #version# và khởi động lại dịch vụ panel.",
+      "panelUpdateDialogDesc": "Điều này sẽ cập nhật RadPanel lên #version# và khởi động lại dịch vụ panel.",
       "panelUpdateStartedPopover": "Bắt đầu cập nhật panel",
       "panelUpdateFailedTitle": "Cập nhật panel thất bại",
-      "panelUpdateFailedDesc": "Bản cập nhật không hoàn tất thành công. Hãy kiểm tra nhật ký máy chủ, hoặc chạy 'x-ui update' từ dòng lệnh.",
+      "panelUpdateFailedDesc": "Bản cập nhật không hoàn tất thành công. Hãy kiểm tra nhật ký máy chủ, hoặc chạy 'radpanel update' từ dòng lệnh.",
       "panelUpdateUnknownTitle": "Không thể xác nhận việc cập nhật đã hoàn tất",
       "panelUpdateUnknownDesc": "Panel không báo cáo kết quả kịp thời. Hãy tải lại trang để kiểm tra phiên bản hiện tại, hoặc kiểm tra nhật ký máy chủ.",
       "geofileUpdateDialog": "Bạn có chắc chắn muốn cập nhật geofile không?",
@@ -782,7 +782,7 @@
       "deleteHwidConfirm": "Xóa thiết bị này? Thiết bị sẽ cần đăng ký lại vào lần lấy gói đăng ký tiếp theo.",
       "hwidDeleted": "Đã xóa thiết bị.",
       "clearHwidsConfirm": "Xóa tất cả thiết bị đã đăng ký? Mỗi thiết bị sẽ cần đăng ký lại vào lần lấy gói đăng ký tiếp theo.",
-      "limitIpFail2banMissing": "Fail2ban chưa được cài đặt nên không thể áp dụng giới hạn IP. Hãy cài đặt Fail2ban từ menu bash x-ui để bật tùy chọn này.",
+      "limitIpFail2banMissing": "Fail2ban chưa được cài đặt nên không thể áp dụng giới hạn IP. Hãy cài đặt Fail2ban từ menu bash radpanel để bật tùy chọn này.",
       "limitIpFail2banWindows": "Fail2ban không khả dụng trên Windows nên không thể áp dụng giới hạn IP.",
       "limitIpDisabled": "Tính năng giới hạn IP đã bị tắt trên máy chủ này.",
       "password": "Mật khẩu",
@@ -1223,7 +1223,7 @@
       "subAnnounce": "Thông báo",
       "subAnnounceDesc": "Văn bản thông báo hiển thị trong ứng dụng VPN. Hỗ trợ token định danh khách hàng: {{EMAIL}}, {{ID}}, {{SHORT_ID}}, {{SUB_ID}}, {{TELEGRAM_ID}}.",
       "subThemeDir": "Thư mục giao diện Đăng ký",
-      "subThemeDirDesc": "Đường dẫn tuyệt đối đến thư mục chứa mẫu tùy chỉnh (index.html/sub.html) cho trang đăng ký (ví dụ: /etc/3x-ui/sub_templates/my-theme/). Để trống để dùng trang mặc định.",
+      "subThemeDirDesc": "Đường dẫn tuyệt đối đến thư mục chứa mẫu tùy chỉnh (index.html/sub.html) cho trang đăng ký (ví dụ: /etc/radpanel/sub_templates/my-theme/). Để trống để dùng trang mặc định.",
       "subThemeDirDocs": "Hướng dẫn mẫu ↗",
       "subEnableRouting": "Bật định tuyến",
       "happLinkEnable": "Liên kết đăng ký được mã hóa",
@@ -2439,10 +2439,10 @@
   },
   "discord": {
     "test": {
-      "title": "Kiểm tra thông báo Discord của 3x-ui",
+      "title": "Kiểm tra thông báo Discord của radpanel",
       "body": "Đây là thông báo thử nghiệm xác nhận rằng thông báo Discord đã được cấu hình đúng."
     },
-    "footer": "Bảng điều khiển 3x-ui",
+    "footer": "Bảng điều khiển radpanel",
     "fields": {
       "panelVersion": "Phiên bản bảng điều khiển",
       "xrayCore": "Lõi Xray",
@@ -2477,13 +2477,13 @@
       "loginFailed": "Đăng nhập thất bại"
     },
     "report": {
-      "title": "📊 Báo cáo trạng thái 3x-ui",
+      "title": "📊 Báo cáo trạng thái radpanel",
       "summary": "Báo cáo định kỳ trạng thái máy chủ và proxy của **{{ .Host }}**",
-      "footer": "Báo cáo định kỳ 3x-ui • Lịch: {{ .RunTime }}"
+      "footer": "Báo cáo định kỳ radpanel • Lịch: {{ .RunTime }}"
     },
     "commands": {
-      "helpTitle": "🤖 Lệnh bot Discord của 3x-ui",
-      "helpDescription": "Các lệnh có sẵn để giám sát và quản lý máy chủ 3x-ui:",
+      "helpTitle": "🤖 Lệnh bot Discord của radpanel",
+      "helpDescription": "Các lệnh có sẵn để giám sát và quản lý máy chủ radpanel:",
       "helpStatus": "Hiển thị tải hệ thống, RAM, CPU, kết nối và người dùng trực tuyến",
       "helpReport": "Tạo báo cáo trạng thái đầy đủ (kèm bản sao lưu CSDL nếu được cấu hình)",
       "helpBackup": "Gửi ngay tệp sao lưu cơ sở dữ liệu",
@@ -2491,10 +2491,10 @@
       "helpInbounds": "Liệt kê tất cả inbound đã cấu hình kèm cổng và thống kê máy khách",
       "helpRestart": "Khởi động lại lõi Xray",
       "helpHelp": "Hiển thị danh sách lệnh này",
-      "statusTitle": "⚡ Trạng thái máy chủ 3x-ui",
+      "statusTitle": "⚡ Trạng thái máy chủ radpanel",
       "statusDescription": "Chỉ số vận hành hiện tại của **{{ .Host }}**",
       "backupTitle": "🗄️ Sao lưu cơ sở dữ liệu",
-      "backupDescription": "Bản sao lưu 3x-ui được tạo lúc `{{ .Time }}`",
+      "backupDescription": "Bản sao lưu radpanel được tạo lúc `{{ .Time }}`",
       "backupUnavailable": "❌ Dịch vụ sao lưu không khả dụng",
       "backupFailed": "❌ Không thể đọc bản sao lưu cơ sở dữ liệu: {{ .Error }}",
       "usageHint": "⚠️ Cách dùng: `!usage <email>` hoặc `/usage <email>`",

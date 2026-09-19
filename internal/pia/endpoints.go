@@ -9,7 +9,7 @@ const (
 	DefaultTokenEndpoint      = "https://www.privateinternetaccess.com/api/client/v2/token"
 	DefaultServerListEndpoint = "https://serverlist.piaservers.net/vpninfo/servers/v6"
 	DefaultAddKeyPort         = uint16(1337)
-	DefaultUserAgent          = "3x-ui-pia/1.0"
+	DefaultUserAgent          = "radpanel-pia/1.0"
 	DefaultMaxServerListBody  = int64(8 << 20)
 	DefaultMaxResponseBody    = int64(64 << 10)
 	DefaultRequestTimeout     = 20 * time.Second

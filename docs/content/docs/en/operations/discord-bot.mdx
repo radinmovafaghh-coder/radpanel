@@ -1,10 +1,10 @@
 ---
 title: Discord Bot
-description: Connect a Discord bot to 3x-ui to receive real-time Embed notifications in a channel for panel events (service crashes, node status, CPU/RAM load, and login attempts).
+description: Connect a Discord bot to radpanel to receive real-time Embed notifications in a channel for panel events (service crashes, node status, CPU/RAM load, and login attempts).
 icon: Bot
 ---
 
-3x-ui provides comprehensive Discord integration: real-time event notifications via the event bus (`EventBus`), periodic scheduled health reports with database backups, and interactive commands via the Discord Gateway.
+radpanel provides comprehensive Discord integration: real-time event notifications via the event bus (`EventBus`), periodic scheduled health reports with database backups, and interactive commands via the Discord Gateway.
 
 <Callout type="info">
   Discord notifications and scheduled reports use outbound HTTPS REST API v10 calls. Interactive bot commands connect via a secure background WebSocket connection to the Discord Gateway.
@@ -18,7 +18,7 @@ icon: Bot
 ### Create a Discord Application & Bot
 
 1. Open the [Discord Developer Portal](https://discord.com/developers/applications) and sign in.
-2. Click **New Application** at the top right, enter a name (e.g., `3x-ui Notifier`), and confirm.
+2. Click **New Application** at the top right, enter a name (e.g., `radpanel Notifier`), and confirm.
 3. In the left sidebar, navigate to the **Bot** tab.
 4. Click **Reset Token** (or **Add Bot** if not already created) and copy the **Bot Token**. Keep this token secure.
 5. Under **Privileged Gateway Intents**, toggle on **Message Content Intent** (required for the bot to read prefix commands like `!status`).
@@ -48,7 +48,7 @@ icon: Bot
 <Step>
 ### Configure the Panel
 
-1. In the 3x-ui panel, open **Panel Settings** $\rightarrow$ **Discord Bot** (or navigate to `/settings#discord`).
+1. In the radpanel panel, open **Panel Settings** $\rightarrow$ **Discord Bot** (or navigate to `/settings#discord`).
 2. Under **General**:
    - Toggle **Enable Discord Notifications** on.
    - Enter your **Discord Bot Token** and **Channel ID**.
@@ -56,7 +56,7 @@ icon: Bot
    - Select your preferred **Discord Bot Language**.
 3. Under **Notifications**:
    - Set the **Notification Time** schedule (e.g., `@daily`, `@weekly`, or custom crontab).
-   - Optionally toggle **Database Backups** to automatically attach `x-ui.db` with periodic reports.
+   - Optionally toggle **Database Backups** to automatically attach `radpanel.db` with periodic reports.
    - Select which events trigger notifications and adjust CPU/RAM thresholds.
 4. Click **Send Test Notification** to verify delivery. A test embed will immediately appear in your Discord channel.
 5. Click **Save** to apply changes.
@@ -72,7 +72,7 @@ When enabled, the bot listens to commands in the configured Discord channel (sup
 | ------- | ----------- |
 | `!status` | Display system load, RAM, CPU usage, TCP/UDP connections, and active clients. |
 | `!report` | Generate and send a complete status report embed immediately. |
-| `!backup` | Download current database backup file (`x-ui.db`) and `config.json`. |
+| `!backup` | Download current database backup file (`radpanel.db`) and `config.json`. |
 | `!usage <email>` | Query bandwidth usage (upload/download), quota limit, and expiration date for a client. |
 | `!inbounds` | List all active inbounds with port, protocol, traffic, and client counts. |
 | `!restart` | Safely restart the Xray core without restarting the web panel. |
@@ -107,7 +107,7 @@ Alerts are sent as Discord Embeds with color coding and relevant diagnostics:
 | `discordAdminIds` | _(none)_ | Comma-separated Discord user IDs allowed to run bot commands. Empty turns commands off. |
 | `discordLang` | `en-US` | Language for Discord bot messages and reports. |
 | `discordRunTime` | `@daily` | Cron expression or interval for periodic status reports. |
-| `discordBotBackup` | `false` | Whether to attach database backup (`x-ui.db`) to reports. |
+| `discordBotBackup` | `false` | Whether to attach database backup (`radpanel.db`) to reports. |
 | `discordEnabledEvents` | `login.attempt,cpu.high` | Comma-separated list of enabled event types. |
 | `discordCpu` | `80` | CPU utilization percentage threshold for alerts (0–100). |
 | `discordMemory` | `80` | RAM utilization percentage threshold for alerts (0–100). |

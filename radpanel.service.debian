@@ -1,16 +1,16 @@
 [Unit]
-Description=x-ui Service
+Description=radpanel Service
 After=network.target
 Wants=network.target
 StartLimitIntervalSec=180
 StartLimitBurst=10
 
 [Service]
-EnvironmentFile=-/etc/default/x-ui
+EnvironmentFile=-/etc/default/radpanel
 Environment="XRAY_VMESS_AEAD_FORCED=false"
 Type=simple
-WorkingDirectory=/usr/local/x-ui/
-ExecStart=/usr/local/x-ui/x-ui
+WorkingDirectory=/usr/local/radpanel/
+ExecStart=/usr/local/radpanel/radpanel
 ExecReload=/bin/kill -USR1 $MAINPID
 Restart=on-failure
 RestartSec=5s

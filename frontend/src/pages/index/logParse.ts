@@ -6,10 +6,10 @@
 //      "Mon DD HH:MM:SS host ident[pid]: " before the real message, and the
 //    message itself is one of several shapes depending on which subsystem
 //    emitted it:
-//      "INFO - mtproto: ..."                  go-logging (x-ui + xray)
+//      "INFO - mtproto: ..."                  go-logging (radpanel + xray)
 //      "2026/06/08 19:22:22 http: ..."        Go std log (net/http, runtime)
 //      "[Mon Jun  8 23:56:52 UTC 2026] ERROR ..."  telego bot
-//      "Stopping x-ui.service - ..."          systemd
+//      "Stopping radpanel.service - ..."          systemd
 //
 // parseLogLine normalises all of these into a stamp + level + service + body so
 // the viewer renders a readable line instead of a bare timestamp.

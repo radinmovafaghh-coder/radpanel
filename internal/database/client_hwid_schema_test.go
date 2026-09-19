@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -33,8 +33,8 @@ func assertClientHwidSchema(t *testing.T, db *gorm.DB) {
 
 func TestClientHwidSchemaSQLite(t *testing.T) {
 	dbDir := t.TempDir()
-	t.Setenv("XUI_DB_FOLDER", dbDir)
-	if err := InitDB(filepath.Join(dbDir, "x-ui.db")); err != nil {
+	t.Setenv("RADPANEL_DB_FOLDER", dbDir)
+	if err := InitDB(filepath.Join(dbDir, "radpanel.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = CloseDB() })

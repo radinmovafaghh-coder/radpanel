@@ -329,7 +329,7 @@ export default function CommandPalette() {
         category: 'inbounds',
         title: ib.remark || ib.tag || `Inbound #${ib.id}`,
         subtitle: `Port ${ib.port || ''}`,
-        icon: <ImportOutlined style={{ color: '#1677ff' }} />,
+        icon: <ImportOutlined style={{ color: '#8b5cf6' }} />,
         tag:
           tags.length > 0 ? (
             <div style={{ display: 'inline-flex', gap: 4, flexWrap: 'wrap' }}>{tags}</div>
@@ -801,7 +801,7 @@ export default function CommandPalette() {
                 {t('close')}
               </span>
             </div>
-            <span>3x-ui Command Palette</span>
+            <span>radpanel Command Palette</span>
           </div>
         </div>
       </div>

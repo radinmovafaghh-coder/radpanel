@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/util/json_util"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/util/json_util"
 )
 
 // rulesOf unmarshals a router config and returns its rules for assertions.

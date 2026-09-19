@@ -1,25 +1,31 @@
 [English](/README.md) | [فارسی](/README.fa_IR.md) | [العربية](/README.ar_EG.md) | [中文](/README.zh_CN.md) | [Español](/README.es_ES.md) | [Русский](/README.ru_RU.md) | [Türkçe](/README.tr_TR.md)
 
+> **RadPanel** is a rebranded fork of [3x-ui](https://github.com/MHSanaei/3x-ui) by **MHSanaei**,
+> licensed under **GPL-3.0**. Original copyright (C) MHSanaei and contributors.
+> RadPanel keeps the same licence (GPL-3.0) and redistributes the upstream source with
+> branding and theme changes. See [NOTICE](NOTICE) for details.
+
+
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./media/3x-ui-dark.png">
-    <img alt="3x-ui" src="./media/3x-ui-light.png">
+    <source media="(prefers-color-scheme: dark)" srcset="./media/radpanel-dark.png">
+    <img alt="radpanel" src="./media/radpanel-light.png">
   </picture>
 </p>
 
 <p align="center">
-  <a href="https://github.com/MHSanaei/3x-ui/releases"><img src="https://img.shields.io/github/v/release/mhsanaei/3x-ui" alt="Release"></a>
-  <a href="https://github.com/MHSanaei/3x-ui/actions"><img src="https://img.shields.io/github/actions/workflow/status/mhsanaei/3x-ui/release.yml.svg" alt="Build"></a>
-  <a href="#"><img src="https://img.shields.io/github/go-mod/go-version/mhsanaei/3x-ui.svg" alt="GO Version"></a>
-  <a href="https://github.com/MHSanaei/3x-ui/releases/latest"><img src="https://img.shields.io/github/downloads/mhsanaei/3x-ui/total.svg" alt="Downloads"></a>
+  <a href="https://github.com/radinmovafaghh-coder/radpanel/releases"><img src="https://img.shields.io/github/v/release/radinmovafaghh-coder/radpanel" alt="Release"></a>
+  <a href="https://github.com/radinmovafaghh-coder/radpanel/actions"><img src="https://img.shields.io/github/actions/workflow/status/radinmovafaghh-coder/radpanel/release.yml.svg" alt="Build"></a>
+  <a href="#"><img src="https://img.shields.io/github/go-mod/go-version/radinmovafaghh-coder/radpanel.svg" alt="GO Version"></a>
+  <a href="https://github.com/radinmovafaghh-coder/radpanel/releases/latest"><img src="https://img.shields.io/github/downloads/radinmovafaghh-coder/radpanel/total.svg" alt="Downloads"></a>
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true" alt="License"></a>
-  <a href="https://pkg.go.dev/github.com/mhsanaei/3x-ui/v3"><img src="https://pkg.go.dev/badge/github.com/mhsanaei/3x-ui/v3.svg" alt="Go Reference"></a>
+  <a href="https://pkg.go.dev/github.com/radinmovafaghh-coder/radpanel/v3"><img src="https://pkg.go.dev/badge/github.com/radinmovafaghh-coder/radpanel/v3.svg" alt="Go Reference"></a>
   <a href="https://docs.sanaei.dev"><img src="https://img.shields.io/badge/docs-docs.sanaei.dev-22d3ee" alt="Documentation"></a>
 </p>
 
-**3X-UI** is an advanced, open-source web control panel for managing [Xray-core](https://github.com/XTLS/Xray-core) servers. It provides a clean, multi-language interface for deploying, configuring, and monitoring a wide range of proxy and VPN protocols — from a single VPS to multi-node deployments.
+**RadPanel** is an advanced, open-source web control panel for managing [Xray-core](https://github.com/XTLS/Xray-core) servers. It provides a clean, multi-language interface for deploying, configuring, and monitoring a wide range of proxy and VPN protocols — from a single VPS to multi-node deployments.
 
-Built as an enhanced fork of the original X-UI project, 3X-UI adds broader protocol support, improved stability, per-client traffic accounting, and many quality-of-life features.
+Built as an enhanced fork of the original X-UI project, RadPanel adds broader protocol support, improved stability, per-client traffic accounting, and many quality-of-life features.
 
 > [!IMPORTANT]
 > This project is intended for personal use only. Please do not use it for illegal purposes or in a production environment.
@@ -39,7 +45,7 @@ Built as an enhanced fork of the original X-UI project, 3X-UI adds broader proto
 - **Built-in subscription server** — raw, JSON, and Clash output, auto-selected from the client's User-Agent, plus [custom page templates](docs/custom-subscription-templates.md).
 - **Telegram and Discord bots** for remote monitoring and management.
 - **RESTful API** with scoped, optionally expiring tokens and an in-panel API reference.
-- **Installable panel (PWA)** — pin 3X-UI to a desktop or phone home screen.
+- **Installable panel (PWA)** — pin RadPanel to a desktop or phone home screen.
 - **Flexible storage** — SQLite (default) or PostgreSQL.
 - **13 UI languages** with dark and light themes.
 - **Fail2ban integration** for enforcing per-client IP limits.
@@ -74,22 +80,22 @@ Built as an enhanced fork of the original X-UI project, 3X-UI adds broader proto
 ## Quick Start
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/master/install.sh)
 ```
 
 To install a specific version, append its tag (e.g. `v3.7.0`):
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh) v3.7.0
+bash <(curl -Ls https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/master/install.sh) v3.7.0
 ```
 
 To install the rolling **dev** build (latest per-commit pre-release from `main`, not a stable release), pass `dev-latest`:
 
 ```bash
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh) dev-latest
+bash <(curl -Ls https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/master/install.sh) dev-latest
 ```
 
-During installation a random username, password, and access path are generated. After installation, run `x-ui` to open the management menu, where you can start/stop the service, view or reset your login credentials, manage SSL certificates, and more.
+During installation a random username, password, and access path are generated. After installation, run `radpanel` to open the management menu, where you can start/stop the service, view or reset your login credentials, manage SSL certificates, and more.
 
 Every release asset is published with a `.sha256` sum next to it. Both `install.sh` and the updater verify the archive against that sum and abort on a mismatch.
 
@@ -100,7 +106,7 @@ For full documentation — installation, configuration, operations, and the comp
 The installer also runs **non-interactively** for cloud-init.
 Set `XUI_NONINTERACTIVE=1` (or pipe with no TTY) and it installs end-to-end with
 zero prompts, generating random credentials and writing them to
-`/etc/x-ui/install-result.env`. See [`deploy/`](deploy/) for:
+`/etc/radpanel/install-result.env`. See [`deploy/`](deploy/) for:
 
 - [Cloud-init user-data](deploy/cloud-init/) — unattended install on any cloud (Hetzner/AWS/DO/Vultr/GCP/Azure/Oracle)
 - [Hetzner Cloud notes](deploy/marketplace/hetzner/) — cloud-init deployment on Hetzner
@@ -113,12 +119,12 @@ zero prompts, generating random credentials and writing them to
 
 ## Database Options
 
-3X-UI supports two backends, chosen during the install:
+RadPanel supports two backends, chosen during the install:
 
-- **SQLite** (default) — a single file at `/etc/x-ui/x-ui.db`. Zero setup, ideal for small and medium deployments.
+- **SQLite** (default) — a single file at `/etc/radpanel/radpanel.db`. Zero setup, ideal for small and medium deployments.
 - **PostgreSQL** — recommended for high client counts or multi-node setups. The installer can install PostgreSQL locally for you, or accept a DSN to an existing server.
 
-At runtime the backend is selected via environment variables (the installer writes these to `/etc/default/x-ui` for you):
+At runtime the backend is selected via environment variables (the installer writes these to `/etc/default/radpanel` for you):
 
 ```
 XUI_DB_TYPE=postgres
@@ -128,9 +134,9 @@ XUI_DB_DSN=postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable
 ### Migrating an existing SQLite install to PostgreSQL
 
 ```bash
-x-ui migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
-# then set XUI_DB_TYPE and XUI_DB_DSN in /etc/default/x-ui and restart:
-systemctl restart x-ui
+radpanel migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
+# then set XUI_DB_TYPE and XUI_DB_DSN in /etc/default/radpanel and restart:
+systemctl restart radpanel
 ```
 
 The source SQLite file is left untouched; remove it manually once you have verified the new backend.
@@ -146,7 +152,7 @@ docker compose --profile postgres up -d
 The image bundles Fail2ban (enabled by default) to enforce per-client **IP limits**. Fail2ban bans offenders with `iptables`, which requires the `NET_ADMIN` capability. `docker-compose.yml` already grants it via `cap_add`; if you start the container with `docker run` instead, add the capabilities yourself, otherwise bans are logged but never applied:
 
 ```bash
-docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/mhsanaei/3x-ui
+docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/radinmovafaghh-coder/radpanel
 ```
 
 ## Environment Variables
@@ -155,7 +161,7 @@ docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/mhsanaei/3x-ui
 | --- | --- | --- |
 | `XUI_DB_TYPE` | Database backend: `sqlite` or `postgres` | `sqlite` |
 | `XUI_DB_DSN` | PostgreSQL connection string (when `XUI_DB_TYPE=postgres`) | — |
-| `XUI_DB_FOLDER` | Directory for the SQLite database file | `/etc/x-ui` |
+| `RADPANEL_DB_FOLDER` | Directory for the SQLite database file | `/etc/radpanel` |
 | `XUI_DB_MAX_OPEN_CONNS` | Maximum open connections (PostgreSQL pool) | — |
 | `XUI_DB_MAX_IDLE_CONNS` | Maximum idle connections (PostgreSQL pool) | — |
 | `XUI_INIT_WEB_BASE_PATH` | The initial URI path for the web panel | `/` |
@@ -170,7 +176,7 @@ docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/mhsanaei/3x-ui
 | `XUI_TUNNEL_HEALTH_FAILURES` | Consecutive failures before a restart is triggered | `3` |
 | `XUI_TUNNEL_HEALTH_COOLDOWN` | Minimum delay between consecutive restarts | `5m` |
 | `NODE_TOKEN_ENCRYPTION` | Encryption at rest for node API tokens: `off`, `migration`, or `required` (note: no `XUI_` prefix) | `off` |
-| `XUI_NODE_TOKEN_KEY_FILE` | JSON keyring (mode `0600`) holding the active key id and its base64 32-byte keys | `/etc/x-ui/node_token_key.json` |
+| `XUI_NODE_TOKEN_KEY_FILE` | JSON keyring (mode `0600`) holding the active key id and its base64 32-byte keys | `/etc/radpanel/node_token_key.json` |
 | `XUI_NODE_TOKEN_KEY` | A single base64 32-byte key, used only when the key file cannot be loaded | — |
 
 The complete list is on the [environment variables reference](https://docs.sanaei.dev/docs/reference/env-vars).
@@ -196,10 +202,10 @@ Contributions are welcome. Please read the [Contributing Guide](/CONTRIBUTING.md
 
 ## Community Tools
 
-Tools and integrations built by the community around 3x-ui.
+Tools and integrations built by the community around radpanel.
 
-- [terraform-provider-3x-ui](https://github.com/batonogov/terraform-provider-threexui) (License: **MIT**): _Manage inbounds, clients, panel settings, and Xray configuration as code with Terraform / OpenTofu._
-- [3X-UI Manager](https://github.com/yukh975/3X-UI-Manager) (License: **MIT**): _Native Android client for 3x-ui — dashboard, inbounds, clients with QR sharing, nodes and multi-panel management. Available on F-Droid._
+- [terraform-provider-radpanel](https://github.com/batonogov/terraform-provider-threexui) (License: **MIT**): _Manage inbounds, clients, panel settings, and Xray configuration as code with Terraform / OpenTofu._
+- [RadPanel Manager](https://github.com/yukh975/RadPanel-Manager) (License: **MIT**): _Native Android client for radpanel — dashboard, inbounds, clients with QR sharing, nodes and multi-panel management. Available on F-Droid._
 
 ## Support project
 
@@ -216,16 +222,16 @@ Tools and integrations built by the community around 3x-ui.
 
 ## Star History
 
-<a href="https://www.star-history.com/?repos=mhsanaei%2F3x-ui&type=date&legend=top-left">
+<a href="https://www.star-history.com/?repos=mhsanaei%2Fradpanel&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=mhsanaei/3x-ui&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=mhsanaei/3x-ui&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=mhsanaei/3x-ui&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=radinmovafaghh-coder/radpanel&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=radinmovafaghh-coder/radpanel&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=radinmovafaghh-coder/radpanel&type=date&legend=top-left" />
  </picture>
 </a>
 
 <p align="center">
- <a href="https://www.star-history.com/mhsanaei/3x-ui">
-  <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=MHSanaei/3x-ui&type=rank&theme=dark" /><source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=MHSanaei/3x-ui&type=rank" /><img alt="Star History Rank" src="https://api.star-history.com/badge?repo=MHSanaei/3x-ui&type=rank" /></picture> <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=MHSanaei/3x-ui&type=trending&theme=dark" /><source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=MHSanaei/3x-ui&type=trending" /><img alt="GitHub Trending Repository of the Day" src="https://api.star-history.com/badge?repo=MHSanaei/3x-ui&type=trending" /></picture>
+ <a href="https://www.star-history.com/radinmovafaghh-coder/radpanel">
+  <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=rank&theme=dark" /><source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=rank" /><img alt="Star History Rank" src="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=rank" /></picture> <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=trending&theme=dark" /><source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=trending" /><img alt="GitHub Trending Repository of the Day" src="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=trending" /></picture>
  </a>
 </p>

@@ -1,10 +1,10 @@
 ---
 title: Discord 机器人
-description: 将 Discord 机器人接入 3x-ui，在指定频道接收实时的面板事件 Embed 告警、周期性健康报告（含数据库备份）以及执行交互式控制命令。
+description: 将 Discord 机器人接入 radpanel，在指定频道接收实时的面板事件 Embed 告警、周期性健康报告（含数据库备份）以及执行交互式控制命令。
 icon: Bot
 ---
 
-3x-ui 提供了完整的 Discord 集成支持：通过事件总线（`EventBus`）实时推送事件告警、通过定时任务发送包含数据库备份的服务器状态报告，以及通过 Discord Gateway 执行交互式管理命令。
+radpanel 提供了完整的 Discord 集成支持：通过事件总线（`EventBus`）实时推送事件告警、通过定时任务发送包含数据库备份的服务器状态报告，以及通过 Discord Gateway 执行交互式管理命令。
 
 <Callout type="info">
   Discord 实时通知和周期性报告使用出站 HTTPS REST API v10 请求。交互式机器人命令则通过与 Discord Gateway 建立的后台安全 WebSocket 连接实现。
@@ -18,7 +18,7 @@ icon: Bot
 ### 创建 Discord 应用程序与机器人
 
 1. 打开 [Discord 开发者门户](https://discord.com/developers/applications) 并登录。
-2. 点击右上角的 **New Application**，输入名称（例如 `3x-ui Notifier`）并确认创建。
+2. 点击右上角的 **New Application**，输入名称（例如 `radpanel Notifier`）并确认创建。
 3. 在左侧菜单中，进入 **Bot** 标签页。
 4. 点击 **Reset Token**（如果尚未创建机器人则点击 **Add Bot**），并复制生成的 **Bot Token**。请妥善保管该令牌。
 5. 在 **Privileged Gateway Intents** 区域，勾选启用 **Message Content Intent**（机器人读取 `!status` 等前缀命令所必需）。
@@ -48,7 +48,7 @@ icon: Bot
 <Step>
 ### 配置面板
 
-1. 在 3x-ui 面板中，打开**面板设置** → **Discord 机器人**（或直接访问 `/settings#discord`）。
+1. 在 radpanel 面板中，打开**面板设置** → **Discord 机器人**（或直接访问 `/settings#discord`）。
 2. 在**通用**区域：
    - 开启**启用 Discord 通知**。
    - 填入你的 **Discord Bot Token** 和 **频道 ID**。
@@ -56,7 +56,7 @@ icon: Bot
    - 选择偏好的 **Discord 机器人语言**。
 3. 在**通知**区域：
    - 设置**通知时间**（如 `@daily`、`@weekly` 或自定义 Cron 表达式）。
-   - 如需自动备份，可开启**数据库备份**，定时报告中将自动附带 `x-ui.db` 备份文件。
+   - 如需自动备份，可开启**数据库备份**，定时报告中将自动附带 `radpanel.db` 备份文件。
    - 勾选需要触发告警的事件类型，并配置 CPU / 内存阈值。
 4. 点击**发送测试通知**以验证连通性。你的 Discord 频道应立刻收到一条测试 Embed 消息。
 5. 点击**保存**应用配置。
@@ -72,7 +72,7 @@ icon: Bot
 | ---- | ---- |
 | `!status` | 查看系统负载、内存占用、CPU 使用率、核心状态、TCP/UDP 连接数及当前在线用户。 |
 | `!report` | 立即生成并发送完整的服务器与代理状态报告 Embed。 |
-| `!backup` | 立即导出并发送当前数据库备份文件（`x-ui.db`）与 `config.json`。 |
+| `!backup` | 立即导出并发送当前数据库备份文件（`radpanel.db`）与 `config.json`。 |
 | `!usage <email>` | 查询指定客户端的流量用量（上传/下载）、配额上限及到期时间。 |
 | `!inbounds` | 列出所有活动的入站连接、监听端口、协议、已用流量及客户端数量。 |
 | `!restart` | 安全重启 Xray 核心，无需重启整个 Web 面板。 |
@@ -107,7 +107,7 @@ icon: Bot
 | `discordAdminIds` | _(无)_ | 允许执行命令的 Discord 用户数字 ID（逗号分隔）。留空则禁用命令交互。 |
 | `discordLang` | `en-US` | Discord 机器人消息与报告使用的语言。 |
 | `discordRunTime` | `@daily` | 发送周期性状态报告的 Cron 表达式或预设计划。 |
-| `discordBotBackup` | `false` | 是否在周期性报告中自动附带数据库备份文件（`x-ui.db`）。 |
+| `discordBotBackup` | `false` | 是否在周期性报告中自动附带数据库备份文件（`radpanel.db`）。 |
 | `discordEnabledEvents` | `login.attempt,cpu.high` | 触发通知的事件类型列表（逗号分隔）。 |
 | `discordCpu` | `80` | 触发 CPU 告警的利用率百分比阈值（0–100）。 |
 | `discordMemory` | `80` | 触发内存告警的利用率百分比阈值（0–100）。 |

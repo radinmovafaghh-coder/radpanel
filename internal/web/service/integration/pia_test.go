@@ -11,9 +11,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/crypto/nodetoken"
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	piaprotocol "github.com/mhsanaei/3x-ui/v3/internal/pia"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/crypto/nodetoken"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	piaprotocol "github.com/radinmovafaghh-coder/radpanel/v3/internal/pia"
 )
 
 type fakePiaAuth struct{ token string }
@@ -48,7 +48,7 @@ func (f *fakePiaRegistrar) RegisterKey(_ context.Context, server piaprotocol.Wir
 
 func setupPiaService(t *testing.T) *PiaService {
 	t.Helper()
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(t.TempDir(), "radpanel.db")); err != nil {
 		t.Fatal(err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })

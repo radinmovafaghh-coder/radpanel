@@ -11,13 +11,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/service"
 )
 
 func setupTestDB(t *testing.T) service.SettingService {
 	t.Helper()
-	dbPath := filepath.Join(t.TempDir(), "x-ui.db")
+	dbPath := filepath.Join(t.TempDir(), "radpanel.db")
 	if err := database.InitDB(dbPath); err != nil {
 		t.Fatalf("init db: %v", err)
 	}
@@ -332,7 +332,7 @@ func TestSendMessageWithFiles_Success(t *testing.T) {
 		Embeds:  []Embed{{Title: "Report Embed"}},
 	}
 	files := []FileAttachment{
-		{Filename: "x-ui.db", Data: []byte("sqlite-db-binary")},
+		{Filename: "radpanel.db", Data: []byte("sqlite-db-binary")},
 		{Filename: "config.json", Data: []byte(`{"log":{}}`)},
 	}
 
@@ -346,8 +346,8 @@ func TestSendMessageWithFiles_Success(t *testing.T) {
 	if receivedPayload.Content != "Report message" || len(receivedPayload.Embeds) != 1 {
 		t.Errorf("payload mismatch: %+v", receivedPayload)
 	}
-	if string(receivedFiles["x-ui.db"]) != "sqlite-db-binary" {
-		t.Errorf("x-ui.db mismatch: %s", string(receivedFiles["x-ui.db"]))
+	if string(receivedFiles["radpanel.db"]) != "sqlite-db-binary" {
+		t.Errorf("radpanel.db mismatch: %s", string(receivedFiles["radpanel.db"]))
 	}
 	if string(receivedFiles["config.json"]) != `{"log":{}}` {
 		t.Errorf("config.json mismatch: %s", string(receivedFiles["config.json"]))

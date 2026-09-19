@@ -1,6 +1,6 @@
 ---
 title: گواهی‌های SSL
-description: دریافت و تمدید گواهی‌های TLS برای پنل و ورودی‌های 3x-ui — با منوی ACME در x-ui (دامنه یا IP خام)، گواهی wildcard از طریق Cloudflare DNS-01، یا Certbot دستی.
+description: دریافت و تمدید گواهی‌های TLS برای پنل و ورودی‌های radpanel — با منوی ACME در radpanel (دامنه یا IP خام)، گواهی wildcard از طریق Cloudflare DNS-01، یا Certbot دستی.
 icon: ShieldCheck
 ---
 
@@ -8,7 +8,7 @@ icon: ShieldCheck
 API شما رمزگذاری شود) و TLS را روی **ورودی‌ها** خاتمه دهید (VLESS-TLS، Trojan،
 Shadowsocks-TLS و موارد مشابه). سه راه برای به‌دست‌آوردن گواهی وجود دارد:
 
-- **منوی `x-ui`** — کلاینت داخلی [ACME](https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment).
+- **منوی `radpanel`** — کلاینت داخلی [ACME](https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment).
   آسان‌ترین گزینه برای یک دامنه‌ی واحد یا یک IP خام.
 - **Cloudflare DNS-01** — این هم از همان منو؛ برای گواهی‌های **wildcard** یا
   زمانی که پورت 80 مسدود است / سرور پشت پراکسی Cloudflare قرار دارد لازم است.
@@ -21,9 +21,9 @@ Shadowsocks-TLS و موارد مشابه). سه راه برای به‌دست‌
   TLS یک سایت واقعی را قرض می‌گیرند. این صفحه برای پنل و برای ورودی‌های کلاسیک TLS است.
 </Callout>
 
-## منوی SSL در `x-ui` (Let's Encrypt)
+## منوی SSL در `radpanel` (Let's Encrypt)
 
-`x-ui` را اجرا کنید و **`20` — SSL Certificate Management** را انتخاب کنید. این گزینه
+`radpanel` را اجرا کنید و **`20` — SSL Certificate Management** را انتخاب کنید. این گزینه
 [acme.sh](https://github.com/acmesh-official/acme.sh) را به کار می‌گیرد و موارد زیر را ارائه می‌دهد:
 
 | گزینه                          | کاری که انجام می‌دهد                                                 |
@@ -57,7 +57,7 @@ Shadowsocks-TLS و موارد مشابه). سه راه برای به‌دست‌
 <Step>
 ### صادرکننده را اجرا کنید
 
-`x-ui` ← `20` ← **Get SSL (Domain)**، سپس دامنه را وارد کنید. acme.sh گواهی را
+`radpanel` ← `20` ← **Get SSL (Domain)**، سپس دامنه را وارد کنید. acme.sh گواهی را
 درخواست می‌کند و آن را زیر `/root/cert/<domain>/` به‌صورت `fullchain.pem`
 (زنجیره‌ی گواهی) و `privkey.pem` (کلید خصوصی) ذخیره می‌کند.
 </Step>
@@ -104,7 +104,7 @@ DNS دامنه‌ی شما باید توسط Cloudflare مدیریت شود و �
 <Step>
 ### صادرکننده‌ی Cloudflare را اجرا کنید
 
-`x-ui` ← **`21` — Cloudflare SSL Certificate**. هنگام پرسش، **`t`** را برای یک
+`radpanel` ← **`21` — Cloudflare SSL Certificate**. هنگام پرسش، **`t`** را برای یک
 توکن API (پیش‌فرض) یا **`g`** را برای Global API Key انتخاب کنید، سپس دامنه‌ی خود را
 وارد کنید (و برای Global API Key، ایمیل حساب و کلید خود را). acme.sh رکورد TXT را
 می‌سازد، اعتبارسنجی می‌کند و آن را پاک‌سازی می‌کند.

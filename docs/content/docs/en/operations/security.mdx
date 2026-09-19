@@ -1,6 +1,6 @@
 ---
 title: Security
-description: Harden 3x-ui — panel auth and 2FA, Fail2ban IP limits, firewall rules, BBR, and staying current.
+description: Harden radpanel — panel auth and 2FA, Fail2ban IP limits, firewall rules, BBR, and staying current.
 icon: ShieldCheck
 ---
 
@@ -21,15 +21,15 @@ See [First login](/docs/guide/first-login) for the full checklist.
 
 Set an **IP limit** per client (see [Clients](/docs/config/clients)) to cap the
 number of simultaneous source IPs. Enforcement is handled by **Fail2ban**, which
-3x-ui installs and configures for you (enabled by default on script installs, and
+radpanel installs and configures for you (enabled by default on script installs, and
 on Docker via `XUI_ENABLE_FAIL2BAN=true`).
 
-Manage it from the `x-ui` menu (**22 — IP Limit Management**): install/configure,
+Manage it from the `radpanel` menu (**22 — IP Limit Management**): install/configure,
 change the ban duration (default **30 minutes**), ban/unban an IP, view ban logs,
 and check status. Under the hood:
 
-- The jail is named **`3x-ipl`**; ban logs live at `/var/log/x-ui/3xipl.log` and
-  `/var/log/x-ui/3xipl-banned.log` (also via `x-ui banlog`).
+- The jail is named **`3x-ipl`**; ban logs live at `/var/log/radpanel/3xipl.log` and
+  `/var/log/radpanel/3xipl-banned.log` (also via `radpanel banlog`).
 - Bans cover all TCP/UDP **except** your SSH and panel ports, so a ban can't lock
   you out of the server or panel.
 
@@ -43,7 +43,7 @@ and check status. Under the hood:
 ## Firewall
 
 Open only the ports you actually use: SSH, the panel port, the subscription
-port, and your inbound ports. The `x-ui` menu (**23 — Firewall Management**) wraps
+port, and your inbound ports. The `radpanel` menu (**23 — Firewall Management**) wraps
 `ufw`, or generate rules here:
 
 <FirewallRulesGenerator />
@@ -55,12 +55,12 @@ port, and your inbound ports. The `x-ui` menu (**23 — Firewall Management**) w
 
 ## Network tuning (BBR)
 
-The `x-ui` menu (**26 — Enable BBR**) toggles Google's BBR congestion control
+The `radpanel` menu (**26 — Enable BBR**) toggles Google's BBR congestion control
 (`net.ipv4.tcp_congestion_control = bbr`, `net.core.default_qdisc = fq`), which
 often improves throughput on congested links.
 
 ## Keep current
 
-Update 3x-ui and Xray-core regularly — security fixes land in new releases. Watch
-the [releases page](https://github.com/MHSanaei/3x-ui/releases) and see
+Update radpanel and Xray-core regularly — security fixes land in new releases. Watch
+the [releases page](https://github.com/radinmovafaghh-coder/radpanel/releases) and see
 [Update & uninstall](/docs/guide/update-uninstall).

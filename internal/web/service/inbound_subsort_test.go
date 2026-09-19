@@ -4,12 +4,12 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
 )
 
 func TestSetInboundSubSortIndexLeavesSettingsUntouched(t *testing.T) {
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(t.TempDir(), "radpanel.db")); err != nil {
 		t.Fatalf("init db: %v", err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })
@@ -57,7 +57,7 @@ func TestSetInboundSubSortIndexUsesNarrowNodeUpdate(t *testing.T) {
 }
 
 func TestSetInboundSubSortIndexPreservesNegative(t *testing.T) {
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(t.TempDir(), "radpanel.db")); err != nil {
 		t.Fatalf("init db: %v", err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })

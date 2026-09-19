@@ -11,9 +11,9 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/logger"
 )
 
 // External subscription fetching: a remote URL whose body is a share-link
@@ -150,7 +150,7 @@ func doFetchSubscriptionLinks(rawURL string) ([]string, error) {
 	}
 	// Some providers gate the link body on a known client User-Agent.
 	req.Header.Set("User-Agent", "v2rayNG/1.8.5")
-	// A 3x-ui donor with an HWID limit answers 404 when the header is empty (#6559).
+	// A radpanel donor with an HWID limit answers 404 when the header is empty (#6559).
 	if hwid := serverHwid(); hwid != "" {
 		req.Header.Set("X-HWID", hwid)
 	}
@@ -200,7 +200,7 @@ func serverHwid() string {
 			return strings.TrimSpace(row.Value)
 		}
 	}
-	hwid := "3x-ui-server-" + uuid.NewString()
+	hwid := "radpanel-server-" + uuid.NewString()
 	row = model.Setting{Key: serverHwidKey, Value: hwid}
 	if err := db.Where(model.Setting{Key: serverHwidKey}).FirstOrCreate(&row).Error; err != nil {
 		logger.Warningf("sub: persisting server hwid failed: %v", err)

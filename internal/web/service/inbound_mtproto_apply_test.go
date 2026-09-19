@@ -7,14 +7,14 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/mtproto"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/runtime"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/mtproto"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/runtime"
 )
 
 func mtgConfigPath(t *testing.T, inboundId int) string {
 	t.Helper()
-	return filepath.Join(os.Getenv("XUI_BIN_FOLDER"), "mtproto", fmt.Sprintf("mtg-%d.toml", inboundId))
+	return filepath.Join(os.Getenv("RADPANEL_BIN_FOLDER"), "mtproto", fmt.Sprintf("mtg-%d.toml", inboundId))
 }
 
 func readMtgConfig(t *testing.T, inboundId int) string {

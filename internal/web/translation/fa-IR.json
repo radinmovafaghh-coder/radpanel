@@ -152,7 +152,7 @@
       "xrayUpdates": "به‌روزرسانی‌های Xray",
       "xraySwitchClickDesk": "لطفا بادقت انتخاب کنید. درصورت انتخاب نسخه قدیمی‌تر، امکان ناهماهنگی با پیکربندی فعلی وجود دارد",
       "updatePanel": "به‌روزرسانی پنل",
-      "panelUpdateDesc": "این عملیات 3X-UI را به آخرین نسخه به‌روزرسانی می‌کند و سرویس پنل را مجدداً راه‌اندازی می‌کند.",
+      "panelUpdateDesc": "این عملیات RadPanel را به آخرین نسخه به‌روزرسانی می‌کند و سرویس پنل را مجدداً راه‌اندازی می‌کند.",
       "currentPanelVersion": "نسخه فعلی پنل",
       "latestPanelVersion": "آخرین نسخه پنل",
       "panelUpToDate": "پنل به‌روز است",
@@ -216,10 +216,10 @@
       "xraySwitchVersionDialogDesc": "این کار نسخه Xray را به #version# تغییر می‌دهد.",
       "xraySwitchVersionPopover": "Xray با موفقیت به‌روز شد",
       "panelUpdateDialog": "آیا مطمئن هستید که می‌خواهید پنل را به‌روزرسانی کنید؟",
-      "panelUpdateDialogDesc": "این 3X-UI را به نسخه #version# به‌روزرسانی کرده و سرویس پنل را مجدداً راه‌اندازی می‌کند.",
+      "panelUpdateDialogDesc": "این RadPanel را به نسخه #version# به‌روزرسانی کرده و سرویس پنل را مجدداً راه‌اندازی می‌کند.",
       "panelUpdateStartedPopover": "به‌روزرسانی پنل آغاز شد",
       "panelUpdateFailedTitle": "به‌روزرسانی پنل ناموفق بود",
-      "panelUpdateFailedDesc": "به‌روزرسانی با موفقیت به پایان نرسید. گزارش‌های سرور را بررسی کنید یا دستور «x-ui update» را از خط فرمان اجرا کنید.",
+      "panelUpdateFailedDesc": "به‌روزرسانی با موفقیت به پایان نرسید. گزارش‌های سرور را بررسی کنید یا دستور «radpanel update» را از خط فرمان اجرا کنید.",
       "panelUpdateUnknownTitle": "تأیید نشد که به‌روزرسانی به پایان رسیده باشد",
       "panelUpdateUnknownDesc": "پنل به‌موقع نتیجه‌ای گزارش نکرد. صفحه را بارگذاری مجدد کنید تا نسخه فعلی را بررسی کنید یا گزارش‌های سرور را بررسی کنید.",
       "geofileUpdateDialog": "آیا واقعاً می‌خواهید فایل جغرافیایی را به‌روز کنید؟",
@@ -782,7 +782,7 @@
       "deleteHwidConfirm": "این دستگاه حذف شود؟ در دریافت بعدی اشتراک باید دوباره ثبت‌نام شود.",
       "hwidDeleted": "دستگاه حذف شد.",
       "clearHwidsConfirm": "همه دستگاه‌های ثبت‌شده حذف شوند؟ هر دستگاه در دریافت بعدی اشتراک باید دوباره ثبت‌نام شود.",
-      "limitIpFail2banMissing": "Fail2ban نصب نشده است، بنابراین محدودیت IP اعمال نمی‌شود. برای فعال‌سازی این گزینه، Fail2ban را از منوی بش x-ui نصب کنید.",
+      "limitIpFail2banMissing": "Fail2ban نصب نشده است، بنابراین محدودیت IP اعمال نمی‌شود. برای فعال‌سازی این گزینه، Fail2ban را از منوی بش radpanel نصب کنید.",
       "limitIpFail2banWindows": "Fail2ban روی ویندوز در دسترس نیست، بنابراین محدودیت IP قابل اعمال نیست.",
       "limitIpDisabled": "قابلیت محدودیت IP روی این سرور غیرفعال است.",
       "password": "رمز عبور",
@@ -1227,7 +1227,7 @@
       "subAnnounce": "اعلان",
       "subAnnounceDesc": "متن اعلانی که در کلاینت VPN نمایش داده می‌شود. از توکن‌های هویت کلاینت پشتیبانی می‌کند: {{EMAIL}}, {{ID}}, {{SHORT_ID}}, {{SUB_ID}}, {{TELEGRAM_ID}}.",
       "subThemeDir": "پوشه قالب صفحه اشتراک",
-      "subThemeDirDesc": "مسیر مطلق پوشه‌ای که شامل یک قالب سفارشی (index.html/sub.html) برای صفحه اشتراک است (مثلاً /etc/3x-ui/sub_templates/my-theme/). برای استفاده از صفحه پیش‌فرض خالی بگذارید.",
+      "subThemeDirDesc": "مسیر مطلق پوشه‌ای که شامل یک قالب سفارشی (index.html/sub.html) برای صفحه اشتراک است (مثلاً /etc/radpanel/sub_templates/my-theme/). برای استفاده از صفحه پیش‌فرض خالی بگذارید.",
       "subThemeDirDocs": "راهنمای قالب ↗",
       "subEnableRouting": "فعال‌سازی مسیریابی",
       "happLinkEnable": "لینک‌های رمزگذاری‌شدهٔ اشتراک",
@@ -2439,10 +2439,10 @@
   },
   "discord": {
     "test": {
-      "title": "آزمایش اعلان دیسکورد 3x-ui",
+      "title": "آزمایش اعلان دیسکورد radpanel",
       "body": "این یک اعلان آزمایشی است که تأیید می‌کند اعلان‌های دیسکورد به‌درستی پیکربندی شده‌اند."
     },
-    "footer": "پنل 3x-ui",
+    "footer": "پنل radpanel",
     "fields": {
       "panelVersion": "نسخه پنل",
       "xrayCore": "هسته Xray",
@@ -2477,13 +2477,13 @@
       "loginFailed": "ورود ناموفق"
     },
     "report": {
-      "title": "📊 گزارش وضعیت 3x-ui",
+      "title": "📊 گزارش وضعیت radpanel",
       "summary": "گزارش دوره‌ای وضعیت سرور و پراکسی برای **{{ .Host }}**",
-      "footer": "گزارش زمان‌بندی‌شده 3x-ui • زمان‌بندی: {{ .RunTime }}"
+      "footer": "گزارش زمان‌بندی‌شده radpanel • زمان‌بندی: {{ .RunTime }}"
     },
     "commands": {
-      "helpTitle": "🤖 دستورات ربات دیسکورد 3x-ui",
-      "helpDescription": "دستورات موجود برای پایش و مدیریت سرور 3x-ui:",
+      "helpTitle": "🤖 دستورات ربات دیسکورد radpanel",
+      "helpDescription": "دستورات موجود برای پایش و مدیریت سرور radpanel:",
       "helpStatus": "نمایش بار سیستم، رم، پردازنده، اتصالات و کاربران آنلاین",
       "helpReport": "ایجاد گزارش کامل وضعیت (همراه پشتیبان پایگاه داده در صورت فعال بودن)",
       "helpBackup": "ارسال فوری فایل پشتیبان پایگاه داده",
@@ -2491,10 +2491,10 @@
       "helpInbounds": "فهرست همه ورودی‌های پیکربندی‌شده همراه پورت‌ها و آمار کاربران",
       "helpRestart": "راه‌اندازی مجدد هسته Xray",
       "helpHelp": "نمایش همین فهرست دستورات",
-      "statusTitle": "⚡ وضعیت سرور 3x-ui",
+      "statusTitle": "⚡ وضعیت سرور radpanel",
       "statusDescription": "شاخص‌های عملکرد فعلی **{{ .Host }}**",
       "backupTitle": "🗄️ پشتیبان پایگاه داده",
-      "backupDescription": "آرشیو پشتیبان 3x-ui ایجادشده در `{{ .Time }}`",
+      "backupDescription": "آرشیو پشتیبان radpanel ایجادشده در `{{ .Time }}`",
       "backupUnavailable": "❌ سرویس پشتیبان‌گیری در دسترس نیست",
       "backupFailed": "❌ خواندن پشتیبان پایگاه داده ناموفق بود: {{ .Error }}",
       "usageHint": "⚠️ نحوه استفاده: `!usage <email>` یا `/usage <email>`",

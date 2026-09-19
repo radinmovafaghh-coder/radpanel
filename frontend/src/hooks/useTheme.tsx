@@ -93,9 +93,18 @@ const LIGHT_CONTRAST_TOKENS = {
   colorSuccessText: '#237804',
 };
 const LIGHT_BUTTON_TOKENS = {
-  colorPrimary: '#0958d9',
-  colorPrimaryHover: '#2468e5',
-  colorPrimaryActive: '#073ea8',
+  colorPrimary: '#7c3aed',
+  colorPrimaryHover: '#9061f9',
+  colorPrimaryActive: '#6d28d9',
+};
+
+// RadPanel brand accent (violet) applied in dark/ultra modes too, so the
+// primary action colour is consistent across all three themes.
+const DARK_BUTTON_TOKENS = {
+  colorPrimary: '#8b5cf6',
+  colorPrimaryHover: '#a78bfa',
+  colorPrimaryActive: '#7c3aed',
+  colorLink: '#a78bfa',
 };
 
 // hashed:false drops the `:where(.css-<hash>)` wrapper antd puts around every
@@ -120,7 +129,7 @@ export function buildAntdThemeConfig(isDark: boolean, isUltra: boolean): ThemeCo
       token: LIGHT_CONTRAST_TOKENS,
       components: {
         Statistic: STATISTIC_TOKENS,
-        Button: LIGHT_BUTTON_TOKENS,
+        Button: { ...LIGHT_BUTTON_TOKENS, colorLink: '#7c3aed' },
       },
     };
   }
@@ -132,6 +141,7 @@ export function buildAntdThemeConfig(isDark: boolean, isUltra: boolean): ThemeCo
       Layout: isUltra ? ULTRA_DARK_LAYOUT_TOKENS : DARK_LAYOUT_TOKENS,
       Menu: isUltra ? ULTRA_DARK_MENU_TOKENS : DARK_MENU_TOKENS,
       Card: isUltra ? ULTRA_DARK_CARD_TOKENS : DARK_CARD_TOKENS,
+      Button: DARK_BUTTON_TOKENS,
       Statistic: STATISTIC_TOKENS,
     },
   };

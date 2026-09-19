@@ -1,6 +1,6 @@
 # Cloud deployment (unattended install)
 
-Tooling to ship the 3x-ui panel via unattended install, with **per-instance
+Tooling to ship the radpanel panel via unattended install, with **per-instance
 credentials generated on first boot** (never `admin/admin`, never a shared
 session secret). Works on amd64 and arm64.
 
@@ -28,4 +28,4 @@ secure random / default):
 `XUI_SERVER_IP` (fallback IP for the displayed access URL when auto-detection fails),
 `XUI_DB_TYPE` (`sqlite`|`postgres`), `XUI_DB_DSN`.
 
-The resulting credentials are written to `/etc/x-ui/install-result.env` (mode 600).
+The resulting credentials are written to `/etc/radpanel/install-result.env` (mode 600).

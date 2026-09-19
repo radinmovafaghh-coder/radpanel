@@ -14,7 +14,7 @@ func TestEnsureFrontsSidecarWithRelayAndRemoveReleasesPort(t *testing.T) {
 		t.Skip("uses a shell script as the sidecar binary")
 	}
 	bin := t.TempDir()
-	t.Setenv("XUI_BIN_FOLDER", bin)
+	t.Setenv("RADPANEL_BIN_FOLDER", bin)
 	if err := os.WriteFile(filepath.Join(bin, GetBinaryName()), []byte("#!/bin/sh\nexec sleep 300\n"), 0o755); err != nil {
 		t.Fatal(err)
 	}
@@ -64,7 +64,7 @@ func TestEnsureUpdatesTagWithoutRestart(t *testing.T) {
 		t.Skip("uses a shell script as the sidecar binary")
 	}
 	bin := t.TempDir()
-	t.Setenv("XUI_BIN_FOLDER", bin)
+	t.Setenv("RADPANEL_BIN_FOLDER", bin)
 	if err := os.WriteFile(filepath.Join(bin, GetBinaryName()), []byte("#!/bin/sh\nexec sleep 300\n"), 0o755); err != nil {
 		t.Fatal(err)
 	}

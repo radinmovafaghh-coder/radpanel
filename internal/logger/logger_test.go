@@ -35,7 +35,7 @@ func TestGetLogs_ReturnsAtMostC(t *testing.T) {
 // InitLogger replaces the package logger while other goroutines are already
 // logging — CI caught that as a data race between InitLogger and Warningf.
 func TestInitLoggerConcurrentWithLogging(t *testing.T) {
-	t.Setenv("XUI_LOG_FOLDER", t.TempDir())
+	t.Setenv("RADPANEL_LOG_FOLDER", t.TempDir())
 
 	stop := make(chan struct{})
 	var logging sync.WaitGroup

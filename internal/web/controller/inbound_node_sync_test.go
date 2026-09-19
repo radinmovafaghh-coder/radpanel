@@ -11,10 +11,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/crypto"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/runtime"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/util/crypto"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/runtime"
 )
 
 // A sub-node stores whatever the master pushes. A master row whose certificate
@@ -22,8 +22,8 @@ import (
 func TestNodeSyncPushSkipsOperatorTLSGuard(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 	dbDir := t.TempDir()
-	t.Setenv("XUI_DB_FOLDER", dbDir)
-	if err := database.InitDB(filepath.Join(dbDir, "x-ui.db")); err != nil {
+	t.Setenv("RADPANEL_DB_FOLDER", dbDir)
+	if err := database.InitDB(filepath.Join(dbDir, "radpanel.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })

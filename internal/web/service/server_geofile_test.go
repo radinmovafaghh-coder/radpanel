@@ -12,7 +12,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
 )
 
 // Loyalsoldier and runetfreedom write "<hash>  geoip.dat"; chocolate4u writes
@@ -140,14 +140,14 @@ func geofileTestEnv(t *testing.T, entries map[string]geofileEntry) string {
 	t.Helper()
 
 	dbDir := t.TempDir()
-	t.Setenv("XUI_DB_FOLDER", dbDir)
-	if err := database.InitDB(filepath.Join(dbDir, "x-ui.db")); err != nil {
+	t.Setenv("RADPANEL_DB_FOLDER", dbDir)
+	if err := database.InitDB(filepath.Join(dbDir, "radpanel.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })
 
 	binFolder := t.TempDir()
-	t.Setenv("XUI_BIN_FOLDER", binFolder)
+	t.Setenv("RADPANEL_BIN_FOLDER", binFolder)
 
 	originalAllowlist := geofileAllowlist
 	geofileAllowlist = entries

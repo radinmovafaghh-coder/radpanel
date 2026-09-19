@@ -152,7 +152,7 @@
       "xrayUpdates": "Xrayの更新",
       "xraySwitchClickDesk": "慎重に選択してください。古いバージョンは現在の設定と互換性がない可能性があります。",
       "updatePanel": "パネルを更新",
-      "panelUpdateDesc": "これにより3X-UIが最新リリースに更新され、パネルサービスが再起動されます。",
+      "panelUpdateDesc": "これによりRadPanelが最新リリースに更新され、パネルサービスが再起動されます。",
       "currentPanelVersion": "現在のパネルバージョン",
       "latestPanelVersion": "最新のパネルバージョン",
       "panelUpToDate": "パネルは最新です",
@@ -216,10 +216,10 @@
       "xraySwitchVersionDialogDesc": "Xrayのバージョンが#version#に変更されます。",
       "xraySwitchVersionPopover": "Xrayの更新が成功しました",
       "panelUpdateDialog": "本当にパネルを更新しますか？",
-      "panelUpdateDialogDesc": "これにより3X-UIが#version#に更新され、パネルサービスが再起動されます。",
+      "panelUpdateDialogDesc": "これによりRadPanelが#version#に更新され、パネルサービスが再起動されます。",
       "panelUpdateStartedPopover": "パネルの更新を開始しました",
       "panelUpdateFailedTitle": "パネルの更新に失敗しました",
-      "panelUpdateFailedDesc": "更新が正常に完了しませんでした。サーバーのログを確認するか、コマンドラインで「x-ui update」を実行してください。",
+      "panelUpdateFailedDesc": "更新が正常に完了しませんでした。サーバーのログを確認するか、コマンドラインで「radpanel update」を実行してください。",
       "panelUpdateUnknownTitle": "更新が完了したか確認できませんでした",
       "panelUpdateUnknownDesc": "パネルから時間内に結果が報告されませんでした。再読み込みして現在のバージョンを確認するか、サーバーのログを確認してください。",
       "geofileUpdateDialog": "ジオファイルを本当に更新しますか？",
@@ -782,7 +782,7 @@
       "deleteHwidConfirm": "このデバイスを削除しますか?次回のサブスクリプション取得時に再登録が必要になります。",
       "hwidDeleted": "デバイスを削除しました。",
       "clearHwidsConfirm": "登録済みのすべてのデバイスを削除しますか?各デバイスは次回のサブスクリプション取得時に再登録が必要になります。",
-      "limitIpFail2banMissing": "Fail2ban がインストールされていないため、IP 制限を適用できません。このオプションを有効にするには、x-ui の bash メニューから Fail2ban をインストールしてください。",
+      "limitIpFail2banMissing": "Fail2ban がインストールされていないため、IP 制限を適用できません。このオプションを有効にするには、radpanel の bash メニューから Fail2ban をインストールしてください。",
       "limitIpFail2banWindows": "Windows では Fail2ban を利用できないため、IP 制限を適用できません。",
       "limitIpDisabled": "このサーバーでは IP 制限機能が無効になっています。",
       "password": "パスワード",
@@ -1223,7 +1223,7 @@
       "subAnnounce": "お知らせ",
       "subAnnounceDesc": "VPNクライアントに表示されるお知らせのテキスト。クライアント識別トークンをサポートします: {{EMAIL}}, {{ID}}, {{SHORT_ID}}, {{SUB_ID}}, {{TELEGRAM_ID}}。",
       "subThemeDir": "サブスクリプションテーマディレクトリ",
-      "subThemeDirDesc": "サブスクリプションページのカスタムテンプレート (index.html/sub.html) を含むフォルダーの絶対パス（例: /etc/3x-ui/sub_templates/my-theme/）。空欄の場合はデフォルトのページを使用します。",
+      "subThemeDirDesc": "サブスクリプションページのカスタムテンプレート (index.html/sub.html) を含むフォルダーの絶対パス（例: /etc/radpanel/sub_templates/my-theme/）。空欄の場合はデフォルトのページを使用します。",
       "subThemeDirDocs": "テンプレートガイド ↗",
       "subEnableRouting": "ルーティングを有効化",
       "happLinkEnable": "暗号化されたサブスクリプションリンク",
@@ -2439,10 +2439,10 @@
   },
   "discord": {
     "test": {
-      "title": "3x-ui Discord通知テスト",
+      "title": "radpanel Discord通知テスト",
       "body": "これはDiscord通知が正しく設定されていることを確認するためのテスト通知です。"
     },
-    "footer": "3x-ui パネル",
+    "footer": "radpanel パネル",
     "fields": {
       "panelVersion": "パネルバージョン",
       "xrayCore": "Xray コア",
@@ -2477,13 +2477,13 @@
       "loginFailed": "ログイン失敗"
     },
     "report": {
-      "title": "📊 3x-ui ステータスレポート",
+      "title": "📊 radpanel ステータスレポート",
       "summary": "**{{ .Host }}** のサーバーとプロキシの定期ステータスレポート",
-      "footer": "3x-ui 定期レポート • スケジュール: {{ .RunTime }}"
+      "footer": "radpanel 定期レポート • スケジュール: {{ .RunTime }}"
     },
     "commands": {
-      "helpTitle": "🤖 3x-ui Discord Bot コマンド",
-      "helpDescription": "3x-ui サーバーの監視と管理に使えるコマンド:",
+      "helpTitle": "🤖 radpanel Discord Bot コマンド",
+      "helpDescription": "radpanel サーバーの監視と管理に使えるコマンド:",
       "helpStatus": "システム負荷、RAM、CPU、接続数、オンラインユーザーを表示",
       "helpReport": "完全なステータスレポートを生成（設定されていればDBバックアップ付き）",
       "helpBackup": "データベースのバックアップファイルを今すぐ送信",
@@ -2491,10 +2491,10 @@
       "helpInbounds": "設定済みのすべてのインバウンドをポートとクライアント統計付きで一覧表示",
       "helpRestart": "Xray コアを再起動",
       "helpHelp": "このコマンド一覧を表示",
-      "statusTitle": "⚡ 3x-ui サーバーステータス",
+      "statusTitle": "⚡ radpanel サーバーステータス",
       "statusDescription": "**{{ .Host }}** の現在の稼働メトリクス",
       "backupTitle": "🗄️ データベースバックアップ",
-      "backupDescription": "`{{ .Time }}` に生成された 3x-ui のバックアップ",
+      "backupDescription": "`{{ .Time }}` に生成された radpanel のバックアップ",
       "backupUnavailable": "❌ バックアップサービスを利用できません",
       "backupFailed": "❌ データベースのバックアップを読み込めませんでした: {{ .Error }}",
       "usageHint": "⚠️ 使い方: `!usage <email>` または `/usage <email>`",

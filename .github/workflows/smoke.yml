@@ -28,7 +28,7 @@ on:
       - "deploy/**"
       - ".github/workflows/smoke.yml"
   workflow_run:
-    workflows: ["Release 3X-UI"]
+    workflows: ["Release RadPanel"]
     types: [completed]
 
 permissions:

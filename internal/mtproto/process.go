@@ -20,8 +20,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/config"
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/config"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/logger"
 )
 
 // GetBinaryName returns the mtg binary filename for the current OS and arch,
@@ -54,7 +54,7 @@ var (
 )
 
 // procLogWriter consumes the mtg child process's stdout/stderr. It splits the
-// stream into lines, forwards each one to the x-ui log — so mtg's own messages,
+// stream into lines, forwards each one to the radpanel log — so mtg's own messages,
 // including why it cannot reach Telegram, become visible in the panel log viewer
 // and journald — and remembers the most recent line for GetResult.
 type procLogWriter struct {

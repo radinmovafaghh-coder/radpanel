@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/config"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/json_util"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/config"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/util/json_util"
 )
 
 // A log path must never escape the log folder whatever case the key is written

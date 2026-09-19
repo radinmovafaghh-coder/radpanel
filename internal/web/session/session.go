@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/logger"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -17,7 +17,7 @@ const (
 	loginUserKey      = "LOGIN_USER"
 	loginEpochKey     = "LOGIN_EPOCH"
 	apiAuthUserKey    = "api_auth_user"
-	sessionCookieName = "3x-ui"
+	sessionCookieName = "radpanel"
 )
 
 func init() {

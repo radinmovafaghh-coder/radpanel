@@ -11,9 +11,9 @@ import (
 	"testing"
 	"unicode/utf16"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service"
-	"github.com/mhsanaei/3x-ui/v3/internal/xray"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/service"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/xray"
 )
 
 // Discord's published caps, pinned here and not read from the package so the

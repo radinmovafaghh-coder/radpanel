@@ -1,6 +1,6 @@
-# 3x-ui via cloud-init
+# radpanel via cloud-init
 
-A single [`cloud-init.yaml`](cloud-init.yaml) user-data file that installs 3x-ui
+A single [`cloud-init.yaml`](cloud-init.yaml) user-data file that installs radpanel
 non-interactively on a fresh Ubuntu/Debian VM and generates **unique random
 credentials per instance**. It works on any cloud-init platform.
 
@@ -11,13 +11,13 @@ credentials per instance**. It works on any cloud-init platform.
    `XUI_NONINTERACTIVE=1` and pipes the project's `install.sh` into `bash`.
 3. `install.sh` runs end-to-end with **zero prompts**, picking secure random
    values for any credential you didn't pin.
-4. The generated credentials are written to `/etc/x-ui/install-result.env`
+4. The generated credentials are written to `/etc/radpanel/install-result.env`
    (mode 600), echoed to the **serial console**, and appended to `/etc/motd`.
 
 Retrieve them after boot with either:
 
 ```bash
-sudo cat /etc/x-ui/install-result.env     # over SSH
+sudo cat /etc/radpanel/install-result.env     # over SSH
 ```
 
 …or read the provider's **serial console** output (handy before you have SSH).

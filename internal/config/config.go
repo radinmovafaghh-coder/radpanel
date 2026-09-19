@@ -1,4 +1,4 @@
-// Package config provides configuration management utilities for the 3x-ui panel,
+// Package config provides configuration management utilities for the radpanel panel,
 // including version information, logging levels, database paths, and environment variable handling.
 package config
 
@@ -41,7 +41,7 @@ const (
 	Error   LogLevel = "error"
 )
 
-// GetBaseVersion returns the raw embedded release version of the 3x-ui panel
+// GetBaseVersion returns the raw embedded release version of the radpanel panel
 // (e.g. "3.4.0"). This is the panel's own version, not the Xray version. For the
 // version a panel advertises/displays (which adds a "dev+<sha>" label on dev
 // builds), use GetPanelVersion.
@@ -49,7 +49,7 @@ func GetBaseVersion() string {
 	return strings.TrimSpace(version)
 }
 
-// GetName returns the name of the 3x-ui application.
+// GetName returns the name of the radpanel application.
 func GetName() string {
 	return strings.TrimSpace(name)
 }
@@ -126,9 +126,9 @@ func GetPortOverride() (port int, configured bool, err error) {
 	return port, true, nil
 }
 
-// GetBinFolderPath returns the path to the binary folder, defaulting to "bin" if not set via XUI_BIN_FOLDER.
+// GetBinFolderPath returns the path to the binary folder, defaulting to "bin" if not set via RADPANEL_BIN_FOLDER.
 func GetBinFolderPath() string {
-	binFolderPath := os.Getenv("XUI_BIN_FOLDER")
+	binFolderPath := os.Getenv("RADPANEL_BIN_FOLDER")
 	if binFolderPath == "" {
 		binFolderPath = "bin"
 	}
@@ -154,14 +154,14 @@ func getBaseDir() string {
 
 // GetDBFolderPath returns the path to the database folder based on environment variables or platform defaults.
 func GetDBFolderPath() string {
-	dbFolderPath := os.Getenv("XUI_DB_FOLDER")
+	dbFolderPath := os.Getenv("RADPANEL_DB_FOLDER")
 	if dbFolderPath != "" {
 		return dbFolderPath
 	}
 	if runtime.GOOS == "windows" {
 		return getBaseDir()
 	}
-	return "/etc/x-ui"
+	return "/etc/radpanel"
 }
 
 // GetDBPath returns the full path to the database file.
@@ -171,7 +171,7 @@ func GetDBPath() string {
 
 // GetUpdateStatusFilePath returns the path to the panel self-update status
 // file update.sh writes on completion. It lives beside the database, outside
-// XUI_MAIN_FOLDER, so it survives an update regardless of what happens to
+// RADPANEL_MAIN_FOLDER, so it survives an update regardless of what happens to
 // that folder.
 func GetUpdateStatusFilePath() string {
 	return filepath.Join(GetDBFolderPath(), "update-status.json")
@@ -205,7 +205,7 @@ func GetNodeTokenKeyFile() string {
 	if p := strings.TrimSpace(os.Getenv("XUI_NODE_TOKEN_KEY_FILE")); p != "" {
 		return p
 	}
-	return "/etc/x-ui/node_token_key.json"
+	return "/etc/radpanel/node_token_key.json"
 }
 
 // GetNodeTokenKeyEnv returns the name of the env var holding a single base64
@@ -221,15 +221,15 @@ func GetEnvFilePaths() []string {
 		return nil
 	}
 	return []string{
-		"/etc/default/x-ui",
-		"/etc/conf.d/x-ui",
-		"/etc/sysconfig/x-ui",
+		"/etc/default/radpanel",
+		"/etc/conf.d/radpanel",
+		"/etc/sysconfig/radpanel",
 	}
 }
 
 // GetLogFolder returns the path to the log folder based on environment variables or platform defaults.
 func GetLogFolder() string {
-	logFolderPath := os.Getenv("XUI_LOG_FOLDER")
+	logFolderPath := os.Getenv("RADPANEL_LOG_FOLDER")
 	if logFolderPath != "" {
 		return logFolderPath
 	}
@@ -237,12 +237,12 @@ func GetLogFolder() string {
 	// scatters a log/ directory through the source tree (one per tested package).
 	// Redirect test runs to a shared temp folder so the source tree stays clean.
 	if testing.Testing() {
-		return filepath.Join(os.TempDir(), "3x-ui-test-log")
+		return filepath.Join(os.TempDir(), "radpanel-test-log")
 	}
 	if runtime.GOOS == "windows" {
 		return filepath.Join(".", "log")
 	}
-	return "/var/log/x-ui"
+	return "/var/log/radpanel"
 }
 
 func copyFile(src, dst string) error {
@@ -270,10 +270,10 @@ func init() {
 	if runtime.GOOS != "windows" {
 		return
 	}
-	if os.Getenv("XUI_DB_FOLDER") != "" {
+	if os.Getenv("RADPANEL_DB_FOLDER") != "" {
 		return
 	}
-	oldDBFolder := "/etc/x-ui"
+	oldDBFolder := "/etc/radpanel"
 	oldDBPath := fmt.Sprintf("%s/%s.db", oldDBFolder, GetName())
 	newDBFolder := GetDBFolderPath()
 	newDBPath := fmt.Sprintf("%s/%s.db", newDBFolder, GetName())

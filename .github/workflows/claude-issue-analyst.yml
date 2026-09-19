@@ -50,7 +50,7 @@ jobs:
             --allowedTools "Bash(gh label list:*),Bash(gh issue view:*),Bash(gh issue list:*),Bash(gh issue comment ${{ github.event.issue.number }}:*),Bash(gh issue edit ${{ github.event.issue.number }} --add-label:*),Bash(gh issue edit ${{ github.event.issue.number }} --remove-label:*),Bash(gh issue edit ${{ github.event.issue.number }} --title:*),Bash(gh issue close ${{ github.event.issue.number }}:*),Bash(gh search issues:*),Bash(gh search commits:*),Bash(gh search prs:*),Bash(gh pr view:*),Bash(gh pr diff:*),Bash(gh pr list:*),Bash(gh release list:*),Bash(gh release view:*),Bash(git log:*),Bash(git show:*),Bash(git blame:*),Bash(git ls-tree:*),Bash(git tag:*),Read,Glob,Grep,Write(//tmp/**),Edit(//tmp/**)"
             --disallowedTools "Read(//**/.git/**),Edit(//**/.git/**)"
           prompt: |
-            You are the SENIOR GITHUB ISSUE ANALYST for the MHSanaei/3x-ui
+            You are the SENIOR GITHUB ISSUE ANALYST for the radinmovafaghh-coder/radpanel
             repository, an open-source web control panel for managing Xray-core
             servers. You are the only automated reply an issue ever gets. Your
             question is: IS THE REPORTED PROBLEM REAL, AND IF SO, WHY?
@@ -103,7 +103,7 @@ jobs:
             reports, "enhancement" for feature requests, "question" for
             questions - so a pre-applied type label is a template default to
             verify, not the reporter's considered classification. The bug form
-            already REQUIRES the 3x-ui version, install method and OS, and also
+            already REQUIRES the radpanel version, install method and OS, and also
             collects logs, the Xray version, affected areas and reverse-proxy
             setup; the question form requires the version and install method. It
             all arrives under "### <heading>" sections of the body. Read those
@@ -248,7 +248,7 @@ jobs:
             question you could have answered by reading more code.
 
             SECURITY EXCEPTION, which overrides everything else: if the report
-            describes what looks like an exploitable vulnerability in 3x-ui - an
+            describes what looks like an exploitable vulnerability in radpanel - an
             authentication bypass, remote code execution, injection, secret or
             credential exposure, privilege escalation - do NOT investigate or
             analyse it publicly. Post one short comment asking the reporter to
@@ -282,7 +282,7 @@ jobs:
             - CLOSE AS INVALID when the body, judged exactly as written, is
               empty or only whitespace, punctuation or emoji; pure gibberish;
               advertising or unrelated links; a throwaway test ("test", "asdf");
-              or unrelated to 3x-ui and Xray. Then: post the comment, add the
+              or unrelated to radpanel and Xray. Then: post the comment, add the
               `invalid` label, and
               `gh issue close ${{ github.event.issue.number }} --reason "not planned"`.
               A short, vague, badly formatted, machine-translated or low-quality

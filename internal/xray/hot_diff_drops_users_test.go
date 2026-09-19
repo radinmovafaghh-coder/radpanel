@@ -3,7 +3,7 @@ package xray
 import (
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/util/json_util"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/util/json_util"
 )
 
 func hotConfigWithClients(clients string) *Config {

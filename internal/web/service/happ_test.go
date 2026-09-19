@@ -17,20 +17,20 @@ import (
 
 	"golang.org/x/crypto/chacha20poly1305"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/logger"
 )
 
 func initHappTestDB(t *testing.T) {
 	t.Helper()
 	dbDir := t.TempDir()
-	t.Setenv("XUI_DB_FOLDER", dbDir)
-	t.Setenv("XUI_BIN_FOLDER", dbDir)
+	t.Setenv("RADPANEL_DB_FOLDER", dbDir)
+	t.Setenv("RADPANEL_BIN_FOLDER", dbDir)
 	if err := os.WriteFile(filepath.Join(dbDir, "config.json"), []byte(`{"log":{}}`), 0o600); err != nil {
 		t.Fatalf("write Xray config: %v", err)
 	}
-	if err := database.InitDB(filepath.Join(dbDir, "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(dbDir, "radpanel.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })

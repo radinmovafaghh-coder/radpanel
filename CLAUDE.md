@@ -8,7 +8,7 @@ index, layering rules), read `docs/architecture.md` on demand — do not guess
 file locations when it can answer in one hop.
 
 ## Stack
-- Backend: Go 1.27 (`module github.com/mhsanaei/3x-ui/v3`), Gin, GORM.
+- Backend: Go 1.27 (`module github.com/radinmovafaghh-coder/radpanel/v3`), Gin, GORM.
   Runs Xray-core as a managed child process (`internal/xray/process.go`) and
   imports `github.com/xtls/xray-core` for config types + gRPC stats/handler/router
   API. MTProto inbounds run a second managed child — the `mtg-multi` binary
@@ -24,16 +24,16 @@ file locations when it can answer in one hop.
   falls back to a process restart on older binaries. A client's panel-side
   traffic reset also calls `POST /secrets/{name}/reset-quota` so a renewed client
   is not re-blocked by the sidecar's quota counter.
-- Storage: SQLite by default (`/etc/x-ui/x-ui.db` on Linux; the executable dir on
+- Storage: SQLite by default (`/etc/radpanel/radpanel.db` on Linux; the executable dir on
   Windows), PostgreSQL optional (`XUI_DB_TYPE` / `XUI_DB_DSN`). The CGo SQLite
   driver (`mattn/go-sqlite3`) needs a C compiler — `CGO_ENABLED=0` builds fail.
 - Frontend: React 19 + Ant Design 6 + Vite 8 + TypeScript in `frontend/`,
   built into `internal/web/dist/` (gitignored) and embedded via `embed.FS`.
 
 ## Repo map
-- `main.go` — entry point + `x-ui` CLI (run, migrate, migrate-db, encrypt-tokens, setting, cert).
-- `internal/config/` — env parsing (XUI_DEBUG, XUI_LOG_LEVEL, XUI_LOG_FOLDER,
-  XUI_BIN_FOLDER, XUI_SKIP_HSTS, XUI_PORT, XUI_DB_*).
+- `main.go` — entry point + `radpanel` CLI (run, migrate, migrate-db, encrypt-tokens, setting, cert).
+- `internal/config/` — env parsing (XUI_DEBUG, XUI_LOG_LEVEL, RADPANEL_LOG_FOLDER,
+  RADPANEL_BIN_FOLDER, XUI_SKIP_HSTS, XUI_PORT, XUI_DB_*).
 - `internal/database/` + `internal/database/model/` — GORM schema (~24 models;
   Inbound, Client, Setting, User are the core), inbound Protocol enum,
   AutoMigrate + hand-written migrations in `db.go`.
@@ -117,7 +117,7 @@ file locations when it can answer in one hop.
 - Stdlib `testing` only (no testify). Table-driven, `t.Run` subtests,
   `t.Helper()` on helpers. Assert the exact value / typed error / emitted
   string, never just `err != nil`. Prefer real deps over mocks: throwaway DB via
-  `database.InitDB(filepath.Join(t.TempDir(), "x-ui.db"))` +
+  `database.InitDB(filepath.Join(t.TempDir(), "radpanel.db"))` +
   `t.Cleanup(func() { _ = database.CloseDB() })`; `httptest` for HTTP.
   `internal/sub`'s `initSubDB(t)` is the template.
 - A test must fail without its fix. Write it, revert the fix, watch it go red,

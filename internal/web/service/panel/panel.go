@@ -17,10 +17,10 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/config"
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/global"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/config"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/logger"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/global"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/service"
 )
 
 // PanelService provides business logic for panel management operations.
@@ -40,7 +40,7 @@ type PanelUpdateInfo struct {
 }
 
 const (
-	panelUpdaterURL      = "https://raw.githubusercontent.com/MHSanaei/3x-ui/main/update.sh"
+	panelUpdaterURL      = "https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/main/update.sh"
 	maxPanelUpdaterBytes = 2 << 20
 	// devReleaseTag is the fixed-tag rolling pre-release the CI force-moves to the
 	// newest main commit; the dev update channel installs from it.
@@ -125,7 +125,7 @@ func (s *PanelService) RestartPanel(delay time.Duration) error {
 	return nil
 }
 
-// GetUpdateInfo checks GitHub for the latest 3x-ui release. When the dev channel
+// GetUpdateInfo checks GitHub for the latest radpanel release. When the dev channel
 // is enabled on a dev build it compares commits against the rolling dev release;
 // otherwise it compares versions against the latest stable tag.
 func (s *PanelService) GetUpdateInfo() (*PanelUpdateInfo, error) {
@@ -251,11 +251,11 @@ func (s *PanelService) startUpdate(useDev bool) (int64, error) {
 	proxyEnv := updateProxyEnvVars()
 
 	if systemdRun, err := exec.LookPath("systemd-run"); err == nil {
-		unitName := fmt.Sprintf("x-ui-web-update-%d", time.Now().Unix())
+		unitName := fmt.Sprintf("radpanel-web-update-%d", time.Now().Unix())
 		args := []string{
 			"--unit", unitName,
-			"--setenv", "XUI_MAIN_FOLDER=" + mainFolder,
-			"--setenv", "XUI_SERVICE=" + serviceFolder,
+			"--setenv", "RADPANEL_MAIN_FOLDER=" + mainFolder,
+			"--setenv", "RADPANEL_SERVICE=" + serviceFolder,
 			"--setenv", "XUI_UPDATE_TAG=" + updateTag,
 			"--setenv", runIDEnv,
 			"--setenv", statusFileEnv,
@@ -283,8 +283,8 @@ func (s *PanelService) startUpdate(useDev bool) (int64, error) {
 
 	cmd := exec.CommandContext(context.Background(), bash, "-lc", updateScript)
 	cmd.Env = append(os.Environ(),
-		"XUI_MAIN_FOLDER="+mainFolder,
-		"XUI_SERVICE="+serviceFolder,
+		"RADPANEL_MAIN_FOLDER="+mainFolder,
+		"RADPANEL_SERVICE="+serviceFolder,
 		"XUI_UPDATE_TAG="+updateTag,
 		runIDEnv,
 		statusFileEnv,
@@ -386,7 +386,7 @@ func downloadPanelUpdater() (string, error) {
 		return "", fmt.Errorf("download panel updater: unexpected HTTP %d", resp.StatusCode)
 	}
 
-	file, err := os.CreateTemp("", "3x-ui-update-*.sh")
+	file, err := os.CreateTemp("", "radpanel-update-*.sh")
 	if err != nil {
 		return "", err
 	}
@@ -430,9 +430,9 @@ func fetchLatestPanelVersion() (string, error) {
 // fetchPanelRelease fetches a release from GitHub. An empty tag resolves the
 // latest stable release; a non-empty tag (e.g. dev-latest) resolves that tag.
 func fetchPanelRelease(tag string) (*service.Release, error) {
-	url := "https://api.github.com/repos/MHSanaei/3x-ui/releases/latest"
+	url := "https://api.github.com/repos/radinmovafaghh-coder/radpanel/releases/latest"
 	if tag != "" {
-		url = "https://api.github.com/repos/MHSanaei/3x-ui/releases/tags/" + tag
+		url = "https://api.github.com/repos/radinmovafaghh-coder/radpanel/releases/tags/" + tag
 	}
 	client := (&service.SettingService{}).NewProxiedHTTPClient(10 * time.Second)
 	req, reqErr := http.NewRequestWithContext(context.Background(), http.MethodGet, url, nil)
@@ -504,17 +504,17 @@ func commitsEqual(a, b string) bool {
 }
 
 func resolveUpdateFolders() (string, string) {
-	mainFolder := os.Getenv("XUI_MAIN_FOLDER")
+	mainFolder := os.Getenv("RADPANEL_MAIN_FOLDER")
 	if mainFolder == "" {
 		if exePath, err := os.Executable(); err == nil {
 			mainFolder = filepath.Dir(exePath)
 		}
 	}
 	if mainFolder == "" {
-		mainFolder = "/usr/local/x-ui"
+		mainFolder = "/usr/local/radpanel"
 	}
 
-	serviceFolder := os.Getenv("XUI_SERVICE")
+	serviceFolder := os.Getenv("RADPANEL_SERVICE")
 	if serviceFolder == "" {
 		serviceFolder = "/etc/systemd/system"
 	}

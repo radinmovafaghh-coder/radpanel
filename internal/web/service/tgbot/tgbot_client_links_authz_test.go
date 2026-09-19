@@ -5,10 +5,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/global"
-	"github.com/mhsanaei/3x-ui/v3/internal/xray"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/global"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/xray"
 
 	"github.com/mymmrac/telego"
 )
@@ -33,7 +33,7 @@ func newLinksCallbackTgbot(t *testing.T, email string) (*Tgbot, func(string) int
 	swapTestBot(t, mock.URL)
 	t.Cleanup(mock.Close)
 
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(t.TempDir(), "radpanel.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })

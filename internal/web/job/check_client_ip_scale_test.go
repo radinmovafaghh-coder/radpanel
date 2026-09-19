@@ -13,10 +13,10 @@ import (
 	"github.com/op/go-logging"
 	"gorm.io/gorm"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/config"
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	xuilogger "github.com/mhsanaei/3x-ui/v3/internal/logger"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/config"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	xuilogger "github.com/radinmovafaghh-coder/radpanel/v3/internal/logger"
 )
 
 // setupScaleJobDB mirrors the service package's scale gating: Postgres via
@@ -24,7 +24,7 @@ import (
 func setupScaleJobDB(t *testing.T) {
 	t.Helper()
 	loggerInitOnce.Do(func() { xuilogger.InitLogger(logging.ERROR) })
-	t.Setenv("XUI_LOG_FOLDER", t.TempDir())
+	t.Setenv("RADPANEL_LOG_FOLDER", t.TempDir())
 
 	if os.Getenv("XUI_DB_TYPE") == "postgres" && strings.TrimSpace(os.Getenv("XUI_DB_DSN")) != "" {
 		if err := database.InitDB(""); err != nil {

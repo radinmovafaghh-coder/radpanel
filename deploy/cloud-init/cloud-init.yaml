@@ -1,16 +1,16 @@
 #cloud-config
 # ---------------------------------------------------------------------------
-# Generic 3x-ui unattended install via cloud-init user-data.
+# Generic radpanel unattended install via cloud-init user-data.
 #
 # Works on any cloud-init platform: Hetzner, AWS, DigitalOcean, Vultr, GCP,
 # Azure, Oracle. Paste the whole file as the instance "user data".
 #
-# It installs the latest 3x-ui release NON-INTERACTIVELY, generating unique
+# It installs the latest radpanel release NON-INTERACTIVELY, generating unique
 # random credentials per instance. Full credentials are surfaced ONLY on the
 # serial console (owner-only); /etc/motd (world-readable) shows just the access
 # URL + username. Nothing is baked in advance — every instance is unique.
 #
-# Requires the non-interactive install.sh (3x-ui with XUI_NONINTERACTIVE support).
+# Requires the non-interactive install.sh (radpanel with XUI_NONINTERACTIVE support).
 # Edit the exported XUI_* knobs in /opt/xui-bootstrap.sh below to customise.
 # ---------------------------------------------------------------------------
 
@@ -44,29 +44,29 @@ write_files:
       #   export XUI_DB_DSN="postgres://user:pass@host:5432/db?sslmode=disable"
       # ------------------------------------------------------------------------
 
-      curl -fsSL https://raw.githubusercontent.com/MHSanaei/3x-ui/main/install.sh | bash
+      curl -fsSL https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/main/install.sh | bash
 
       # Surface the generated credentials. Full creds (incl. password + API token)
       # go ONLY to the serial console (/dev/console, owner-only). /etc/motd is
       # world-readable, so it gets just the access URL + username and a pointer
       # to the root-only env file.
-      if [ -r /etc/x-ui/install-result.env ]; then
+      if [ -r /etc/radpanel/install-result.env ]; then
         {
           echo
-          echo "=== 3x-ui panel credentials (generated on first boot) ==="
-          cat /etc/x-ui/install-result.env
+          echo "=== radpanel panel credentials (generated on first boot) ==="
+          cat /etc/radpanel/install-result.env
           echo "========================================================"
           echo "Change the password after first login."
         } > /dev/console 2>/dev/null || true
 
         # shellcheck disable=SC1091
-        . /etc/x-ui/install-result.env
+        . /etc/radpanel/install-result.env
         {
           echo
-          echo "=== 3x-ui panel (generated on first boot) ==="
+          echo "=== radpanel panel (generated on first boot) ==="
           echo "URL:      ${XUI_ACCESS_URL:-unknown}"
           echo "Username: ${XUI_USERNAME:-unknown}"
-          echo "Password + API token: sudo cat /etc/x-ui/install-result.env"
+          echo "Password + API token: sudo cat /etc/radpanel/install-result.env"
           echo "============================================="
           echo "Change the password after first login."
         } >> /etc/motd 2>/dev/null || true
@@ -75,4 +75,4 @@ write_files:
 runcmd:
   - [bash, /opt/xui-bootstrap.sh]
 
-final_message: "3x-ui installed — full credentials in /etc/x-ui/install-result.env (sudo); /etc/motd shows the URL + username only."
+final_message: "radpanel installed — full credentials in /etc/radpanel/install-result.env (sudo); /etc/motd shows the URL + username only."

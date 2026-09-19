@@ -1,6 +1,6 @@
 ---
 title: Panel Settings
-description: Every 3x-ui panel setting — web server, TLS, display, security, and notifications — with defaults from the source.
+description: Every radpanel panel setting — web server, TLS, display, security, and notifications — with defaults from the source.
 icon: SlidersHorizontal
 ---
 
@@ -29,7 +29,7 @@ launch with [`XUI_INIT_WEB_BASE_PATH`](/docs/reference/env-vars).
 ### TLS
 
 Serving the panel over HTTPS protects your credentials in transit. Either set
-`webCertFile` + `webKeyFile` — the [`x-ui` SSL menu](/docs/config/ssl-certificates)
+`webCertFile` + `webKeyFile` — the [`radpanel` SSL menu](/docs/config/ssl-certificates)
 can obtain a Let's Encrypt certificate for you — or terminate TLS at a
 [reverse proxy](/docs/operations/reverse-proxy).
 

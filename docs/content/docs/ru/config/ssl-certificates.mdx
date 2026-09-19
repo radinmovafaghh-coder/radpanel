@@ -1,6 +1,6 @@
 ---
 title: SSL-сертификаты
-description: Получение и продление TLS-сертификатов для панели и входящих подключений 3x-ui — через меню ACME в x-ui (домен или голый IP), wildcard через Cloudflare DNS-01 или вручную с помощью Certbot.
+description: Получение и продление TLS-сертификатов для панели и входящих подключений radpanel — через меню ACME в radpanel (домен или голый IP), wildcard через Cloudflare DNS-01 или вручную с помощью Certbot.
 icon: ShieldCheck
 ---
 
@@ -8,7 +8,7 @@ TLS-сертификат позволяет обслуживать **панел�
 был зашифрован) и терминировать TLS на **входящих подключениях** (VLESS-TLS, Trojan,
 Shadowsocks-TLS и им подобных). Получить его можно тремя способами:
 
-- **Меню `x-ui`** — встроенный [ACME](https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment)-клиент.
+- **Меню `radpanel`** — встроенный [ACME](https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment)-клиент.
   Проще всего для одного домена или голого IP.
 - **Cloudflare DNS-01** — тоже из меню; нужен для **wildcard**-сертификатов или
   когда порт 80 заблокирован / сервер находится за прокси Cloudflare.
@@ -22,9 +22,9 @@ Shadowsocks-TLS и им подобных). Получить его можно т
   подключения.
 </Callout>
 
-## Меню SSL в `x-ui` (Let's Encrypt)
+## Меню SSL в `radpanel` (Let's Encrypt)
 
-Запустите `x-ui` и выберите **`20` — SSL Certificate Management**. Оно управляет
+Запустите `radpanel` и выберите **`20` — SSL Certificate Management**. Оно управляет
 [acme.sh](https://github.com/acmesh-official/acme.sh) и предлагает:
 
 | Опция                          | Что делает                                                          |
@@ -58,7 +58,7 @@ HTTP-проверке нужен **порт 80**, доступный из инт
 <Step>
 ### Запустите выпуск
 
-`x-ui` → `20` → **Get SSL (Domain)**, затем введите домен. acme.sh запрашивает
+`radpanel` → `20` → **Get SSL (Domain)**, затем введите домен. acme.sh запрашивает
 сертификат и сохраняет его в каталоге `/root/cert/<domain>/` как `fullchain.pem`
 (цепочка сертификатов) и `privkey.pem` (приватный ключ).
 </Step>
@@ -105,7 +105,7 @@ DNS вашего домена должен управляться Cloudflare, и
 <Step>
 ### Запустите выпуск через Cloudflare
 
-`x-ui` → **`21` — Cloudflare SSL Certificate**. На запрос выберите **`t`** для
+`radpanel` → **`21` — Cloudflare SSL Certificate**. На запрос выберите **`t`** для
 API-токена (по умолчанию) или **`g`** для Global API Key, затем введите свой
 домен (а для Global API Key — ещё email учётной записи и ключ). acme.sh создаёт
 TXT-запись, проходит проверку и убирает её.

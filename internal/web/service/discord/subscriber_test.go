@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/eventbus"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/eventbus"
 )
 
 func TestFormatEmbed_OutboundDownAndUp(t *testing.T) {

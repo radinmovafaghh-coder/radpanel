@@ -128,7 +128,7 @@ export default function XrayLogModal({ open, onClose }: XrayLogModalProps) {
 
   function download() {
     if (!Array.isArray(logs) || logs.length === 0) {
-      FileManager.downloadTextFile('', 'x-ui.log');
+      FileManager.downloadTextFile('', 'radpanel.log');
       return;
     }
     const lines = logs
@@ -144,7 +144,7 @@ export default function XrayLogModal({ open, onClose }: XrayLogModalProps) {
         }
       })
       .join('\n');
-    FileManager.downloadTextFile(lines, 'x-ui.log');
+    FileManager.downloadTextFile(lines, 'radpanel.log');
   }
 
   return (

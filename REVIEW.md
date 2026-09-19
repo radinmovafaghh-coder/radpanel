@@ -1,6 +1,6 @@
 # Review instructions
 
-3x-ui is a Go (Gin + GORM) web panel that generates configuration, share links
+radpanel is a Go (Gin + GORM) web panel that generates configuration, share links
 and subscriptions for other programs — Xray-core, mihomo, sing-box, mtg-multi —
 and is deployed by operators who upgrade in place. Judge findings by what
 breaks for those consumers and operators, not by style.

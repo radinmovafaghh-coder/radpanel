@@ -21,7 +21,7 @@ export class CurTotal {
 
   get color(): string {
     const p = this.percent;
-    if (p < USAGE_WARN_PERCENT) return '#1677ff';
+    if (p < USAGE_WARN_PERCENT) return '#8b5cf6';
     if (p < USAGE_CRIT_PERCENT) return USAGE_WARN_COLOR;
     return USAGE_CRIT_COLOR;
   }

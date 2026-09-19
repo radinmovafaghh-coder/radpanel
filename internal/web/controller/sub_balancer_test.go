@@ -11,13 +11,13 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
 )
 
 func setupSubBalancerRouter(t *testing.T) *gin.Engine {
 	t.Helper()
-	t.Setenv("XUI_DB_FOLDER", t.TempDir())
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	t.Setenv("RADPANEL_DB_FOLDER", t.TempDir())
+	if err := database.InitDB(filepath.Join(t.TempDir(), "radpanel.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })

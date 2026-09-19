@@ -17,14 +17,14 @@ tmp/
 # Ignore build and distribution directories
 backup/
 bin/
-x-ui/
+radpanel/
 dist/
 release/
 node_modules/
 
 # Ignore compiled binaries
 main
-3x-ui
+radpanel
 
 # Ignore OS specific files
 .DS_Store
@@ -32,9 +32,9 @@ Thumbs.db
 
 # Ignore Go build files
 *.exe
-x-ui.db
-x-ui.db-shm
-x-ui.db-wal
+radpanel.db
+radpanel.db-shm
+radpanel.db-wal
 system_metrics.gob
 *.dump
 

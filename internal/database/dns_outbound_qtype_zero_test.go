@@ -9,8 +9,8 @@ import (
 	"github.com/xtls/xray-core/proxy/dns"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/config"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/config"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
 )
 
 // The core drops a lone numeric qType 0 from its PortList, and a rule with no
@@ -34,7 +34,7 @@ func TestRewriteDNSOutboundLegacyKeysKeepsQTypeZeroPolicy(t *testing.T) {
 // Installs that already ran the legacy-keys seeder store the match-all rule, and
 // that seeder never runs again, so the repair has to reach them on its own.
 func TestSeedersRepairStoredDNSQTypeZero(t *testing.T) {
-	t.Setenv("XUI_DB_FOLDER", t.TempDir())
+	t.Setenv("RADPANEL_DB_FOLDER", t.TempDir())
 	if err := InitDB(config.GetDBPath()); err != nil {
 		if strings.Contains(err.Error(), "CGO_ENABLED=0") {
 			t.Skipf("sqlite needs cgo: %v", err)

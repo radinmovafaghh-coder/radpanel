@@ -8,8 +8,8 @@ import (
 
 	"github.com/xlzd/gotp"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
 )
 
 func TestResetSettingsRegeneratesSubscriptionPaths(t *testing.T) {
@@ -52,7 +52,7 @@ func TestResetSettingsRegeneratesSubscriptionPaths(t *testing.T) {
 
 func setupSettingTestDB(t *testing.T) {
 	t.Helper()
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	if err := database.InitDB(filepath.Join(t.TempDir(), "radpanel.db")); err != nil {
 		t.Fatal(err)
 	}
 	t.Cleanup(func() {

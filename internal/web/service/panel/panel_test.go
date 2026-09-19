@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/config"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/config"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/service"
 )
 
 func TestIsNewerVersion(t *testing.T) {
@@ -266,7 +266,7 @@ func TestAcquireUpdateSlotHardCeilingOverridesLiveness(t *testing.T) {
 // at the in-memory started-at timestamp, never at the status file's own
 // terminal state.
 func TestAcquireUpdateSlotReleasesOnTerminalStatus(t *testing.T) {
-	t.Setenv("XUI_DB_FOLDER", t.TempDir())
+	t.Setenv("RADPANEL_DB_FOLDER", t.TempDir())
 	resetUpdateSlot(t)
 	path := config.GetUpdateStatusFilePath()
 
@@ -286,7 +286,7 @@ func TestAcquireUpdateSlotReleasesOnTerminalStatus(t *testing.T) {
 // by some earlier, unrelated run (different runID) must not be mistaken for
 // this run finishing.
 func TestAcquireUpdateSlotIgnoresStaleUnrelatedStatus(t *testing.T) {
-	t.Setenv("XUI_DB_FOLDER", t.TempDir())
+	t.Setenv("RADPANEL_DB_FOLDER", t.TempDir())
 	resetUpdateSlot(t)
 	path := config.GetUpdateStatusFilePath()
 
@@ -330,7 +330,7 @@ func TestAcquireUpdateSlotConcurrency(t *testing.T) {
 }
 
 func TestGetUpdateStatus(t *testing.T) {
-	t.Setenv("XUI_DB_FOLDER", t.TempDir())
+	t.Setenv("RADPANEL_DB_FOLDER", t.TempDir())
 	path := config.GetUpdateStatusFilePath()
 	svc := &PanelService{}
 

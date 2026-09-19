@@ -1,6 +1,6 @@
 ---
 title: پشتیبان‌گیری و بازیابی
-description: از پایگاه‌داده و گواهی‌های 3x-ui خود به‌صورت دستی یا از طریق ربات Telegram پشتیبان بگیرید و آن‌ها را بازیابی کنید.
+description: از پایگاه‌داده و گواهی‌های radpanel خود به‌صورت دستی یا از طریق ربات Telegram پشتیبان بگیرید و آن‌ها را بازیابی کنید.
 icon: DatabaseBackup
 ---
 
@@ -9,7 +9,7 @@ icon: DatabaseBackup
 
 ## از چه چیزی پشتیبان بگیریم
 
-- **پایگاه‌داده** — به‌صورت پیش‌فرض یک SQLite در `/etc/x-ui/x-ui.db` (یا پایگاه‌داده‌ی
+- **پایگاه‌داده** — به‌صورت پیش‌فرض یک SQLite در `/etc/radpanel/radpanel.db` (یا پایگاه‌داده‌ی
   PostgreSQL شما اگر از آن backend استفاده می‌کنید).
 - **گواهی‌ها** — هر چیزی که زیر `/root/cert/` (یا هر جایی که گواهی‌های TLS را نگه می‌دارید)
   قرار دارد.
@@ -20,7 +20,7 @@ icon: DatabaseBackup
 مستقیماً از سرور کپی نمایید:
 
 ```bash title="copy the SQLite database"
-cp /etc/x-ui/x-ui.db /root/x-ui-backup-$(date +%F).db
+cp /etc/radpanel/radpanel.db /root/radpanel-backup-$(date +%F).db
 ```
 
 برای بازیابی، پنل را متوقف کنید، پایگاه‌داده را سر جای خود برگردانید و دوباره آن را اجرا کنید.
@@ -37,12 +37,12 @@ cp /etc/x-ui/x-ui.db /root/x-ui-backup-$(date +%F).db
 
 ## دامپ / بازیابی SQLite
 
-دستور `x-ui migrate-db` پایگاه‌داده‌ی SQLite را به یک دامپ متنی SQL ساده و بالعکس تبدیل
+دستور `radpanel migrate-db` پایگاه‌داده‌ی SQLite را به یک دامپ متنی SQL ساده و بالعکس تبدیل
 می‌کند (برای بررسی یا انتقال میان دستگاه‌ها کاربردی است):
 
 ```bash
-x-ui migrate-db --dump /root/x-ui.sql       # SQLite -> SQL text
-x-ui migrate-db --restore /root/x-ui.sql     # SQL text -> SQLite
+radpanel migrate-db --dump /root/radpanel.sql       # SQLite -> SQL text
+radpanel migrate-db --restore /root/radpanel.sql     # SQL text -> SQLite
 ```
 
 برای مهاجرت به PostgreSQL، به [پایگاه‌داده](/docs/reference/database) مراجعه کنید.

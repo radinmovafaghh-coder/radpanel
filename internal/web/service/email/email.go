@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/service"
 )
 
 // EmailService sends email notifications via SMTP.
@@ -195,9 +195,9 @@ func (s *EmailService) TestConnection() SMTPTestResult {
 		}
 	}
 
-	msg := buildMessage(from, fromName, recipients, "[3x-ui] Test email",
+	msg := buildMessage(from, fromName, recipients, "[radpanel] Test email",
 		`<html><body style="font-family:monospace;font-size:14px">
-<h2>Test email from 3x-ui</h2>
+<h2>Test email from radpanel</h2>
 <p>If you received this, SMTP is configured correctly.</p>
 </body></html>`)
 
@@ -313,9 +313,9 @@ func (s *EmailService) sendPlain(addr string, auth smtp.Auth, from string, to []
 // SendTest sends a test email and returns any error with detail.
 func (s *EmailService) SendTest() error {
 	return s.Send(
-		"[3x-ui] Test email",
+		"[radpanel] Test email",
 		`<html><body style="font-family:monospace;font-size:14px">
-<h2>Test email from 3x-ui</h2>
+<h2>Test email from radpanel</h2>
 <p>If you received this, SMTP is configured correctly.</p>
 </body></html>`,
 	)

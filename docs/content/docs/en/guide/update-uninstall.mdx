@@ -1,17 +1,17 @@
 ---
 title: Update & Uninstall
-description: Manage 3x-ui with the x-ui menu and CLI — update (stable, dev, or legacy), change settings, and uninstall cleanly.
+description: Manage radpanel with the radpanel menu and CLI — update (stable, dev, or legacy), change settings, and uninstall cleanly.
 icon: RefreshCw
 ---
 
-After a script install, the `x-ui` command is your control center. Run it with
+After a script install, the `radpanel` command is your control center. Run it with
 no arguments for the interactive menu, or pass a subcommand for a one-shot action.
 
 ```bash
-x-ui
+radpanel
 ```
 
-## The `x-ui` management menu
+## The `radpanel` management menu
 
 The menu (items `0`–`28`) shows the panel/Xray status at the top, then:
 
@@ -20,9 +20,9 @@ The menu (items `0`–`28`) shows the panel/Xray status at the top, then:
 | 1     | Install                                | (Re)install from the remote script                        |
 | 2     | Update                                 | Update to the latest **stable** release                   |
 | 3     | Update to Dev Channel (latest commit)  | Update to the rolling `dev-latest` build                  |
-| 4     | Update Menu                            | Update just the `x-ui` menu script                        |
+| 4     | Update Menu                            | Update just the `radpanel` menu script                        |
 | 5     | Legacy Version                         | Install a specific older version (prompts for a tag)      |
-| 6     | Uninstall                              | Remove 3x-ui (see below)                                  |
+| 6     | Uninstall                              | Remove radpanel (see below)                                  |
 | 7     | Reset Username & Password              | Set new credentials; optionally disable 2FA               |
 | 8     | Reset Web Base Path                    | Randomize the web base path                               |
 | 9     | Reset Settings                         | Reset panel settings (your account is preserved)          |
@@ -51,29 +51,29 @@ Some of these have their own pages: [SSL certificates](/docs/config/ssl-certific
 
 ## CLI subcommands
 
-For scripts and quick actions, `x-ui` also takes a subcommand directly:
+For scripts and quick actions, `radpanel` also takes a subcommand directly:
 
 | Command                    | Action                                              |
 | -------------------------- | --------------------------------------------------- |
-| `x-ui start` / `stop` / `restart` | Control the service                          |
-| `x-ui restart-xray`        | Reload only Xray-core                               |
-| `x-ui status`              | Show status                                         |
-| `x-ui settings`            | Show current settings                               |
-| `x-ui enable` / `disable`  | Toggle autostart on boot                            |
-| `x-ui log`                 | Tail the debug log                                  |
-| `x-ui banlog`              | Show Fail2ban ban log                               |
-| `x-ui update`              | Update to the latest stable release                 |
-| `x-ui update-dev`          | Update to the rolling `dev-latest` build            |
-| `x-ui legacy`              | Install a specific older version (prompts)          |
-| `x-ui update-all-geofiles` | Update all geo files, restart if changed            |
-| `x-ui migrate-db --dsn …`  | Migrate SQLite → PostgreSQL (see [Database](/docs/reference/database)) |
-| `x-ui install` / `uninstall` | Install / uninstall                               |
+| `radpanel start` / `stop` / `restart` | Control the service                          |
+| `radpanel restart-xray`        | Reload only Xray-core                               |
+| `radpanel status`              | Show status                                         |
+| `radpanel settings`            | Show current settings                               |
+| `radpanel enable` / `disable`  | Toggle autostart on boot                            |
+| `radpanel log`                 | Tail the debug log                                  |
+| `radpanel banlog`              | Show Fail2ban ban log                               |
+| `radpanel update`              | Update to the latest stable release                 |
+| `radpanel update-dev`          | Update to the rolling `dev-latest` build            |
+| `radpanel legacy`              | Install a specific older version (prompts)          |
+| `radpanel update-all-geofiles` | Update all geo files, restart if changed            |
+| `radpanel migrate-db --dsn …`  | Migrate SQLite → PostgreSQL (see [Database](/docs/reference/database)) |
+| `radpanel install` / `uninstall` | Install / uninstall                               |
 
 ## Updating
 
-- **Stable:** menu option **2** or `x-ui update`. Re-running the install script
+- **Stable:** menu option **2** or `radpanel update`. Re-running the install script
   also updates in place.
-- **Dev channel:** menu option **3** or `x-ui update-dev` — the rolling
+- **Dev channel:** menu option **3** or `radpanel update-dev` — the rolling
   `dev-latest` per-commit build (not a stable release).
 - **A specific older version:** menu option **5** (Legacy Version).
 
@@ -83,17 +83,17 @@ Updating preserves your database and settings. Take a
 <Callout type="info">
   Docker users update differently — pull the new image and recreate the
   container (`docker compose pull && docker compose up -d`) rather than using the
-  `x-ui` update commands.
+  `radpanel` update commands.
 </Callout>
 
 ## Uninstalling
 
-Menu option **6** or `x-ui uninstall`. It stops and disables the service, removes
-the service unit, and deletes `/etc/x-ui/` and the install folder. If the panel
+Menu option **6** or `radpanel uninstall`. It stops and disables the service, removes
+the service unit, and deletes `/etc/radpanel/` and the install folder. If the panel
 used a locally-installed PostgreSQL, it offers to purge that too (a separate,
 irreversible confirmation).
 
 <Callout type="warn">
-  Uninstalling removes the database (`/etc/x-ui/x-ui.db`) and your configuration.
+  Uninstalling removes the database (`/etc/radpanel/radpanel.db`) and your configuration.
   [Back up](/docs/operations/backup-restore) first if you might need it.
 </Callout>

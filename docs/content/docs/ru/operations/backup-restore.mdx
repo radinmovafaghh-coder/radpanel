@@ -1,6 +1,6 @@
 ---
 title: Резервное копирование и восстановление
-description: Создавайте резервные копии базы данных и сертификатов 3x-ui и восстанавливайте их вручную или через Telegram-бота.
+description: Создавайте резервные копии базы данных и сертификатов radpanel и восстанавливайте их вручную или через Telegram-бота.
 icon: DatabaseBackup
 ---
 
@@ -10,7 +10,7 @@ icon: DatabaseBackup
 
 ## Что копировать
 
-- **База данных** — по умолчанию SQLite в `/etc/x-ui/x-ui.db` (или ваша база
+- **База данных** — по умолчанию SQLite в `/etc/radpanel/radpanel.db` (или ваша база
   данных PostgreSQL, если вы используете этот бэкенд).
 - **Сертификаты** — всё, что находится в `/root/cert/` (или там, где вы храните
   сертификаты TLS).
@@ -21,7 +21,7 @@ icon: DatabaseBackup
 файл базы данных напрямую с сервера:
 
 ```bash title="copy the SQLite database"
-cp /etc/x-ui/x-ui.db /root/x-ui-backup-$(date +%F).db
+cp /etc/radpanel/radpanel.db /root/radpanel-backup-$(date +%F).db
 ```
 
 Чтобы выполнить восстановление, остановите панель, верните базу данных на место и
@@ -39,12 +39,12 @@ cp /etc/x-ui/x-ui.db /root/x-ui-backup-$(date +%F).db
 
 ## Дамп / восстановление SQLite
 
-Команда `x-ui migrate-db` преобразует базу данных SQLite в обычный текстовый дамп
+Команда `radpanel migrate-db` преобразует базу данных SQLite в обычный текстовый дамп
 SQL и обратно (удобно для просмотра или переноса между машинами):
 
 ```bash
-x-ui migrate-db --dump /root/x-ui.sql       # SQLite -> SQL text
-x-ui migrate-db --restore /root/x-ui.sql     # SQL text -> SQLite
+radpanel migrate-db --dump /root/radpanel.sql       # SQLite -> SQL text
+radpanel migrate-db --restore /root/radpanel.sql     # SQL text -> SQLite
 ```
 
 Чтобы перейти на PostgreSQL, смотрите раздел [База данных](/docs/reference/database).

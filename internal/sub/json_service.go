@@ -12,12 +12,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/logger"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/json_util"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/random"
-	wgutil "github.com/mhsanaei/3x-ui/v3/internal/util/wireguard"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/logger"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/util/json_util"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/util/random"
+	wgutil "github.com/radinmovafaghh-coder/radpanel/v3/internal/util/wireguard"
 )
 
 //go:embed default.json

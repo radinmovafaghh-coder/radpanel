@@ -1,11 +1,11 @@
 ---
 title: 出站与路由
-description: 在 3x-ui 中调整出口流量——WARP、NordVPN、PIA WireGuard、出站订阅（服务器池）、路由规则以及负载均衡器。
+description: 在 radpanel 中调整出口流量——WARP、NordVPN、PIA WireGuard、出站订阅（服务器池）、路由规则以及负载均衡器。
 icon: Route
 ---
 
 入站负责接受客户端；**出站**则决定客户端的流量接下来发往何处。
-3x-ui 可以让流量经由 Cloudflare WARP、NordVPN、Private Internet Access
+radpanel 可以让流量经由 Cloudflare WARP、NordVPN、Private Internet Access
 （WireGuard），或从订阅导入的任意出站池转发，
 并通过路由规则和均衡器在它们之间进行选择。
 
@@ -35,7 +35,7 @@ JSON，面板随后会重载 Xray。面板同时还提供**出站连通性测试
 ```
 
 **代理**出站（VLESS、VMess、Trojan、Shadowsocks）会转发到另一台
-服务器——便于进行链式代理或将部分流量发往境外。注意 3x-ui 所使用的各种线路
+服务器——便于进行链式代理或将部分流量发往境外。注意 radpanel 所使用的各种线路
 结构：**VLESS 采用扁平形式**（`address`/`port`/`id`/`flow`/
 `encryption`），**VMess 使用 `settings.vnext[]`**，而 **Trojan/Shadowsocks 使用
 `settings.servers[]`**。`streamSettings` 必须与目标的
@@ -47,7 +47,7 @@ JSON，面板随后会重载 Xray。面板同时还提供**出站连通性测试
 
 ## Cloudflare WARP
 
-WARP 让你的服务器经由 Cloudflare 的网络出口。3x-ui 可以为你注册一个
+WARP 让你的服务器经由 Cloudflare 的网络出口。radpanel 可以为你注册一个
 WARP 账户，并将其接入一个标签为 **`warp`** 的 WireGuard 出站：
 
 <Steps>
@@ -61,7 +61,7 @@ WARP 账户，并将其接入一个标签为 **`warp`** 的 WireGuard 出站：
 <Step>
 ### 注册 WARP
 
-在面板的 WARP 控制项中注册一个账户。3x-ui 会自动填入该出站的
+在面板的 WARP 控制项中注册一个账户。radpanel 会自动填入该出站的
 密钥、地址、保留字节以及对端端点。
 </Step>
 
@@ -78,7 +78,7 @@ WARP 账户，并将其接入一个标签为 **`warp`** 的 WireGuard 出站：
 
 ## NordVPN
 
-3x-ui 可以根据访问令牌获取 NordVPN（NordLynx/WireGuard）凭据（或
+radpanel 可以根据访问令牌获取 NordVPN（NordLynx/WireGuard）凭据（或
 直接接受一个私钥），并列出国家/服务器，从而让你构建一个
 NordVPN 出站。打开 **Xray → 出站 → 更多 → NordVPN**，登录或保存私钥后选择服务器并
 添加出站。可以连续添加多台服务器；每个 hostname 使用唯一的 `nord-<hostname>` 标签，
@@ -90,7 +90,7 @@ NordVPN 凭据刷新该出站内嵌的私钥。登出只清除保存的凭据，
 
 ## PIA WireGuard
 
-3x-ui 可以用 PIA 用户名和密码登录，从已验签的服务器列表里选择国家/区域/服务器，
+radpanel 可以用 PIA 用户名和密码登录，从已验签的服务器列表里选择国家/区域/服务器，
 并生成 WireGuard 出站。打开 **Xray → 出站 → 更多 → PIA**，登录后选服务器并添加出站。
 可以添加多台服务器（每个 hostname 一条出站）。标签为 `pia-<region>-<server>`（例如
 `pia-us-east-useast1`）。添加或对该行 **Reset** 会向该服务器的 PIA `/addKey` 注册密钥。

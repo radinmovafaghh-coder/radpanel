@@ -10,11 +10,11 @@ import (
 
 	"github.com/op/go-logging"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	xuilogger "github.com/mhsanaei/3x-ui/v3/internal/logger"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/runtime"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	xuilogger "github.com/radinmovafaghh-coder/radpanel/v3/internal/logger"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/runtime"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/service"
 )
 
 func transitiveGuids(t *testing.T) []string {
@@ -53,7 +53,7 @@ func TestHeartbeatDropsSubNodesOfNodesItNoLongerProbes(t *testing.T) {
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
 			xuilogger.InitLogger(logging.ERROR)
-			if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+			if err := database.InitDB(filepath.Join(t.TempDir(), "radpanel.db")); err != nil {
 				t.Fatalf("InitDB: %v", err)
 			}
 			t.Cleanup(func() { _ = database.CloseDB() })

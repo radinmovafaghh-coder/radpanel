@@ -1,27 +1,27 @@
 ---
 title: Environment Variables
-description: Complete reference for 3x-ui's XUI_* environment variables — database, panel, logging, memory, node token encryption, and the tunnel health monitor.
+description: Complete reference for radpanel's XUI_* environment variables — database, panel, logging, memory, node token encryption, and the tunnel health monitor.
 icon: Variable
 ---
 
-3x-ui reads its runtime configuration from `XUI_*` environment variables. On a
+radpanel reads its runtime configuration from `XUI_*` environment variables. On a
 script install the installer writes them to the service environment file
-(`/etc/default/x-ui`, or `/etc/conf.d/x-ui` / `/etc/sysconfig/x-ui` depending on
+(`/etc/default/radpanel`, or `/etc/conf.d/radpanel` / `/etc/sysconfig/radpanel` depending on
 the distro); for Docker you set them in `docker-compose.yml` or `docker run -e`.
 Defaults are sensible — set only what you need to change, then restart:
-`systemctl restart x-ui`.
+`systemctl restart radpanel`.
 
 ## Database
 
 | Variable                 | Default     | Description                                                          |
 | ------------------------ | ----------- | -------------------------------------------------------------------- |
 | `XUI_DB_TYPE`            | `sqlite`    | Backend: `sqlite`, or `postgres` (also accepts `postgresql` / `pg`). |
-| `XUI_DB_FOLDER`          | `/etc/x-ui` | Folder for the SQLite database file (`x-ui.db`).                     |
+| `RADPANEL_DB_FOLDER`          | `/etc/radpanel` | Folder for the SQLite database file (`radpanel.db`).                     |
 | `XUI_DB_DSN`             | —           | PostgreSQL connection string (used when `XUI_DB_TYPE=postgres`).     |
 | `XUI_DB_MAX_OPEN_CONNS`  | —           | Max open connections in the PostgreSQL pool.                         |
 | `XUI_DB_MAX_IDLE_CONNS`  | —           | Max idle connections in the PostgreSQL pool.                         |
 
-The default SQLite database path is `/etc/x-ui/x-ui.db`. See
+The default SQLite database path is `/etc/radpanel/radpanel.db`. See
 [Database](/docs/reference/database) for the SQLite ↔ PostgreSQL details.
 
 ## Panel
@@ -42,7 +42,7 @@ default. Encryption at rest is opt-in and fails closed: with any mode other than
 | Variable                  | Default                         | Description                                                                                                                                                            |
 | ------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `NODE_TOKEN_ENCRYPTION`   | `off`                           | `off`, `migration` (reads accept plaintext or ciphertext, writes encrypt), or `required` (same writes, startup fails without a key). Note the missing `XUI_` prefix.    |
-| `XUI_NODE_TOKEN_KEY_FILE` | `/etc/x-ui/node_token_key.json` | JSON keyring, mode `0600` or stricter. Loaded first.                                                                                                                   |
+| `XUI_NODE_TOKEN_KEY_FILE` | `/etc/radpanel/node_token_key.json` | JSON keyring, mode `0600` or stricter. Loaded first.                                                                                                                   |
 | `XUI_NODE_TOKEN_KEY`      | —                               | A single base64 32-byte key, read only when the key file fails to load. Its key id is fixed to `env`, so it cannot rotate.                                              |
 
 The key file names the active key plus every older key still needed to decrypt:
@@ -56,12 +56,12 @@ command-line arguments. After enabling a mode, re-encrypt the rows already in
 the database under the active key:
 
 ```bash
-x-ui encrypt-tokens
+radpanel encrypt-tokens
 ```
 
 That covers node rows; the PIA token is re-encrypted the next time it is read.
 To rotate, add the new key to `keys`, point `active` at it, keep the old key for
-decryption, and run `x-ui encrypt-tokens` again.
+decryption, and run `radpanel encrypt-tokens` again.
 
 ## Logging & binaries
 
@@ -69,8 +69,8 @@ decryption, and run `x-ui encrypt-tokens` again.
 | ---------------- | ---------------- | ----------------------------------------------------------- |
 | `XUI_LOG_LEVEL`  | `info`           | `debug`, `info`, `notice`, `warning`, or `error`.           |
 | `XUI_DEBUG`      | `false`          | Debug mode (forces log level to `debug`).                   |
-| `XUI_LOG_FOLDER` | `/var/log/x-ui`  | Log output directory.                                       |
-| `XUI_BIN_FOLDER` | `bin`            | Folder for the Xray-core binary and geosite/geoip files.    |
+| `RADPANEL_LOG_FOLDER` | `/var/log/radpanel`  | Log output directory.                                       |
+| `RADPANEL_BIN_FOLDER` | `bin`            | Folder for the Xray-core binary and geosite/geoip files.    |
 
 ## Memory & profiling
 
@@ -111,4 +111,4 @@ clients, so enable it deliberately.
 
 | Variable             | Description                                                                                  |
 | -------------------- | -------------------------------------------------------------------------------------------- |
-| `XUI_NONINTERACTIVE` | Set to `1` (or run with no TTY) to install with zero prompts; generated credentials are written to `/etc/x-ui/install-result.env`. See [Installation](/docs/guide/installation#unattended--cloud-init). |
+| `XUI_NONINTERACTIVE` | Set to `1` (or run with no TTY) to install with zero prompts; generated credentials are written to `/etc/radpanel/install-result.env`. See [Installation](/docs/guide/installation#unattended--cloud-init). |

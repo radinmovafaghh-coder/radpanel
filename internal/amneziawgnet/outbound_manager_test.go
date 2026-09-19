@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/amneziawg"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/wireguard"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/amneziawg"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/util/wireguard"
 )
 
 // egressPortBound reports whether 127.0.0.1:<EgressBasePort> accepts TCP.

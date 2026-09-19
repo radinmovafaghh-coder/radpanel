@@ -7,9 +7,9 @@ import (
 
 	corelog "github.com/xtls/xray-core/common/log"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/config"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/xray"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/config"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/xray"
 )
 
 func TestRewriteDNSOutboundLegacyKeys(t *testing.T) {
@@ -300,7 +300,7 @@ func TestRewriteDNSOutboundLegacyKeysInvalidJSON(t *testing.T) {
 }
 
 func TestMigrateDNSOutboundLegacyKeysRewritesStoredTemplate(t *testing.T) {
-	t.Setenv("XUI_DB_FOLDER", t.TempDir())
+	t.Setenv("RADPANEL_DB_FOLDER", t.TempDir())
 	// A CGO_ENABLED=0 build links a stubbed driver, so this test needs the same
 	// C compiler the rest of the package's DB tests do.
 	if err := InitDB(config.GetDBPath()); err != nil {

@@ -11,8 +11,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
 )
 
 func initHwidSubRouter(t *testing.T, limit int) (*gin.Engine, string) {
@@ -26,8 +26,8 @@ func initHwidSubRouter(t *testing.T, limit int) (*gin.Engine, string) {
 		t.Fatalf("write subpage: %v", err)
 	}
 
-	t.Setenv("XUI_DB_FOLDER", tmp)
-	if err := database.InitDB(filepath.Join(tmp, "x-ui.db")); err != nil {
+	t.Setenv("RADPANEL_DB_FOLDER", tmp)
+	if err := database.InitDB(filepath.Join(tmp, "radpanel.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })

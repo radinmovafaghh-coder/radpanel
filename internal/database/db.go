@@ -20,11 +20,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/config"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/crypto"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/random"
-	"github.com/mhsanaei/3x-ui/v3/internal/xray"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/config"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/util/crypto"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/util/random"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/xray"
 
 	"github.com/mattn/go-sqlite3"
 	"gorm.io/driver/postgres"
@@ -59,7 +59,7 @@ func Dialect() string {
 const (
 	defaultUsername       = "admin"
 	defaultPassword       = "admin"
-	sqliteBackupDirPrefix = ".x-ui-backup-"
+	sqliteBackupDirPrefix = ".radpanel-backup-"
 )
 
 func allModels() []any {

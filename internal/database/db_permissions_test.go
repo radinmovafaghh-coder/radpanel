@@ -13,8 +13,8 @@ func TestInitDBRestrictsSQLiteFilePermissions(t *testing.T) {
 		t.Skip("POSIX permission bits are not meaningful on Windows")
 	}
 	t.Setenv("XUI_DB_JOURNAL_MODE", "")
-	dbDir := filepath.Join(t.TempDir(), "x-ui")
-	dbPath := filepath.Join(dbDir, "x-ui.db")
+	dbDir := filepath.Join(t.TempDir(), "radpanel")
+	dbPath := filepath.Join(dbDir, "radpanel.db")
 
 	if err := InitDB(dbPath); err != nil {
 		t.Fatalf("InitDB: %v", err)
@@ -45,7 +45,7 @@ func TestInitDBTightensExistingSQLiteFilePermissions(t *testing.T) {
 		t.Skip("POSIX permission bits are not meaningful on Windows")
 	}
 	t.Setenv("XUI_DB_JOURNAL_MODE", "")
-	dbPath := filepath.Join(t.TempDir(), "x-ui.db")
+	dbPath := filepath.Join(t.TempDir(), "radpanel.db")
 	if err := InitDB(dbPath); err != nil {
 		t.Fatalf("seed InitDB: %v", err)
 	}

@@ -1,0 +1,24 @@
+RadPanel
+========
+
+RadPanel is a rebranded fork of the 3x-ui project.
+
+  Upstream:  https://github.com/MHSanaei/3x-ui
+  Upstream author / copyright:  MHSanaei and 3x-ui contributors
+  Upstream licence:  GNU General Public License v3.0 (GPL-3.0)
+
+This fork is distributed under the same licence, GPL-3.0. See LICENSE.
+
+Changes made in this fork relative to upstream:
+  * Renamed the product from "3x-ui" to "RadPanel" (display strings, binary,
+    systemd unit, install paths, database filename, env-var prefixes).
+  * Repointed the module path / repo slug to this fork.
+  * Restyled the web UI (brand accent colour, theme tokens, manifest).
+  * Installer and updater scripts retargeted to this fork's releases.
+
+No upstream source files were relicensed. All original copyright notices are
+retained. Because this is a GPL-3.0 work, anyone who redistributes RadPanel (or a
+modified version of it) must also release the complete corresponding source
+under GPL-3.0 and keep these notices intact.
+
+RadPanel is NOT affiliated with or endorsed by the upstream author.

@@ -1,4 +1,4 @@
-// Pure builders for 3x-ui install commands (script + Docker). No React/DOM.
+// Pure builders for radpanel install commands (script + Docker). No React/DOM.
 
 export type InstallMethod = 'script' | 'docker';
 
@@ -11,8 +11,8 @@ export interface InstallOptions {
   webBasePath: string;
 }
 
-const REPO_RAW = 'https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh';
-const IMAGE = 'ghcr.io/mhsanaei/3x-ui:latest';
+const REPO_RAW = 'https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/master/install.sh';
+const IMAGE = 'ghcr.io/radinmovafaghh-coder/radpanel:latest';
 
 function isLatest(version: string): boolean {
   const v = version.trim().toLowerCase();
@@ -39,11 +39,11 @@ export function buildDockerRun(options: InstallOptions): string {
   if (options.panelPort.trim()) lines.push(`  -e XUI_PORT=${options.panelPort.trim()}`);
   if (options.webBasePath.trim())
     lines.push(`  -e XUI_INIT_WEB_BASE_PATH=${options.webBasePath.trim()}`);
-  lines.push(`  -v $PWD/db/:/etc/x-ui/`);
+  lines.push(`  -v $PWD/db/:/etc/radpanel/`);
   lines.push(`  -v $PWD/cert/:/root/cert/`);
   lines.push(`  --network=host`);
   lines.push(`  --restart=unless-stopped`);
-  lines.push(`  --name 3x-ui`);
+  lines.push(`  --name radpanel`);
   lines.push(`  ${IMAGE}`);
   return lines.join(' \\\n');
 }
@@ -60,11 +60,11 @@ export function buildDockerCompose(options: InstallOptions): string {
 
   return [
     `services:`,
-    `  3x-ui:`,
+    `  radpanel:`,
     `    image: ${IMAGE}`,
-    `    container_name: 3x-ui`,
+    `    container_name: radpanel`,
     `    volumes:`,
-    `      - ./db/:/etc/x-ui/`,
+    `      - ./db/:/etc/radpanel/`,
     `      - ./cert/:/root/cert/`,
     `    environment:`,
     ...env,

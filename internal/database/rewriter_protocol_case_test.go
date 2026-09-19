@@ -5,9 +5,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/config"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/xray"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/config"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/xray"
 )
 
 func TestRewriteRemovedOutboundKeysSeesAnUppercaseFreedom(t *testing.T) {
@@ -119,7 +119,7 @@ func TestRewriteUppercaseFreedomFinalRules(t *testing.T) {
 // The two earlier seeders recorded their rows before this predicate existed, so
 // this pins the re-run reaching a panel whose history already has both.
 func TestUppercaseFreedomFinalRulesFixReachesHistoryGatedPanels(t *testing.T) {
-	t.Setenv("XUI_DB_FOLDER", t.TempDir())
+	t.Setenv("RADPANEL_DB_FOLDER", t.TempDir())
 	if err := InitDB(config.GetDBPath()); err != nil {
 		if strings.Contains(err.Error(), "CGO_ENABLED=0") {
 			t.Skipf("sqlite needs cgo: %v", err)

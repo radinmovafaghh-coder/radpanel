@@ -1,6 +1,6 @@
 ---
 title: 安全加固
-description: 加固 3x-ui——面板认证与 2FA、Fail2ban IP 限制、防火墙规则、BBR，以及保持更新。
+description: 加固 radpanel——面板认证与 2FA、Fail2ban IP 限制、防火墙规则、BBR，以及保持更新。
 icon: ShieldCheck
 ---
 
@@ -19,14 +19,14 @@ icon: ShieldCheck
 ## Fail2ban 与 IP 限制
 
 为每个客户端设置一个 **IP 限制**（参见[客户端](/docs/config/clients)），以限制同时使用的源
-IP 数量。限制的执行由 **Fail2ban** 负责，3x-ui 会为你安装并配置好它（脚本安装时默认启用，
+IP 数量。限制的执行由 **Fail2ban** 负责，radpanel 会为你安装并配置好它（脚本安装时默认启用，
 Docker 安装时通过 `XUI_ENABLE_FAIL2BAN=true` 启用）。
 
-可从 `x-ui` 菜单（**22 — IP Limit Management**）进行管理：安装/配置、修改封锁时长
+可从 `radpanel` 菜单（**22 — IP Limit Management**）进行管理：安装/配置、修改封锁时长
 （默认 **30 分钟**）、封锁/解封某个 IP、查看封锁日志，以及检查状态。其底层机制如下：
 
-- 该 jail 名为 **`3x-ipl`**；封锁日志位于 `/var/log/x-ui/3xipl.log` 与
-  `/var/log/x-ui/3xipl-banned.log`（也可通过 `x-ui banlog` 查看）。
+- 该 jail 名为 **`3x-ipl`**；封锁日志位于 `/var/log/radpanel/3xipl.log` 与
+  `/var/log/radpanel/3xipl-banned.log`（也可通过 `radpanel banlog` 查看）。
 - 封锁覆盖所有 TCP/UDP，**但不包括**你的 SSH 端口和面板端口，因此封锁不会把你
   锁在服务器或面板之外。
 
@@ -39,7 +39,7 @@ Docker 安装时通过 `XUI_ENABLE_FAIL2BAN=true` 启用）。
 
 ## 防火墙
 
-只开放你实际使用的端口：SSH、面板端口、订阅端口以及你的入站端口。`x-ui` 菜单
+只开放你实际使用的端口：SSH、面板端口、订阅端口以及你的入站端口。`radpanel` 菜单
 （**23 — Firewall Management**）封装了 `ufw`，或者你也可以在此生成规则：
 
 <FirewallRulesGenerator />
@@ -51,12 +51,12 @@ Docker 安装时通过 `XUI_ENABLE_FAIL2BAN=true` 启用）。
 
 ## 网络调优（BBR）
 
-`x-ui` 菜单（**26 — Enable BBR**）用于切换 Google 的 BBR 拥塞控制算法
+`radpanel` 菜单（**26 — Enable BBR**）用于切换 Google 的 BBR 拥塞控制算法
 （`net.ipv4.tcp_congestion_control = bbr`、`net.core.default_qdisc = fq`），它在拥塞链路
 上通常能提升吞吐量。
 
 ## 保持更新
 
-定期更新 3x-ui 和 Xray-core——安全修复会随新版本发布。请关注
-[发布页面](https://github.com/MHSanaei/3x-ui/releases)，并参见
+定期更新 radpanel 和 Xray-core——安全修复会随新版本发布。请关注
+[发布页面](https://github.com/radinmovafaghh-coder/radpanel/releases)，并参见
 [更新与卸载](/docs/guide/update-uninstall)。

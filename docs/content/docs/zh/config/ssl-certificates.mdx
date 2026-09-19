@@ -1,6 +1,6 @@
 ---
 title: SSL 证书
-description: 为 3x-ui 面板和入站获取并续期 TLS 证书——可使用 x-ui 的 ACME 菜单（域名或裸 IP）、Cloudflare DNS-01 通配符，或手动 Certbot。
+description: 为 radpanel 面板和入站获取并续期 TLS 证书——可使用 radpanel 的 ACME 菜单（域名或裸 IP）、Cloudflare DNS-01 通配符，或手动 Certbot。
 icon: ShieldCheck
 ---
 
@@ -8,7 +8,7 @@ TLS 证书让你能够通过 HTTPS 提供**面板**服务（这样你的登录�
 流量都会被加密），并在**入站**上终止 TLS（VLESS-TLS、Trojan、
 Shadowsocks-TLS 等等）。获取证书有三种方式：
 
-- **`x-ui` 菜单**——内置的 [ACME](https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment)
+- **`radpanel` 菜单**——内置的 [ACME](https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment)
   客户端。对于单个域名或裸 IP 来说最为简单。
 - **Cloudflare DNS-01**——同样在菜单中提供；适用于**通配符**证书，或者
   当 80 端口被封锁 / 服务器位于 Cloudflare 代理之后时。
@@ -21,9 +21,9 @@ Shadowsocks-TLS 等等）。获取证书有三种方式：
   借用真实站点的 TLS。本页面针对的是面板和传统的 TLS 入站。
 </Callout>
 
-## `x-ui` SSL 菜单（Let's Encrypt）
+## `radpanel` SSL 菜单（Let's Encrypt）
 
-运行 `x-ui` 并选择 **`20` — SSL Certificate Management**。它会调用
+运行 `radpanel` 并选择 **`20` — SSL Certificate Management**。它会调用
 [acme.sh](https://github.com/acmesh-official/acme.sh)，并提供以下功能：
 
 | 选项                           | 作用                                                                |
@@ -56,7 +56,7 @@ HTTP 验证需要 **80 端口**可从互联网访问且未被占用。请在验�
 <Step>
 ### 运行签发程序
 
-`x-ui` → `20` → **Get SSL (Domain)**，然后输入域名。acme.sh 会请求
+`radpanel` → `20` → **Get SSL (Domain)**，然后输入域名。acme.sh 会请求
 证书，并将其保存在 `/root/cert/<domain>/` 目录下，文件名为 `fullchain.pem`
 （证书链）和 `privkey.pem`（私钥）。
 </Step>
@@ -103,7 +103,7 @@ DNS 验证通过创建 TXT 记录来证明你对域名的控制权，而无需�
 <Step>
 ### 运行 Cloudflare 签发程序
 
-`x-ui` → **`21` — Cloudflare SSL Certificate**。当提示时，选择 **`t`** 使用
+`radpanel` → **`21` — Cloudflare SSL Certificate**。当提示时，选择 **`t`** 使用
 API 令牌（默认），或选择 **`g`** 使用 Global API Key，然后输入你的
 域名（如果使用 Global API Key，还需输入你的账户邮箱和密钥）。acme.sh 会创建
 TXT 记录、完成验证，并在之后将其清理。

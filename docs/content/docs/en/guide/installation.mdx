@@ -1,17 +1,17 @@
 ---
 title: Installation
-description: Install 3x-ui via the official script (stable, pinned, or dev-latest), unattended/cloud-init, or Docker — and choose SQLite or PostgreSQL.
+description: Install radpanel via the official script (stable, pinned, or dev-latest), unattended/cloud-init, or Docker — and choose SQLite or PostgreSQL.
 icon: Download
 ---
 
-3x-ui runs on a wide range of Linux distributions — Ubuntu, Debian, Armbian,
+radpanel runs on a wide range of Linux distributions — Ubuntu, Debian, Armbian,
 Fedora, CentOS, RHEL, AlmaLinux, Rocky Linux, Oracle Linux, Amazon Linux,
 Virtuozzo, Arch, Manjaro, openSUSE (Tumbleweed/Leap), Alpine — and Windows,
 across `amd64`, `386`, `arm64`, `armv7`, `armv6`, `armv5`, and `s390x`.
 
 <Callout type="warn">
   Run the script installer as **root** (or with `sudo`). It installs a service,
-  sets up the `x-ui` management command, and enables the panel on boot.
+  sets up the `radpanel` management command, and enables the panel on boot.
 </Callout>
 
 <Tabs items={['Script', 'Docker', 'Manual']}>
@@ -20,27 +20,27 @@ across `amd64`, `386`, `arm64`, `armv7`, `armv6`, `armv5`, and `s390x`.
 
 The official script is the recommended path. During installation it generates a
 **random** username, password, and access (web base) path, sets up the service,
-and installs the `x-ui` management command.
+and installs the `radpanel` management command.
 
 ```bash title="latest stable"
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/master/install.sh)
 ```
 
 Install a **specific version** by appending its tag:
 
 ```bash title="pinned version"
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh) v3.4.0
+bash <(curl -Ls https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/master/install.sh) v3.4.0
 ```
 
 Install the rolling **dev** build (the latest per-commit pre-release from `main`
 — not a stable release) by passing `dev-latest`:
 
 ```bash title="rolling dev build"
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh) dev-latest
+bash <(curl -Ls https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/master/install.sh) dev-latest
 ```
 
-When it finishes, note the printed login details and run `x-ui` to open the
-[management menu](/docs/guide/update-uninstall#the-x-ui-management-menu), then
+When it finishes, note the printed login details and run `radpanel` to open the
+[management menu](/docs/guide/update-uninstall#the-radpanel-management-menu), then
 continue to [First login](/docs/guide/first-login).
 
 </Tab>
@@ -71,15 +71,15 @@ docker run -d \
   --cap-add=NET_ADMIN \
   --cap-add=NET_RAW \
   -e XUI_ENABLE_FAIL2BAN=true \
-  -v $PWD/db/:/etc/x-ui/ \
+  -v $PWD/db/:/etc/radpanel/ \
   -v $PWD/cert/:/root/cert/ \
   --network=host \
   --restart=unless-stopped \
-  --name 3x-ui \
-  ghcr.io/mhsanaei/3x-ui:latest
+  --name radpanel \
+  ghcr.io/radinmovafaghh-coder/radpanel:latest
 ```
 
-The `db/` volume holds the SQLite database (`/etc/x-ui/x-ui.db`) and `cert/`
+The `db/` volume holds the SQLite database (`/etc/radpanel/radpanel.db`) and `cert/`
 holds TLS certificates, so your data survives upgrades.
 
 </Tab>
@@ -87,7 +87,7 @@ holds TLS certificates, so your data survives upgrades.
 <Tab value="Manual">
 
 For advanced users, download a release archive for your architecture from the
-[releases page](https://github.com/MHSanaei/3x-ui/releases), extract it, and run
+[releases page](https://github.com/radinmovafaghh-coder/radpanel/releases), extract it, and run
 the binary as a systemd service. The install script automates exactly these
 steps, so it's preferred unless you have a specific reason to install by hand.
 
@@ -105,7 +105,7 @@ Tailor the command to your setup:
 
 You pick the storage backend at install time:
 
-- **SQLite** (default) — a single file at `/etc/x-ui/x-ui.db`. Zero setup.
+- **SQLite** (default) — a single file at `/etc/radpanel/radpanel.db`. Zero setup.
 - **PostgreSQL** — for high client counts or multi-node setups. The installer
   can install it locally or use a DSN you provide.
 
@@ -117,13 +117,13 @@ migration.
 The installer also runs **non-interactively** for automation. Set
 `XUI_NONINTERACTIVE=1` (or run with no TTY) and it installs end-to-end with zero
 prompts, generating random credentials and writing them to
-`/etc/x-ui/install-result.env`:
+`/etc/radpanel/install-result.env`:
 
 ```bash
-XUI_NONINTERACTIVE=1 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+XUI_NONINTERACTIVE=1 bash <(curl -Ls https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/master/install.sh)
 ```
 
-The repo's [`deploy/`](https://github.com/MHSanaei/3x-ui/tree/main/deploy)
+The repo's [`deploy/`](https://github.com/radinmovafaghh-coder/radpanel/tree/main/deploy)
 directory has ready-made **cloud-init** user-data for unattended installs on any
 cloud (Hetzner, AWS, DigitalOcean, Vultr, GCP, Azure, Oracle).
 
@@ -138,7 +138,7 @@ cloud (Hetzner, AWS, DigitalOcean, Vultr, GCP, Azure, Oracle).
   <Card
     title="Update & uninstall"
     href="/docs/guide/update-uninstall"
-    description="The x-ui menu, updates, and removal."
+    description="The radpanel menu, updates, and removal."
   />
   <Card
     title="REALITY"

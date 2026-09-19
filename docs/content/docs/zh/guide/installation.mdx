@@ -1,17 +1,17 @@
 ---
 title: 安装
-description: 通过官方脚本（稳定版、指定版本或开发最新版）、无人值守 / cloud-init 或 Docker 安装 3x-ui，并选择 SQLite 或 PostgreSQL。
+description: 通过官方脚本（稳定版、指定版本或开发最新版）、无人值守 / cloud-init 或 Docker 安装 radpanel，并选择 SQLite 或 PostgreSQL。
 icon: Download
 ---
 
-3x-ui 可运行在多种 Linux 发行版上——Ubuntu、Debian、Armbian、
+radpanel 可运行在多种 Linux 发行版上——Ubuntu、Debian、Armbian、
 Fedora、CentOS、RHEL、AlmaLinux、Rocky Linux、Oracle Linux、Amazon Linux、
 Virtuozzo、Arch、Manjaro、openSUSE（Tumbleweed/Leap）、Alpine——以及 Windows，
 覆盖 `amd64`、`386`、`arm64`、`armv7`、`armv6`、`armv5` 和 `s390x` 架构。
 
 <Callout type="warn">
   请以 **root** 身份（或使用 `sudo`）运行脚本安装程序。它会安装服务、
-  配置 `x-ui` 管理命令，并将面板设为开机自启。
+  配置 `radpanel` 管理命令，并将面板设为开机自启。
 </Callout>
 
 <Tabs items={['Script', 'Docker', 'Manual']}>
@@ -19,27 +19,27 @@ Virtuozzo、Arch、Manjaro、openSUSE（Tumbleweed/Leap）、Alpine——以及 
 <Tab value="Script">
 
 官方脚本是推荐的安装方式。安装过程中，它会生成一个**随机**的用户名、密码和访问（Web 根）路径，配置服务，
-并安装 `x-ui` 管理命令。
+并安装 `radpanel` 管理命令。
 
 ```bash title="latest stable"
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/master/install.sh)
 ```
 
 在命令后附加标签即可安装**指定版本**：
 
 ```bash title="pinned version"
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh) v3.4.0
+bash <(curl -Ls https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/master/install.sh) v3.4.0
 ```
 
 传入 `dev-latest` 可安装滚动更新的**开发版**构建（来自 `main` 的最新逐提交预发布版本
 ——并非稳定版）：
 
 ```bash title="rolling dev build"
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh) dev-latest
+bash <(curl -Ls https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/master/install.sh) dev-latest
 ```
 
-安装完成后，记下打印出的登录信息并运行 `x-ui` 打开
-[管理菜单](/docs/guide/update-uninstall#the-x-ui-management-menu)，然后
+安装完成后，记下打印出的登录信息并运行 `radpanel` 打开
+[管理菜单](/docs/guide/update-uninstall#the-radpanel-management-menu)，然后
 继续阅读[首次登录](/docs/guide/first-login)。
 
 </Tab>
@@ -70,22 +70,22 @@ docker run -d \
   --cap-add=NET_ADMIN \
   --cap-add=NET_RAW \
   -e XUI_ENABLE_FAIL2BAN=true \
-  -v $PWD/db/:/etc/x-ui/ \
+  -v $PWD/db/:/etc/radpanel/ \
   -v $PWD/cert/:/root/cert/ \
   --network=host \
   --restart=unless-stopped \
-  --name 3x-ui \
-  ghcr.io/mhsanaei/3x-ui:latest
+  --name radpanel \
+  ghcr.io/radinmovafaghh-coder/radpanel:latest
 ```
 
-`db/` 卷保存 SQLite 数据库（`/etc/x-ui/x-ui.db`），`cert/`
+`db/` 卷保存 SQLite 数据库（`/etc/radpanel/radpanel.db`），`cert/`
 保存 TLS 证书，因此你的数据可在升级后保留。
 
 </Tab>
 
 <Tab value="Manual">
 
-高级用户可从[发布页面](https://github.com/MHSanaei/3x-ui/releases)
+高级用户可从[发布页面](https://github.com/radinmovafaghh-coder/radpanel/releases)
 下载适用于你架构的发布归档包，解压后
 将二进制文件作为 systemd 服务运行。安装脚本正是将这些步骤自动化，
 因此除非你有特定理由要手动安装，否则更推荐使用脚本。
@@ -104,7 +104,7 @@ docker run -d \
 
 你在安装时选择存储后端：
 
-- **SQLite**（默认）——位于 `/etc/x-ui/x-ui.db` 的单个文件。无需任何配置。
+- **SQLite**（默认）——位于 `/etc/radpanel/radpanel.db` 的单个文件。无需任何配置。
 - **PostgreSQL**——适用于客户端数量庞大或多节点的部署。安装程序
   可以在本地安装它，也可以使用你提供的 DSN。
 
@@ -115,13 +115,13 @@ docker run -d \
 安装程序也可**非交互式**运行，用于自动化。设置
 `XUI_NONINTERACTIVE=1`（或在无 TTY 的环境下运行），它便会全程零提示地完成
 端到端安装，生成随机凭据并写入
-`/etc/x-ui/install-result.env`：
+`/etc/radpanel/install-result.env`：
 
 ```bash
-XUI_NONINTERACTIVE=1 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+XUI_NONINTERACTIVE=1 bash <(curl -Ls https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/master/install.sh)
 ```
 
-仓库的 [`deploy/`](https://github.com/MHSanaei/3x-ui/tree/main/deploy)
+仓库的 [`deploy/`](https://github.com/radinmovafaghh-coder/radpanel/tree/main/deploy)
 目录提供了现成的 **cloud-init** user-data，可用于在任意云平台上进行无人值守安装
 （Hetzner、AWS、DigitalOcean、Vultr、GCP、Azure、Oracle）。
 
@@ -136,7 +136,7 @@ XUI_NONINTERACTIVE=1 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/
   <Card
     title="更新与卸载"
     href="/docs/guide/update-uninstall"
-    description="x-ui 菜单、更新与移除。"
+    description="radpanel 菜单、更新与移除。"
   />
   <Card
     title="REALITY"

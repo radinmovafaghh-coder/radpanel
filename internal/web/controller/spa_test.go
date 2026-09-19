@@ -11,9 +11,9 @@ import (
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/locale"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/session"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/locale"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/session"
 )
 
 func newSPAFallbackTestEngine(t *testing.T) *gin.Engine {
@@ -31,7 +31,7 @@ func newSPAFallbackTestEngineWithBasePath(t *testing.T, basePath string) *gin.En
 	t.Cleanup(func() { SetDistFS(oldDistFS) })
 
 	engine := gin.New()
-	engine.Use(sessions.Sessions("3x-ui", cookie.NewStore([]byte("spa-fallback-test-secret"))))
+	engine.Use(sessions.Sessions("radpanel", cookie.NewStore([]byte("spa-fallback-test-secret"))))
 	engine.Use(func(c *gin.Context) {
 		c.Set("base_path", basePath)
 		c.Set("I18n", func(_ locale.I18nType, key string, _ ...string) string { return key })

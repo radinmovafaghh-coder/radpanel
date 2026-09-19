@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "3X-UI Panel API",
+    "title": "RadPanel Panel API",
     "version": "3.x",
-    "description": "Programmatic interface to a 3X-UI panel. Authenticate either by logging in (cookie) or with an API token from Settings → Security → API Token (Bearer). All endpoints under /panel/api/* honour both modes — an API token is a full-admin credential, so treat it like the panel password."
+    "description": "Programmatic interface to a RadPanel panel. Authenticate either by logging in (cookie) or with an API token from Settings → Security → API Token (Bearer). All endpoints under /panel/api/* honour both modes — an API token is a full-admin credential, so treat it like the panel password."
   },
   "servers": [
     {
@@ -21,7 +21,7 @@
       "cookieAuth": {
         "type": "apiKey",
         "in": "cookie",
-        "name": "3x-ui",
+        "name": "radpanel",
         "description": "Session cookie set by POST /login. Browser-only."
       }
     },
@@ -3147,7 +3147,7 @@
         "type": "object"
       },
       "Node": {
-        "description": "Node represents a remote 3x-ui panel registered with the central panel.\nThe central panel polls each node's existing /panel/api/server/status\nendpoint over HTTP using the per-node ApiToken to populate the runtime\nstatus fields below.",
+        "description": "Node represents a remote radpanel panel registered with the central panel.\nThe central panel polls each node's existing /panel/api/server/status\nendpoint over HTTP using the per-node ApiToken to populate the runtime\nstatus fields below.",
         "properties": {
           "activeCount": {
             "example": 23,
@@ -4116,7 +4116,7 @@
         "type": "object"
       },
       "Setting": {
-        "description": "Setting stores key-value configuration settings for the 3x-ui panel.",
+        "description": "Setting stores key-value configuration settings for the radpanel panel.",
         "properties": {
           "id": {
             "type": "integer"
@@ -4315,7 +4315,7 @@
         "type": "object"
       },
       "User": {
-        "description": "User represents a user account in the 3x-ui panel.",
+        "description": "User represents a user account in the radpanel panel.",
         "properties": {
           "id": {
             "type": "integer"
@@ -4395,7 +4395,7 @@
     },
     {
       "name": "Nodes",
-      "description": "Manage remote 3x-ui panels acting as nodes for a central panel. All endpoints under /panel/api/nodes."
+      "description": "Manage remote radpanel panels acting as nodes for a central panel. All endpoints under /panel/api/nodes."
     },
     {
       "name": "Hosts",
@@ -6103,7 +6103,7 @@
         "tags": [
           "Server"
         ],
-        "summary": "Check whether a newer 3x-ui release is available on GitHub.",
+        "summary": "Check whether a newer radpanel release is available on GitHub.",
         "operationId": "get_panel_api_server_getPanelUpdateInfo",
         "responses": {
           "200": {
@@ -12418,7 +12418,7 @@
         "tags": [
           "Settings"
         ],
-        "summary": "Restart the entire 3x-ui process after a 3-second grace period. The connection drops immediately; the panel comes back online ~5-10 seconds later.",
+        "summary": "Restart the entire radpanel process after a 3-second grace period. The connection drops immediately; the panel comes back online ~5-10 seconds later.",
         "operationId": "post_panel_api_setting_restartPanel",
         "responses": {
           "200": {
@@ -13902,8 +13902,8 @@
                   },
                   "userAgent": {
                     "type": "string",
-                    "default": "3x-ui-outbound-sub/1.0",
-                    "description": "Custom User-Agent sent when fetching this subscription. Defaults to \"3x-ui-outbound-sub/1.0\"."
+                    "default": "radpanel-outbound-sub/1.0",
+                    "description": "Custom User-Agent sent when fetching this subscription. Defaults to \"radpanel-outbound-sub/1.0\"."
                   },
                   "updateInterval": {
                     "type": "integer",
@@ -14000,8 +14000,8 @@
                   },
                   "userAgent": {
                     "type": "string",
-                    "default": "3x-ui-outbound-sub/1.0",
-                    "description": "Custom User-Agent sent when fetching this subscription. Defaults to \"3x-ui-outbound-sub/1.0\"."
+                    "default": "radpanel-outbound-sub/1.0",
+                    "description": "Custom User-Agent sent when fetching this subscription. Defaults to \"radpanel-outbound-sub/1.0\"."
                   },
                   "updateInterval": {
                     "type": "integer",

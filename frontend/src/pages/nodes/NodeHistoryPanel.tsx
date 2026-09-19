@@ -142,7 +142,7 @@ export default function NodeHistoryPanel({ node, bucket = 30 }: NodeHistoryPanel
           data={netUpPoints}
           labels={netUpLabels}
           height={120}
-          stroke="#1677ff"
+          stroke="#8b5cf6"
           showGrid
           showAxes
           tickCountX={4}

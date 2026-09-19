@@ -11,12 +11,12 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
-	"github.com/mhsanaei/3x-ui/v3/internal/database/model"
-	"github.com/mhsanaei/3x-ui/v3/internal/util/crypto"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/locale"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service"
-	"github.com/mhsanaei/3x-ui/v3/internal/web/service/discord"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database/model"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/util/crypto"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/locale"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/service"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/web/service/discord"
 )
 
 func TestValidateRegex(t *testing.T) {
@@ -56,8 +56,8 @@ func TestValidateRegex(t *testing.T) {
 }
 
 func TestAPITokenMutationRoutesEnforceExpectedScope(t *testing.T) {
-	t.Setenv("XUI_DB_FOLDER", t.TempDir())
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	t.Setenv("RADPANEL_DB_FOLDER", t.TempDir())
+	if err := database.InitDB(filepath.Join(t.TempDir(), "radpanel.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })
@@ -94,8 +94,8 @@ func TestAPITokenMutationRoutesEnforceExpectedScope(t *testing.T) {
 // GHSA-xqqw-jqqv-99h6: a save that keeps 2FA enabled must not be able to
 // rebind the authenticator without presenting a current code.
 func TestUpdateSettingRequiresCodeToReplaceTwoFactorToken(t *testing.T) {
-	t.Setenv("XUI_DB_FOLDER", t.TempDir())
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	t.Setenv("RADPANEL_DB_FOLDER", t.TempDir())
+	if err := database.InitDB(filepath.Join(t.TempDir(), "radpanel.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })
@@ -194,8 +194,8 @@ func TestTestDiscordEndpoint(t *testing.T) {
 	}
 
 	// Setup DB
-	t.Setenv("XUI_DB_FOLDER", t.TempDir())
-	if err := database.InitDB(filepath.Join(t.TempDir(), "x-ui.db")); err != nil {
+	t.Setenv("RADPANEL_DB_FOLDER", t.TempDir())
+	if err := database.InitDB(filepath.Join(t.TempDir(), "radpanel.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() {

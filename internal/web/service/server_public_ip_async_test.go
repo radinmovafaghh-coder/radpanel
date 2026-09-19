@@ -7,15 +7,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mhsanaei/3x-ui/v3/internal/database"
+	"github.com/radinmovafaghh-coder/radpanel/v3/internal/database"
 )
 
 // A box with no IPv6 route spends 3s per lookup service, and a status sample
 // that waits for that is a panel reporting nothing for the first ~15s.
 func TestStatusSampleDoesNotWaitOnPublicIPLookup(t *testing.T) {
 	dbDir := t.TempDir()
-	t.Setenv("XUI_DB_FOLDER", dbDir)
-	if err := database.InitDB(filepath.Join(dbDir, "x-ui.db")); err != nil {
+	t.Setenv("RADPANEL_DB_FOLDER", dbDir)
+	if err := database.InitDB(filepath.Join(dbDir, "radpanel.db")); err != nil {
 		t.Fatalf("InitDB: %v", err)
 	}
 	t.Cleanup(func() { _ = database.CloseDB() })

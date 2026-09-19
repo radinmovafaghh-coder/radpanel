@@ -152,7 +152,7 @@
       "xrayUpdates": "Actualizaciones de Xray",
       "xraySwitchClickDesk": "Elige sabiamente, ya que las versiones anteriores pueden no ser compatibles con las configuraciones actuales.",
       "updatePanel": "Actualizar panel",
-      "panelUpdateDesc": "Esto actualizará 3X-UI a la última versión y reiniciará el servicio del panel.",
+      "panelUpdateDesc": "Esto actualizará RadPanel a la última versión y reiniciará el servicio del panel.",
       "currentPanelVersion": "Versión actual del panel",
       "latestPanelVersion": "Última versión del panel",
       "panelUpToDate": "El panel está actualizado",
@@ -216,10 +216,10 @@
       "xraySwitchVersionDialogDesc": "Esto cambiará la versión de Xray a #version#.",
       "xraySwitchVersionPopover": "Xray se actualizó correctamente",
       "panelUpdateDialog": "¿Deseas actualizar el panel?",
-      "panelUpdateDialogDesc": "Esto actualizará 3X-UI a la versión #version# y reiniciará el servicio del panel.",
+      "panelUpdateDialogDesc": "Esto actualizará RadPanel a la versión #version# y reiniciará el servicio del panel.",
       "panelUpdateStartedPopover": "Actualización del panel iniciada",
       "panelUpdateFailedTitle": "Error al actualizar el panel",
-      "panelUpdateFailedDesc": "La actualización no se completó correctamente. Revisa los registros del servidor o ejecuta 'x-ui update' desde la línea de comandos.",
+      "panelUpdateFailedDesc": "La actualización no se completó correctamente. Revisa los registros del servidor o ejecuta 'radpanel update' desde la línea de comandos.",
       "panelUpdateUnknownTitle": "No se pudo confirmar si la actualización terminó",
       "panelUpdateUnknownDesc": "El panel no informó un resultado a tiempo. Recarga la página para comprobar la versión actual, o revisa los registros del servidor.",
       "geofileUpdateDialog": "¿Realmente deseas actualizar el geofichero?",
@@ -782,7 +782,7 @@
       "deleteHwidConfirm": "¿Eliminar este dispositivo? Deberá volver a registrarse en la próxima obtención de la suscripción.",
       "hwidDeleted": "Dispositivo eliminado.",
       "clearHwidsConfirm": "¿Eliminar todos los dispositivos registrados? Cada dispositivo deberá volver a registrarse en la próxima obtención de la suscripción.",
-      "limitIpFail2banMissing": "Fail2ban no está instalado, por lo que no se puede aplicar el límite de IP. Instala Fail2ban desde el menú bash de x-ui para habilitar esta opción.",
+      "limitIpFail2banMissing": "Fail2ban no está instalado, por lo que no se puede aplicar el límite de IP. Instala Fail2ban desde el menú bash de radpanel para habilitar esta opción.",
       "limitIpFail2banWindows": "Fail2ban no está disponible en Windows, por lo que no se puede aplicar el límite de IP.",
       "limitIpDisabled": "La función de límite de IP está deshabilitada en este servidor.",
       "password": "Contraseña",
@@ -1223,7 +1223,7 @@
       "subAnnounce": "Anuncio",
       "subAnnounceDesc": "El texto del anuncio mostrado en el cliente VPN. Admite tokens de identidad del cliente: {{EMAIL}}, {{ID}}, {{SHORT_ID}}, {{SUB_ID}}, {{TELEGRAM_ID}}.",
       "subThemeDir": "Directorio del tema de suscripción",
-      "subThemeDirDesc": "Ruta absoluta a una carpeta que contiene una plantilla personalizada (index.html/sub.html) para la página de suscripción (p. ej. /etc/3x-ui/sub_templates/my-theme/). Déjalo vacío para usar la página predeterminada.",
+      "subThemeDirDesc": "Ruta absoluta a una carpeta que contiene una plantilla personalizada (index.html/sub.html) para la página de suscripción (p. ej. /etc/radpanel/sub_templates/my-theme/). Déjalo vacío para usar la página predeterminada.",
       "subThemeDirDocs": "Guía de plantillas ↗",
       "subEnableRouting": "Habilitar enrutamiento",
       "happLinkEnable": "Enlaces de suscripción cifrados",
@@ -2439,10 +2439,10 @@
   },
   "discord": {
     "test": {
-      "title": "Prueba de notificación de Discord de 3x-ui",
+      "title": "Prueba de notificación de Discord de radpanel",
       "body": "Esta es una notificación de prueba que confirma que las notificaciones de Discord están configuradas correctamente."
     },
-    "footer": "Panel 3x-ui",
+    "footer": "Panel radpanel",
     "fields": {
       "panelVersion": "Versión del panel",
       "xrayCore": "Núcleo Xray",
@@ -2477,13 +2477,13 @@
       "loginFailed": "Inicio de sesión fallido"
     },
     "report": {
-      "title": "📊 Informe de estado de 3x-ui",
+      "title": "📊 Informe de estado de radpanel",
       "summary": "Informe periódico del estado del servidor y del proxy de **{{ .Host }}**",
-      "footer": "Informe programado de 3x-ui • Programación: {{ .RunTime }}"
+      "footer": "Informe programado de radpanel • Programación: {{ .RunTime }}"
     },
     "commands": {
-      "helpTitle": "🤖 Comandos del bot de Discord de 3x-ui",
-      "helpDescription": "Comandos disponibles para supervisar y administrar el servidor 3x-ui:",
+      "helpTitle": "🤖 Comandos del bot de Discord de radpanel",
+      "helpDescription": "Comandos disponibles para supervisar y administrar el servidor radpanel:",
       "helpStatus": "Muestra la carga del sistema, RAM, CPU, conexiones y usuarios en línea",
       "helpReport": "Genera un informe de estado completo (con copia de seguridad de la BD si está configurada)",
       "helpBackup": "Envía de inmediato el archivo de copia de seguridad de la base de datos",
@@ -2491,10 +2491,10 @@
       "helpInbounds": "Lista todas las entradas configuradas con puertos y estadísticas de clientes",
       "helpRestart": "Reinicia el núcleo Xray",
       "helpHelp": "Muestra esta lista de comandos disponibles",
-      "statusTitle": "⚡ Estado del servidor 3x-ui",
+      "statusTitle": "⚡ Estado del servidor radpanel",
       "statusDescription": "Métricas operativas actuales de **{{ .Host }}**",
       "backupTitle": "🗄️ Copia de seguridad de la base de datos",
-      "backupDescription": "Archivo de copia de seguridad de 3x-ui generado el `{{ .Time }}`",
+      "backupDescription": "Archivo de copia de seguridad de radpanel generado el `{{ .Time }}`",
       "backupUnavailable": "❌ Servicio de copia de seguridad no disponible",
       "backupFailed": "❌ No se pudo leer la copia de seguridad de la base de datos: {{ .Error }}",
       "usageHint": "⚠️ Uso: `!usage <email>` o `/usage <email>`",

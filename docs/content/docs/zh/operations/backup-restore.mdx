@@ -1,6 +1,6 @@
 ---
 title: 备份与恢复
-description: 手动或通过 Telegram 机器人备份并恢复你的 3x-ui 数据库与证书。
+description: 手动或通过 Telegram 机器人备份并恢复你的 radpanel 数据库与证书。
 icon: DatabaseBackup
 ---
 
@@ -9,7 +9,7 @@ icon: DatabaseBackup
 
 ## 需要备份的内容
 
-- **数据库** —— 默认为位于 `/etc/x-ui/x-ui.db` 的 SQLite（如果你使用
+- **数据库** —— 默认为位于 `/etc/radpanel/radpanel.db` 的 SQLite（如果你使用
   PostgreSQL 后端，则为对应的 PostgreSQL 数据库）。
 - **证书** —— `/root/cert/` 下的所有内容（或你存放 TLS 证书的任意位置）。
 
@@ -18,7 +18,7 @@ icon: DatabaseBackup
 你可以从面板的概览页下载备份，也可以直接从服务器上复制数据库文件：
 
 ```bash title="copy the SQLite database"
-cp /etc/x-ui/x-ui.db /root/x-ui-backup-$(date +%F).db
+cp /etc/radpanel/radpanel.db /root/radpanel-backup-$(date +%F).db
 ```
 
 要恢复时，先停止面板，把数据库文件放回原位，然后重新启动面板。
@@ -34,12 +34,12 @@ cp /etc/x-ui/x-ui.db /root/x-ui-backup-$(date +%F).db
 
 ## SQLite 转储 / 恢复
 
-`x-ui migrate-db` 命令可在 SQLite 数据库与纯文本 SQL 转储之间相互转换
+`radpanel migrate-db` 命令可在 SQLite 数据库与纯文本 SQL 转储之间相互转换
 （便于检查，或在不同机器之间转移）：
 
 ```bash
-x-ui migrate-db --dump /root/x-ui.sql       # SQLite -> SQL text
-x-ui migrate-db --restore /root/x-ui.sql     # SQL text -> SQLite
+radpanel migrate-db --dump /root/radpanel.sql       # SQLite -> SQL text
+radpanel migrate-db --restore /root/radpanel.sql     # SQL text -> SQLite
 ```
 
 若想改用 PostgreSQL，请参阅[数据库](/docs/reference/database)。
