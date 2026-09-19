@@ -14,7 +14,6 @@
   <a href="https://github.com/radinmovafaghh-coder/radpanel/releases/latest"><img src="https://img.shields.io/github/downloads/radinmovafaghh-coder/radpanel/total.svg" alt="Downloads"></a>
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true" alt="License"></a>
   <a href="https://pkg.go.dev/github.com/radinmovafaghh-coder/radpanel/v3"><img src="https://pkg.go.dev/badge/github.com/radinmovafaghh-coder/radpanel/v3.svg" alt="Go Reference"></a>
-  <a href="https://docs.sanaei.dev"><img src="https://img.shields.io/badge/docs-docs.sanaei.dev-22d3ee" alt="Documentation"></a>
 </p>
 
 **RadPanel**, [Xray-core](https://github.com/XTLS/Xray-core) sunucularını yönetmek için geliştirilmiş profesyonel, açık kaynaklı bir web kontrol panelidir. Tek bir sanal sunucudan (VPS) çok düğümlü (multi-node) dağıtımlara kadar çok çeşitli proxy ve VPN protokollerini kurmak, yapılandırmak ve izlemek için temiz, çok dilli bir arayüz sağlar.
@@ -93,7 +92,7 @@ Kurulum sırasında rastgele bir kullanıcı adı, şifre ve erişim yolu oluşt
 
 Her yayın dosyası, yanında bir `.sha256` sağlama toplamıyla birlikte yayımlanır. Hem `install.sh` hem de güncelleyici, arşivi bu toplama karşı doğrular ve uyuşmazlık halinde işlemi durdurur.
 
-Tam dokümantasyon — kurulum, yapılandırma, işletim ve eksiksiz API referansı — için **[docs.sanaei.dev](https://docs.sanaei.dev)** adresini ziyaret edin.
+Tam dokümantasyon — kurulum, yapılandırma, işletim ve eksiksiz API referansı — için **[docs/](docs/)** adresini ziyaret edin.
 
 ### Etkileşimsiz kurulum
 
@@ -173,7 +172,7 @@ docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/radinmovafaghh-c
 | `XUI_NODE_TOKEN_KEY_FILE` | Etkin anahtar kimliğini ve base64 kodlu 32 baytlık anahtarlarını içeren JSON anahtarlığı (mod `0600`) | `/etc/radpanel/node_token_key.json` |
 | `XUI_NODE_TOKEN_KEY` | Tek bir base64 kodlu 32 baytlık anahtar; yalnızca anahtar dosyası yüklenemediğinde kullanılır | — |
 
-Tam liste [ortam değişkenleri referansında](https://docs.sanaei.dev/docs/reference/env-vars) yer alır.
+Tam liste [docs/](docs/) yer alır.
 
 ## Desteklenen Diller
 
@@ -201,31 +200,7 @@ radpanel çevresindeki topluluk tarafından oluşturulmuş araçlar ve entegrasy
 - [terraform-provider-radpanel](https://github.com/batonogov/terraform-provider-threexui) (Lisans: **MIT**): _Gelen bağlantılarnı, kullanıcıları, panel ayarlarını ve Xray yapılandırmasını Terraform / OpenTofu ile kod olarak (as code) yönetin._
 - [RadPanel Manager](https://github.com/yukh975/RadPanel-Manager) (Lisans: **MIT**): _radpanel için yerel Android istemcisi — kontrol paneli, gelen bağlantılar, QR ile paylaşımlı kullanıcılar, düğümler ve çoklu panel yönetimi. F-Droid'de mevcut._
 
-## Projeyi Destekleyin
+## Credits
 
-**Eğer bu proje size faydalı olduysa, bir yıldız verebilirsiniz**:star2:
+RadPanel is a fork of [3x-ui](https://github.com/MHSanaei/3x-ui). All credit for the original panel goes to MHSanaei and the 3x-ui contributors. For RadPanel itself, open an [issue](https://github.com/radinmovafaghh-coder/radpanel/issues).
 
-<a href="https://www.buymeacoffee.com/MHSanaei" target="_blank">
-<img src="./media/default-yellow.png" alt="Bana Bir Kahve Ismarla" style="height: 70px !important;width: 277px !important;" >
-</a>
-
-</br>
-<a href="https://nowpayments.io/donation/hsanaei" target="_blank" rel="noreferrer noopener">
-   <img src="./media/donation-button-black.svg" alt="NOWPayments üzerinden Kripto Bağış Butonu">
-</a>
-
-## Yıldız Geçmişi
-
-<a href="https://www.star-history.com/?repos=mhsanaei%2Fradpanel&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=radinmovafaghh-coder/radpanel&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=radinmovafaghh-coder/radpanel&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=radinmovafaghh-coder/radpanel&type=date&legend=top-left" />
- </picture>
-</a>
-
-<p align="center">
- <a href="https://www.star-history.com/radinmovafaghh-coder/radpanel">
-  <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=rank&theme=dark" /><source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=rank" /><img alt="Star History Rank" src="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=rank" /></picture> <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=trending&theme=dark" /><source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=trending" /><img alt="GitHub Trending Repository of the Day" src="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=trending" /></picture>
- </a>
-</p>

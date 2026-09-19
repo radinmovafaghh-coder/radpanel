@@ -14,7 +14,6 @@
   <a href="https://github.com/radinmovafaghh-coder/radpanel/releases/latest"><img src="https://img.shields.io/github/downloads/radinmovafaghh-coder/radpanel/total.svg" alt="Downloads"></a>
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true" alt="License"></a>
   <a href="https://pkg.go.dev/github.com/radinmovafaghh-coder/radpanel/v3"><img src="https://pkg.go.dev/badge/github.com/radinmovafaghh-coder/radpanel/v3.svg" alt="Go Reference"></a>
-  <a href="https://docs.sanaei.dev"><img src="https://img.shields.io/badge/docs-docs.sanaei.dev-22d3ee" alt="Documentation"></a>
 </p>
 
 **RadPanel** هي لوحة تحكم ويب متقدمة ومفتوحة المصدر لإدارة خوادم [Xray-core](https://github.com/XTLS/Xray-core). توفّر واجهة نظيفة ومتعددة اللغات لنشر وتكوين ومراقبة مجموعة واسعة من بروتوكولات الوكيل وVPN — من خادم VPS واحد إلى عمليات النشر متعددة العقد.
@@ -93,7 +92,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/
 
 يُنشر مع كل ملف إصدار مجموع تحقق `.sha256` بجانبه، ويتحقق كل من `install.sh` وأداة التحديث من الأرشيف مقابل هذا المجموع ويتوقفان عند عدم التطابق.
 
-للحصول على الوثائق الكاملة — التثبيت والإعداد والتشغيل ومرجع API الكامل — قم بزيارة **[docs.sanaei.dev](https://docs.sanaei.dev)**.
+للحصول على الوثائق الكاملة — التثبيت والإعداد والتشغيل ومرجع API الكامل — قم بزيارة **[docs/](docs/)**.
 
 ### التثبيت غير التفاعلي
 
@@ -173,7 +172,7 @@ docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/radinmovafaghh-c
 | `XUI_NODE_TOKEN_KEY_FILE` | حلقة مفاتيح JSON (بأذونات `0600`) تضم معرّف المفتاح النشط ومفاتيح 32 بايت بترميز base64 | `/etc/radpanel/node_token_key.json` |
 | `XUI_NODE_TOKEN_KEY` | مفتاح واحد بطول 32 بايت بترميز base64، يُستخدم فقط عند تعذّر تحميل ملف المفاتيح | — |
 
-القائمة الكاملة متوفرة في [مرجع متغيرات البيئة](https://docs.sanaei.dev/docs/reference/env-vars).
+القائمة الكاملة متوفرة في [docs/](docs/).
 
 ## اللغات المدعومة
 
@@ -201,30 +200,7 @@ English · فارسی · العربية · 中文（简体） · 中文（繁體
 - [terraform-provider-radpanel](https://github.com/batonogov/terraform-provider-threexui) (الترخيص: **MIT**): _إدارة الاتصالات الواردة والعملاء وإعدادات اللوحة وتكوين Xray كرمز باستخدام Terraform / OpenTofu._
 - [RadPanel Manager](https://github.com/yukh975/RadPanel-Manager) (الترخيص: **MIT**): _عميل أندرويد أصلي لـ radpanel — لوحة التحكم، الاتصالات الواردة، العملاء مع مشاركة رمز QR، العقد وإدارة عدة لوحات. متاح على F-Droid._
 
-## دعم المشروع
+## Credits
 
-**إذا كان هذا المشروع مفيدًا لك، فقد ترغب في إعطائه**:star2:
+RadPanel is a fork of [3x-ui](https://github.com/MHSanaei/3x-ui). All credit for the original panel goes to MHSanaei and the 3x-ui contributors. For RadPanel itself, open an [issue](https://github.com/radinmovafaghh-coder/radpanel/issues).
 
-<a href="https://www.buymeacoffee.com/MHSanaei" target="_blank">
-<img src="./media/default-yellow.png" alt="Buy Me A Coffee" style="height: 70px !important;width: 277px !important;" >
-</a>
-</br>
-<a href="https://nowpayments.io/donation/hsanaei" target="_blank" rel="noreferrer noopener">
-   <img src="./media/donation-button-black.svg" alt="Crypto donation button by NOWPayments">
-</a>
-
-## سجل النجوم
-
-<a href="https://www.star-history.com/?repos=mhsanaei%2Fradpanel&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=radinmovafaghh-coder/radpanel&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=radinmovafaghh-coder/radpanel&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=radinmovafaghh-coder/radpanel&type=date&legend=top-left" />
- </picture>
-</a>
-
-<p align="center">
- <a href="https://www.star-history.com/radinmovafaghh-coder/radpanel">
-  <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=rank&theme=dark" /><source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=rank" /><img alt="Star History Rank" src="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=rank" /></picture> <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=trending&theme=dark" /><source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=trending" /><img alt="GitHub Trending Repository of the Day" src="https://api.star-history.com/badge?repo=radinmovafaghh-coder/radpanel&type=trending" /></picture>
- </a>
-</p>

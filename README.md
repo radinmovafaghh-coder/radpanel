@@ -1,34 +1,42 @@
-[English](/README.md) | [فارسی](/README.fa_IR.md) | [العربية](/README.ar_EG.md) | [中文](/README.zh_CN.md) | [Español](/README.es_ES.md) | [Русский](/README.ru_RU.md) | [Türkçe](/README.tr_TR.md)
+<div align="center">
 
-> **RadPanel** is a rebranded fork of [3x-ui](https://github.com/MHSanaei/3x-ui) by **MHSanaei**,
-> licensed under **GPL-3.0**. Original copyright (C) MHSanaei and contributors.
-> RadPanel keeps the same licence (GPL-3.0) and redistributes the upstream source with
-> branding and theme changes. See [NOTICE](NOTICE) for details.
+<img src="./media/radpanel-light.png" alt="RadPanel" width="320">
 
+### RadPanel
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./media/radpanel-dark.png">
-    <img alt="radpanel" src="./media/radpanel-light.png">
-  </picture>
-</p>
+**A modern, minimal web control panel for Xray-core — install in one command, manage from any device.**
 
-<p align="center">
-  <a href="https://github.com/radinmovafaghh-coder/radpanel/releases"><img src="https://img.shields.io/github/v/release/radinmovafaghh-coder/radpanel" alt="Release"></a>
-  <a href="https://github.com/radinmovafaghh-coder/radpanel/actions"><img src="https://img.shields.io/github/actions/workflow/status/radinmovafaghh-coder/radpanel/release.yml.svg" alt="Build"></a>
-  <a href="#"><img src="https://img.shields.io/github/go-mod/go-version/radinmovafaghh-coder/radpanel.svg" alt="GO Version"></a>
-  <a href="https://github.com/radinmovafaghh-coder/radpanel/releases/latest"><img src="https://img.shields.io/github/downloads/radinmovafaghh-coder/radpanel/total.svg" alt="Downloads"></a>
-  <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true" alt="License"></a>
-  <a href="https://pkg.go.dev/github.com/radinmovafaghh-coder/radpanel/v3"><img src="https://pkg.go.dev/badge/github.com/radinmovafaghh-coder/radpanel/v3.svg" alt="Go Reference"></a>
-  <a href="https://docs.sanaei.dev"><img src="https://img.shields.io/badge/docs-docs.sanaei.dev-22d3ee" alt="Documentation"></a>
-</p>
+[![Release](https://img.shields.io/github/v/release/radinmovafaghh-coder/radpanel?style=flat-square&color=7c3aed)](https://github.com/radinmovafaghh-coder/radpanel/releases)
+[![Build](https://img.shields.io/github/actions/workflow/status/radinmovafaghh-coder/radpanel/release.yml?style=flat-square&label=build)](https://github.com/radinmovafaghh-coder/radpanel/actions)
+[![License](https://img.shields.io/badge/license-GPL--3.0-7c3aed?style=flat-square)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![Downloads](https://img.shields.io/github/downloads/radinmovafaghh-coder/radpanel/total?style=flat-square&color=7c3aed)](https://github.com/radinmovafaghh-coder/radpanel/releases)
+[![Languages](https://img.shields.io/badge/i18n-13%20languages-7c3aed?style=flat-square)](#supported-languages)
 
-**RadPanel** is an advanced, open-source web control panel for managing [Xray-core](https://github.com/XTLS/Xray-core) servers. It provides a clean, multi-language interface for deploying, configuring, and monitoring a wide range of proxy and VPN protocols — from a single VPS to multi-node deployments.
+</div>
 
-Built as an enhanced fork of the original X-UI project, RadPanel adds broader protocol support, improved stability, per-client traffic accounting, and many quality-of-life features.
+---
+
+## What is RadPanel?
+
+RadPanel is a self-hosted control panel for [Xray-core](https://github.com/XTLS/Xray-core).
+It gives you a clean web UI to create inbounds, hand out clients, watch traffic, and run
+several servers from one dashboard — without hand-editing JSON.
+
+It is a **GPL-3.0 fork of [3x-ui](https://github.com/MHSanaei/3x-ui)** by MHSanaei. RadPanel
+keeps the same licence and keeps the upstream copyright notices intact (see [NOTICE](NOTICE));
+what it changes is the branding, the theme, and the installer target.
 
 > [!IMPORTANT]
-> This project is intended for personal use only. Please do not use it for illegal purposes or in a production environment.
+> For personal use. Do not use it for illegal purposes or in a production environment.
+
+## Why RadPanel?
+
+- **One command to install.** `bash <(curl -Ls .../install.sh)` and you are in.
+- **Lightweight and clean.** A focused UI that stays out of your way.
+- **Works everywhere.** Linux (amd64, arm64, armv7, armv6, armv5, 386, s390x) and Windows.
+- **13 languages**, light / dark / ultra-dark themes.
+- **SQLite by default**, PostgreSQL when you need it.
+- **Fully open.** GPL-3.0, source included, no telemetry.
 
 ## Features
 
@@ -99,7 +107,7 @@ During installation a random username, password, and access path are generated. 
 
 Every release asset is published with a `.sha256` sum next to it. Both `install.sh` and the updater verify the archive against that sum and abort on a mismatch.
 
-For full documentation — installation, configuration, operations, and the complete API reference — visit **[docs.sanaei.dev](https://docs.sanaei.dev)**.
+Documentation for the panel lives in the [docs/](docs/) folder of this repo. The upstream project's docs at docs.sanaei.dev also largely apply, since RadPanel shares its core.
 
 ### Unattended install
 
@@ -179,7 +187,7 @@ docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/radinmovafaghh-c
 | `XUI_NODE_TOKEN_KEY_FILE` | JSON keyring (mode `0600`) holding the active key id and its base64 32-byte keys | `/etc/radpanel/node_token_key.json` |
 | `XUI_NODE_TOKEN_KEY` | A single base64 32-byte key, used only when the key file cannot be loaded | — |
 
-The complete list is on the [environment variables reference](https://docs.sanaei.dev/docs/reference/env-vars).
+The complete list is on the [environment variables reference](https://github.com/radinmovafaghh-coder/radpaneldocs/reference/env-vars).
 
 ## Supported Languages
 
@@ -191,9 +199,9 @@ English · فارسی · العربية · 中文（简体） · 中文（繁體
 
 Contributions are welcome. Please read the [Contributing Guide](/CONTRIBUTING.md) before opening an issue or pull request.
 
-## A Special Thanks to
+## A Special Thanks to (upstream)
 
-- [alireza0](https://github.com/alireza0/)
+- [alireza0](https://github.com/alireza0/) — upstream 3x-ui contributor
 
 ## Acknowledgment
 
@@ -202,23 +210,20 @@ Contributions are welcome. Please read the [Contributing Guide](/CONTRIBUTING.md
 
 ## Community Tools
 
-Tools and integrations built by the community around radpanel.
+Tools and integrations from the upstream 3x-ui community (may work with RadPanel).
 
 - [terraform-provider-radpanel](https://github.com/batonogov/terraform-provider-threexui) (License: **MIT**): _Manage inbounds, clients, panel settings, and Xray configuration as code with Terraform / OpenTofu._
 - [RadPanel Manager](https://github.com/yukh975/RadPanel-Manager) (License: **MIT**): _Native Android client for radpanel — dashboard, inbounds, clients with QR sharing, nodes and multi-panel management. Available on F-Droid._
 
-## Support project
+## Credits
 
-**If this project is helpful to you, you may wish to give it a**:star2:
+RadPanel is a fork of [3x-ui](https://github.com/MHSanaei/3x-ui) and would not exist without it.
+All credit for the original panel goes to **MHSanaei** and the 3x-ui contributors.
+If you want to support the upstream project, star it and use its own channels.
 
-<a href="https://www.buymeacoffee.com/MHSanaei" target="_blank">
-<img src="./media/default-yellow.png" alt="Buy Me A Coffee" style="height: 70px !important;width: 277px !important;" >
-</a>
+## Support this fork
 
-</br>
-<a href="https://nowpayments.io/donation/hsanaei" target="_blank" rel="noreferrer noopener">
-   <img src="./media/donation-button-black.svg" alt="Crypto donation button by NOWPayments">
-</a>
+Questions, bugs and ideas about RadPanel itself: open an [issue](https://github.com/radinmovafaghh-coder/radpanel/issues).
 
 ## Star History
 

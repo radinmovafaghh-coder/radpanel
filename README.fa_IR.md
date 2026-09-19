@@ -1,28 +1,40 @@
-[English](/README.md) | [فارسی](/README.fa_IR.md) | [العربية](/README.ar_EG.md) | [中文](/README.zh_CN.md) | [Español](/README.es_ES.md) | [Русский](/README.ru_RU.md) | [Türkçe](/README.tr_TR.md)
+<div align="center" dir="rtl">
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./media/radpanel-dark.png">
-    <img alt="radpanel" src="./media/radpanel-light.png">
-  </picture>
-</p>
+<img src="./media/radpanel-light.png" alt="RadPanel" width="320">
 
-<p align="center">
-  <a href="https://github.com/radinmovafaghh-coder/radpanel/releases"><img src="https://img.shields.io/github/v/release/radinmovafaghh-coder/radpanel" alt="Release"></a>
-  <a href="https://github.com/radinmovafaghh-coder/radpanel/actions"><img src="https://img.shields.io/github/actions/workflow/status/radinmovafaghh-coder/radpanel/release.yml.svg" alt="Build"></a>
-  <a href="#"><img src="https://img.shields.io/github/go-mod/go-version/radinmovafaghh-coder/radpanel.svg" alt="GO Version"></a>
-  <a href="https://github.com/radinmovafaghh-coder/radpanel/releases/latest"><img src="https://img.shields.io/github/downloads/radinmovafaghh-coder/radpanel/total.svg" alt="Downloads"></a>
-  <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true" alt="License"></a>
-  <a href="https://pkg.go.dev/github.com/radinmovafaghh-coder/radpanel/v3"><img src="https://pkg.go.dev/badge/github.com/radinmovafaghh-coder/radpanel/v3.svg" alt="Go Reference"></a>
-  <a href="https://docs.sanaei.dev"><img src="https://img.shields.io/badge/docs-docs.sanaei.dev-22d3ee" alt="Documentation"></a>
-</p>
+### رادپنل (RadPanel)
 
-**RadPanel** یک پنل کنترل وب پیشرفته و متن‌باز برای مدیریت سرورهای [Xray-core](https://github.com/XTLS/Xray-core) است. این پنل یک رابط کاربری تمیز و چندزبانه برای استقرار، پیکربندی و نظارت بر طیف گسترده‌ای از پروتکل‌های پراکسی و VPN ارائه می‌دهد — از یک VPS تکی تا استقرارهای چندنودی.
+**پنل کنترل وب مدرن و سبک برای Xray-core — با یک دستور نصب کن، از هر دستگاهی مدیریت کن.**
 
-‏RadPanel که به‌عنوان یک فورک بهبودیافته از پروژه‌ی اصلی X-UI ساخته شده است، پشتیبانی گسترده‌تر از پروتکل‌ها، پایداری بهتر، حسابداری ترافیک به‌ازای هر کلاینت و بسیاری از ویژگی‌های رفاهی را اضافه می‌کند.
+[![Release](https://img.shields.io/github/v/release/radinmovafaghh-coder/radpanel?style=flat-square&color=7c3aed)](https://github.com/radinmovafaghh-coder/radpanel/releases)
+[![Build](https://img.shields.io/github/actions/workflow/status/radinmovafaghh-coder/radpanel/release.yml?style=flat-square&label=build)](https://github.com/radinmovafaghh-coder/radpanel/actions)
+[![License](https://img.shields.io/badge/license-GPL--3.0-7c3aed?style=flat-square)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![Downloads](https://img.shields.io/github/downloads/radinmovafaghh-coder/radpanel/total?style=flat-square&color=7c3aed)](https://github.com/radinmovafaghh-coder/radpanel/releases)
+
+</div>
+
+---
+
+## رادپنل چیست؟
+
+رادپنل یک پنل خودمیزبان برای [Xray-core](https://github.com/XTLS/Xray-core) است. با یک رابط وب تمیز
+می‌توانی اینباند بسازی، به کلاینت‌ها کانفیگ بدهی، ترافیک را ببینی و چند سرور را از یک داشبورد مدیریت کنی —
+بدون دست‌کاری دستی فایل JSON.
+
+رادپنل یک **فورک GPL-3.0 از پروژه‌ی [3x-ui](https://github.com/MHSanaei/3x-ui)** نوشته‌ی MHSanaei است.
+مجوز و کپی‌رایت اصلی حفظ شده (به فایل [NOTICE](NOTICE) نگاه کن)؛ چیزی که تغییر کرده برند، تم و مقصد نصب است.
 
 > [!IMPORTANT]
-> این پروژه فقط برای استفاده‌ی شخصی در نظر گرفته شده است. لطفاً از آن برای اهداف غیرقانونی یا در محیط تولید (production) استفاده نکنید.
+> فقط برای استفاده‌ی شخصی. لطفاً از آن برای اهداف غیرقانونی یا در محیط تولید استفاده نکنید.
+
+## چرا رادپنل؟
+
+- **نصب با یک دستور.** `bash <(curl -Ls .../install.sh)` و تمام.
+- **سبک و تمیز.** رابطی متمرکز که سر راهت نمی‌ماند.
+- **همه‌جا کار می‌کند.** لینوکس (amd64، arm64، armv7، armv6، armv5، 386، s390x) و ویندوز.
+- **۱۳ زبان**، تم روشن / تیره / فوق‌تیره.
+- **به‌صورت پیش‌فرض SQLite**، و PostgreSQL در صورت نیاز.
+- **کاملاً باز.** GPL-3.0، سورس همراه، بدون هیچ تلمتری.
 
 ## ویژگی‌ها
 
@@ -93,7 +105,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/radinmovafaghh-coder/radpanel/
 
 هر فایل انتشار به‌همراه یک جمع کنترلی `.sha256` در کنارش منتشر می‌شود. هم `install.sh` و هم به‌روزرسان، آرشیو را در برابر آن جمع کنترلی بررسی می‌کنند و در صورت عدم تطابق متوقف می‌شوند.
 
-برای مستندات کامل — نصب، پیکربندی، بهره‌برداری و مرجع کامل API — به **[docs.sanaei.dev](https://docs.sanaei.dev/fa)** مراجعه کنید.
+مستندات پنل در پوشه‌ی [docs/](docs/) همین مخزن قرار دارد. مستندات پروژه‌ی اصلی در docs.sanaei.dev هم عمدتاً کاربرد دارند، چون هسته‌ی رادپنل با آن مشترک است.
 
 ### نصب بدون نظارت
 
@@ -173,7 +185,7 @@ docker run -d --cap-add=NET_ADMIN --cap-add=NET_RAW ... ghcr.io/radinmovafaghh-c
 | `XUI_NODE_TOKEN_KEY_FILE` | حلقه‌کلید JSON (با دسترسی `0600`) شامل شناسه‌ی کلید فعال و کلیدهای ۳۲ بایتی base64 | `/etc/radpanel/node_token_key.json` |
 | `XUI_NODE_TOKEN_KEY` | یک کلید ۳۲ بایتی base64 که تنها در صورت بارگذاری‌نشدن فایل کلید استفاده می‌شود | — |
 
-فهرست کامل در [مرجع متغیرهای محیطی](https://docs.sanaei.dev/fa/docs/reference/env-vars) موجود است.
+فهرست کامل در فایل [.env.example](.env.example) موجود است.
 
 ## زبان‌های پشتیبانی‌شده
 
@@ -185,7 +197,7 @@ English · فارسی · العربية · 中文（简体） · 中文（繁體
 
 از مشارکت‌ها استقبال می‌شود. لطفاً پیش از باز کردن issue یا pull request، [راهنمای مشارکت](/CONTRIBUTING.md) را مطالعه کنید.
 
-## تشکر ویژه از
+## تشکر ویژه از (پروژه‌ی اصلی)
 
 - [alireza0](https://github.com/alireza0/)
 
@@ -201,18 +213,15 @@ English · فارسی · العربية · 中文（简体） · 中文（繁體
 - [terraform-provider-radpanel](https://github.com/batonogov/terraform-provider-threexui) (مجوز: **MIT**): _مدیریت اینباندها، کلاینت‌ها، تنظیمات پنل و پیکربندی Xray به‌صورت کد با Terraform / OpenTofu._
 - [RadPanel Manager](https://github.com/yukh975/RadPanel-Manager) (مجوز: **MIT**): _کلاینت بومی اندروید برای radpanel — داشبورد، اینباندها، کلاینت‌ها با اشتراک‌گذاری QR، نودها و مدیریت چند پنل. در F-Droid در دسترس است._
 
-## پشتیبانی از پروژه
+## اعتبار
 
-**اگر این پروژه برای شما مفید است، می‌توانید به آن یک**:star2: بدهید
+رادپنل فورکی از [3x-ui](https://github.com/MHSanaei/3x-ui) است و بدون آن وجود نداشت.
+تمام اعتبار پنل اصلی از آن **MHSanaei** و مشارکت‌کنندگان 3x-ui است.
+اگر می‌خواهی از پروژه‌ی اصلی حمایت کنی، به آن ستاره بده و از کانال‌های خودش استفاده کن.
 
-<a href="https://www.buymeacoffee.com/MHSanaei" target="_blank">
-<img src="./media/default-yellow.png" alt="Buy Me A Coffee" style="height: 70px !important;width: 277px !important;" >
-</a>
+## حمایت از این فورک
 
-</br>
-<a href="https://nowpayments.io/donation/hsanaei" target="_blank" rel="noreferrer noopener">
-   <img src="./media/donation-button-black.svg" alt="Crypto donation button by NOWPayments">
-</a>
+سؤال، باگ یا ایده درباره‌ی خود رادپنل: یک [ایشو](https://github.com/radinmovafaghh-coder/radpanel/issues) باز کن.
 
 ## تاریخچه ستاره‌ها
 
