@@ -1,5 +1,5 @@
 [Unit]
-Description=radpanel Service
+Description=RadPanel Service
 After=network.target
 Wants=network.target
 StartLimitIntervalSec=180
